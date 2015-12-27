@@ -1,0 +1,1334 @@
+
+
+
+
+
+
+
+
+
+
+-----
+Filmsprache
+
+Einführung in filmsprachliche Mittel
+Umsetzung von Inhalten aus der Geschichte in filmischen Ausdruck
+Wirkung von Schnitt, Kameraeinstellung, -position und -bewegung, Ton, Musik, Effekten
+Filmanalyse
+Erstellen (schriftlich) einer kurzen Szene unter Anwendung der gelernten filmischen Mittel
+
+
+Sie beherrschen die für den Medieninformatiker wichtigsten inhaltlichen und theoretischen Kenntnisse über die grundlegenden filmischen Ausdrucksmöglichkeiten. Sie verstehen das Zusammenspiel verschiedener technischer Ebenen und ihre Auswirkung auf den Inhalt. Sie sind in der Lage, die gelernten filmsprachlichen Möglichkeiten in einem eigenen Projekt anzuwenden.
+
+Die Grundlagen des Mediums ›Film‹ werden hier theoretisch vermittelt und erarbeitet. Dabei liegt der Schwerpunkt weniger in der technischen Umsetzung als vielmehr in dem Verständnis der filmsprachlichen Mittel: Wirkung von Schnitt, Montage, Kameraeinstellungen, -position und -bewegung, Ton, Musik, Effekten. In praktischen Beispielen werden anhand kurzer Filmausschnitte die filmsprachlichen Mittel analysiert und zusammengetragen. Schließlich werden kurze Szenen von den Studierenden selbst erstellt unter Anwendung der gelernten filmsprachlichen Mittel.
+
+Dieses Veranstaltung ist wichtige Grundlage für alle folgenden Veranstaltungen des Bereiches ›Film‹. Das grundlegende Verständnis vom Aufbau bewegter Handlungsabläufe ist darüber hinaus aber ebenso wichtig für die Veranstaltungen 3D/2D-Animation sowie die Gestaltung Online-Medien und Game-Design.
+
+-----
+3D-Modellierung
+
+Briefing, Konzept und operative Planung von Modelling-Vorhaben
+Rotoscope, Vorlage
+Polygon Basics, Modellierung technischer Objekte, Modellierung von Characteren, Low Poly High Poly
+Spline- und Boxmodeling
+SubDivs und Nurbs Principles
+Texturing Basics, UV Texturing, Normal Mapping
+Export Game-Formate
+Einfaches Rendering
+
+
+Sie können technische Geräte, naturhafte Objekte und Charaktere anhand einer Vorlage (Foto/Skizze) mit einem 3D-Programm modellieren und texturieren. 
+Sie können ein Modell als High-Poly-Modell und als Low-Poly-Modell aufbauen und ausgeben. Damit können Sie Content für Games und Film erzeugen. Die Techniken von Box-Modeling, Spline-Modeling und Patch-Modeling können Sie, je nach Erfordernis, problemlos anwenden.
+Sie können ein UV-Texturing erstellen; Atlas- und weitere Projektionsverfahren anwenden.
+Die Grundlagen von Normal-Mapping sind Ihnen vertraut, sie können entsprechende Daten und Bilddateien erzeugen.
+
+Sie sind in der Lage, entsprechende Aufträge zu analysieren, zu strukturieren und in kreativer Weise konzeptionell und gestalterisch für die Bereiche Game, Illustration und Film umzusetzen.
+
+Das Modul 3D Modeling befähigt zur Teilnahme am Modul 3D Animation (5. Semester) und 3D Rendering (4.Semester).
+
+Unter dem Sammelbegriff „3D-Artist“ verbergen sich einige Berufsbilder im 3D-Bereich: es wird zwischen 3D Character Animator, 3D Modeler, 3D Lighter, 3D Texturer, FX Animator unterschieden. In kleineren Produktionen kommt der „Generalist“ zum Einsatz, der die einzelnen Techniken in möglichst großer Anzahl beherrscht.
+Aufgrund stetig wachsenden Anforderungen und immer spezialisiertere Software ist bei großen Produktionen im Film-, TV- und Gamebereich der Spezialist gefordert, der z.B. schnell und effektiv Drachen und Monster nach Vorlage zu einem virtuellen Drahtgittermodell umformen  kann. Aber auch der Spezialist muss den „workflow“ zum Beispiel zwischen Modeling und Animation kennen und beherrschen, um geeignete Figuren erstellen zu können, die dann vom Animator aufgegriffen und weiterverarbeitet werden können.
+
+-----
+Grundlagen Gestaltung
+
+Gestaltgesetze
+Blickführung
+Farben, Farbkontraste, Farbkompositionen
+Komposition, Rhythmus, Reihungen
+Figur und Grund
+Typografie (Makro- und Mikrotypografie)
+Layout
+
+
+Sie beherrschen die Grundlagen der Gestaltung und können diese in verschiedenen Medien anwenden.
+
+Die Grundlagen des Gestaltung werden theoretisch und praktisch erarbeitet. Dabei liegt ein Aspekt auf den wahrnehmungspsychologischen Hintergründen und wie diese sich auf die Betrachtung, Aufnahme und Interpretation von Medienprodukten auswirken. Ein weiterer Schwerpunkt liegt auf den einzelnen Grundelementen der grafischen Gestaltung wie der Umgang mit Formen, Flächen, Farben, Bild, Schrift und Typografie und die Kombination aller Elemente im Layout von Medienprodukten. Durch einzelne Aufgaben und Übungen werden die Grundlagen mit aktueller Anwendungssoftware vertieft und angewandt.
+
+Eine Verbindung besteht zu den Veranstaltungen Interface- und Interaktionsdesign, Digitale Bildbearbeitung, Konzeption Online/Mobil, Game Design, Gestaltung Online-Medien und Generatives Gestalten, in denen das erlangte Wissen und der Umgang in der Praxis auf Aufgabenstellungen transferiert und verwendet werden kann.
+
+-----
+Interface- und Interaktionsdesign
+
+Überblick Benutzungsschnittstellen
+Normen, Gesetze und Richtlinien
+Kognitive Grundlagen der menschlichen Informationsverarbeitung
+Handlungsprozesse und Fehler
+Ein- und Ausgabegeräte
+Informationsdarstellungen
+Interaktionsformen
+Barrierefreiheit
+Prototypen
+Usability Test
+Aktuelle Entwicklungen: z.B. Touchscreen, Gesten
+
+
+Sie können bestehende Interfaces und Interaktionsabläufe testen und beurteilen. Sie können können mit simplen Prototypen neue Interfaces und Interaktionsabläufe entwicklen.
+
+Die Veranstaltung vermittelt grundlegende Kompetenzen zur Analyse der Anforderungen an interaktive Anwendungen, dem Entwurf computergestützter Lösungen und der Bewertung der Effektivität verschiedener Lösungsalternativen. Zentrale Inhalte sind die Erstellung einer Benutzer- und Aufgabenmodells, die iterative Weiterentwicklung von Lösungskonzepten sowie die Vermittlung der Methodik von Benutzerevaluationen (Usability Tests), welche die besonderen Eignung verschiedener Ein- und Ausgabegeräte sowie die kognitiven Beschränkungen der Nutzer berücksichtigen. Die theoretischen Konzepte werden anhand der Entwicklung von Papier-Prototypen praktisch trainiert.
+
+Die Veranstaltung ist von zentraler Bedeutung für alle nachfolgenden Veranstaltungen des Themenschwerpunktes Interaktive Systeme und der Themenschwerpunkte Mobile Anwendungen und Medienprogrammierung, die auf den in dieser Veranstaltung vermittelten Kompetenzen aufbauen und weiter ausbauen. Von besonderer Bedeutung sind analytische Fähigkeiten bei der Erstellung eines Aufgabenmodells sowie die kritische Bewertung von Lösungsalternativen anhand von Usability Tests. Die Veranstaltung Game Design vertieft die hier erworbenen Kompetenzen anhand der Entwicklung eines komplexen Prototypens für ein intuitiv zugängliches interaktives System.
+
+-----
+Strukturierte Programmierung
+
+Grundliegende Begriffe und Konzepte 
+
+
+Syntax und Semantik
+Programm
+Algorithmus
+
+Programm - Ein-/Ausgabe
+Datentypen &amp; Variable 
+Kontrollstrukturen
+Exception Handling
+Unterprogrammtechnik/Methoden
+Arrays, Strings 
+Referenz-Typen vs. primitive Typen
+Klassen und Objekte
+Abstrakte Datentypen
+packages (Einf.)
+char Streams &amp; file-I/O (Einf.)
+
+
+Alle theoretischen Konzepte werden in praktischen Übungen angewendet.
+
+Sie beherrschen die grundlegenden Konzepte der Hochsprachen-Programmierung. Sie können selbstständig anwendungsspezifische Algorithmen formulieren und mittels z.B. Java implementieren.
+
+Sie können die fundamentale Kontrollstrukturen (Verzweigungen, Fallunterscheidungen, Schleifen), Ein- und Ausgabe-Routinen nutzen. Sie beherrschenden den Aufruf von Unterprogrammen und Methoden und können die grundlegender Datenstrukturen (elementare Datentypen, Arrays, Strings, Collections) nutzen. Zudem lernen Sie die grundlegende Konzepte der Erstellung und Ausführung von Computerprogrammen (Compiler, Linker, Just-In-Time- Compiler) sowie moderne integrierte Entwicklungsumgebungen kennen.
+
+Die Veranstaltung ist von zentraler Bedeutung für alle nachfolgenden Veranstaltungen des Themenschwerpunktes Mobile Anwendungen und der Themenschwerpunkte Interaktive Systeme und Medienprogrammierung, die auf den in dieser Veranstaltung vermittelten Kompetenzen aufbauen und weiter ausbauen.
+
+-----
+Modellierung und Design Patterns
+Komplexe Softwaresysteme bilden für ein konkretes Anwendungsproblem relevante Ausschnitte der realen Welt ab. Sie beruhen auf formalen Modellen. Diese erfassen beobachtete Phänomene in Datenstrukturen und bilden das Verhalten dynamischer Systeme in Algorithmen nach.
+
+Modellierung
+
+Formale Modelle ermöglichen:
+
+
+die Repräsentation von Wissen und Beobachtungen, 
+die Begriffs- und Theoriebildung zur Beschreibung komplexer dynamischer Systeme,
+die Entwicklung von Hypothesen,
+die experimentelle Bestätigung dieser Modelle sowie
+die Vorhersage künftiger Entwicklungen.
+
+
+Die Veranstaltung analysiert an einer Reihe konkreter Beispiele:
+
+
+das Verhalten komplexer dynamischer Systeme, 
+stellt Möglichkeiten zur Repräsentation von Expertenwissen in formalen Systemen vor,
+stellt formale Kalküle zur Vorhersage des zukünftigen Verhaltens komplexer dynamischer Systeme vor,
+präsentiert formale Sprachen zur exakten Beschreibung von Modellen und
+stellt Diagramme zum einfacheren Verständnis der modellierten Ausschnitte der Welt sowie der Vorhersage-Ergebnisse dar.
+
+
+Die Veranstaltungen führt die Grundlagen objektorientierter und komponentenbasierter Analyse- und Entwurfsverfahren ein.
+
+Design Patterns:
+
+Entwurfsmuster (Design Patterns) sind abstrakte Beschreibungen von Problemen und deren Lösung beim Entwurf und der Implementierung von Softwaresystemen. Das Verständnis von Entwurfsmustern erleichtert die Analyse von Anwendungsproblemen.
+
+Anhand erkannter Muster in der Problemstellung lassen sich:
+
+
+relevante Objekte und deren Zusammenwirken vorhergesagen,
+verbreiterte Probleme beim Design wiederverwertbarer und erweiterbarer Softwaresysteme vermeiden. 
+
+
+Entwurfsmuster führen klar definierte Begriffe zur Beschreibung des Verhaltens komplexer Softwaresysteme ein und vereinfachen so die Kommunikation zwischen Software-Entwicklern bei der Problemanalyse und des Design erweiterbarer Lösungen.
+
+Sie analysieren komplexe dynamische Systeme und beschreiben die für eine gegebene Problemstellung relevanten Ausschnitte. Sie sind in der Lage, die strukturelle Zusammenhänge sowie das Verhalten dynamischer Systeme exakt zu beschreiben. Sie können geeignete Repräsentationsmechanismen auswählen und gezielt UML-Diagramme zur Visualisierung der Problemstellung sowie des Verhaltens dynamischer Systeme einsetzen.
+
+Sie kennen objektorientierte Analyse- und Entwurfsmethoden sowie die wichtigsten Entwurfsmuster. Sie nutzen die UML-Notation zur Beschreibung von Entwurfsmustern und wissen, wie die Grundstruktur von Entwurfsmustern in der Programmiersprache Java umgesetzt wird. Sie erkennen in der Software-Architektur genutzte Entwurfsmuster. Sie können die Erweiterbarkeit von Software-Designs bewerten und diese durch Reengineering und Refactoring gezielt verbessern.
+
+-----
+Kommunikation und Präsentation
+
+Kommunikationstraining
+
+
+Kommunikationsmodelle 
+Kommunikationsprozesse in Gruppen 
+Moderation von Diskussionen
+Fragetechniken 
+Verkaufsgespräche und Einwandbehandlung 
+Vorstellungsgespräche und Gehaltsverhandlungen 
+
+Präsentationstraining
+
+
+Training von Kurzpräsentationen (2 Minuten-Pitch) und einer wissenschaftlichen Präsentation mit anschließender Diskussion
+Präsentationsanlässe, -inhalte und -formen 
+Präsentationstraining mit Videokamera  
+Diskussion fachlicher Probleme und Bewertung der Rhetorik in der Gruppe
+Erkennen kultureller / fachlicher Kommunikationsbarrieren und konstruktiver Umgang mit diesen
+Analyse der nonverbalen Kommunikation 
+persönliche Auswertung fachlicher Probleme und Bewertung der Rhetorik mit Workshop-Leiter bzw. Workshopleiterin
+
+
+
+Sie können selbstgewählte komplexe Sachverhalte klar, kompetent und den Adressaten und der Situation angemessen darstellen.
+Sie verfolgen mit der Präsentation für das Publikum klar erkennbare Ziele. Sie können den Erfolg Ihrer Präsentation realistisch einzuschätzen, erkennen abweichende Positionen ihrer Kommunikationspartner, um Ursachen der kontroversen Positionen herauszuarbeiten und Lösungsmöglichkeiten vorzuschlagen. Als Präsentator halten Sie ein strenges Zeit-Regime im Ablauf mehrerer Präsentationen ein; als Moderator erkennen Sie frühzeitig Konfliktsituationen und wahren eine sach- und zielorientierte Diskussion.
+
+-----
+Kreativitätstechniken
+Im Workshop arbeiten wir mit folgenden Kreativitätstechniken:
+
+
+Brainstorming
+Mindmapping
+Clicking-Fragenkatalog
+Chancendenken?
+6 Denkhüte
+Morphologische Matrix
+Osborne Checkliste
+
+
+Kreativität, was ist das? und wie kann ich es werden? Diese Fragen und noch viele weitere rund um den Begriff Kreativität können sie nach Teilnahme an dem Workshop beantworten. Sie lernen den Prozess der Ideenfindung mit den Phasen der Zieldefinierung, Ideenfindung, der Ideenweiterentwicklung und Auswahl, sowie der Umsetzung kennen. Am Beispiel aktueller Wettbewerbe und Problemenstellungen lernen sie diesen Prozess zu beschreiten und anhand von unterschiedlichen Kreativitätstechniken Lösungen im Team und in Einzelarbeit vorzustellen. Sie sind in der Lage Ideen zu bewerten und weiter zu entwickeln. Die erarbeiteten Lösungen präsentieren sie im Team und entwickeln eine konstruktive Feedback-Kultur. Sie sind in der Lage störende Denkblokaden zu erkennen und durch gezielte Moderation zu überwinden.
+
+-----
+Ideenfindung und Kommunikation
+
+
+-----
+Projektmanagement
+
+Erfahrungsberichte Projekte
+Grundlagen
+
+
+Definition Projekt, Management
+Aufgaben Projektmanagement
+Besprechung Projekt Bachelor-Arbeit 
+Aufbau- und Ablauforganisation
+Projektphasen
+
+Projektdefinition
+
+
+Ziele unternehmerischer Aktivitäten und Erfolgskontrolle
+Innovationsplanung
+Strategische Konzepte der Erfolgsmessung 
+
+Projektplanung
+
+
+Prozessmodelle
+Projektstrukturplan
+
+Projektziele, Zieldokumentation, Zielmanagement
+
+
+Betriebswirtschaftliche Kategorien (Kosten, Gewinn, Rentabilität, Produktivität) 
+Wirtschaftlichkeitsanalysen
+
+Projektkontrolle und -steuerung (Risikomanagement und Qualitätsmanagement) 
+Projektabnahme und -abschluss
+
+
+Sie beherrschen die wichtigsten inhaltlichen, theoretischen und operativen Techniken im Bereich Projektmanagement. Sie sind in der Lage, anhand eines konkreten Projektes sinnvolle Arbeitsgruppen zu bilden und zu leiten. Sie können ein Projekt mittels geeigneter Instrumente planen, durchführen, präsentieren und dokumentieren. Sie bringen Ihre Sozialkompetenz ein, um planvoll und zielgerichtet im Team erfolgreich zu arbeiten. Sie kennen Standard-Werkzeuge zur Projektplanung und -kontrolle (z.B. MS Project) .
+
+-----
+Wissenschaftliches Arbeiten
+
+grundlegende Konzepte aus Kommunikationswissenschaft, Textlinguistik und Rhetorik
+
+
+Kommunikationsmodelle 
+Kommunikationsstile und -störungen
+Interventionen (Gersprächstechniken, -Methoden und -Instrumente) 
+kommunikative Funktionen und Textstrukturen
+
+Analyse wissenschaftlicher Texte
+
+
+Genre-Konventionen
+Unterschiede  schriftlicher Präsentation und mündlicher Diskurs
+Textstruktur und rhetorische Figuren in wissenschaftlichen Texten
+Klassifikation und Struktur wissenschaftlicher Texte
+Ziele einzelner Abschnitte in wissenschaftlichen Texten
+
+Recherche und Inhaltsaufbereitung
+
+
+Literatursuche und Online-Recherche 
+Lesen und Bearbeiten von wissenschaftlichen Texten
+kritische Bewertung verschiedener Informationsquellen 
+Inhaltsauswahl und -aufbereitung
+Grundkenntnisse Wissenschaftsethik
+Prinzipien guter wissenschafter Praxis
+
+Ausarbeitung und Präsentation
+
+
+Definition von Ziel und Struktur der Präsentation
+Definition der Terminologie und wissenschaftlicher Grundlagen
+Darstellung verwandter Arbeiten und Einordnung eigener Arbeit 
+Darstellung grundlegender Konzepte und Algorithmen
+Darstellung von Ergebnissen und Fallbeispielen
+Erstellung und Nutzung bibliographischer Informationen
+
+Inhaltsauswahl für Präsentation
+
+
+Inhaltliche und methodische Vorbereitung von Präsentationen 
+Erwerb und Einübung effektiver Lerntechniken zur freien Präsentation 
+Strategien zur Moderation der Diskussion und Beantwortung von Fragen
+
+
+
+Sie sind in der Lage, in einer Recherche die Entstehungsgeschichte eines wissenschaftlichen Beitrages sowie seinen Beitrag zum Stand der Kunst innerhalb eines Fachgebietes schnell einschätzen. Sie können die wesentlichen Konzepte, die wissenschaftliche Methodik und die wesentlichen Ergebnisse eines wissenschaftlichen Beitrages kurz und präzise beschreiben. Sie sind in der Lage, verschiedene wissenschaftliche Konzepte und Methoden hinsichtlich der Anforderungen eines Anwendungsgebietes kritisch zu vergleichen und geeignete Methoden für ein spezifisches Anwendungsproblem auszuwählen. Sie können eine sachgerechte Struktur zur Darlegung der inneren Zusammenhänge der gewählten Lösung herausarbeiten und entwickeln und begründen dabei eine eigenständige, kritische Position. Sie können die Ergebnisse Ihrer Analysen für ein spezifisches Zielpublikum  (Lerndende, Fachfremde und Gebietsexperten) aufbereiten und schriftlich und mündlich präsentieren.
+
+-----
+Arbeits- und Studienorganisation
+
+
+-----
+Audio-Produktion
+Vorlesung
+
+
+Grundlagen:
+
+
+Schallwellen, Schallausbreitung, Raumakustik  
+Gehör und Psychoakustik  
+
+Aufnahme:
+
+
+analoge Audiosignale  
+digitale Audioformate, Komprimierung      
+Mikrofone, Vorverstärker, Rekorder  
+
+Bearbeitung:
+
+
+analoge und digitale Filter  
+Dynamikbearbeitung  
+Raumeffekte  
+Pitch- und Noise-Correction  
+Mischung, Automation  
+
+
+
+Labor
+
+
+Aufnahme:
+
+
+Sprache (Set, Interview, Sprecherkabine)  
+O-Ton, Atmosphäre (Stereotechniken)  
+Geräusche („Foleys“)      
+Musikinstrumente        
+
+Übungen zur Bearbeitung:
+
+
+Schnitt, Montage, Pitch- und Noise-Correction  
+Equalizer und Dynamikbearbeitung  
+Unterlegung mit Musik  
+Effekte, Verhallung, Mischung  
+Finalisierung
+
+
+
+Ein wichtiges Element der filmischen Umsetzung ist der Bereich ›Ton‹. In der Veranstaltung ›Audioproduktion‹ lernen Sie die Grundlagen der Akustik (Schallausbreitung, Raumakustik, Gehör- und Psychoakustik). Diese Grundlagen sind wichtig für hochqualitative Audio-Aufnahmen und -Bearbeitungen. Dabei wird sowohl die digitale als auch die analoge Aufnahmetechnik berücksichtigt, da Faktoren wie Mikrofone, Vorverstärker oder verschiedene Aufnahmetechniken zentral für die Qualität des Filmtons sind. Die Zusammenhänge der Psychoakustik sind entscheidend für den Einsatz der Ton-Nachbearbeitung. Hier werden Kenntnisse über verschiedene Filtertechniken, Raumeffekte, Dynamik-Bearbeitung und Korrekturen bis hin zur fertigen Mischung vermittelt.
+Die Grundlagen der Audioproduktion sind nicht nur für die spätere Filmnachbearbeitung und -Vertonung wichtig, sie finden auch in den Bereichen Konzeption Online/Mobil, Gestaltung von Online-Medien und Game-Design Anwendung.
+
+Lernziele:
+Sie sind in der Lage, unterschiedliche Schallquellen mit entsprechenden Mikrofonierungstechniken unter Berücksichtigung raumakustischer Gegebenheiten aufzuzeichnen. Sie können die Aufnahmen am Computer mit Audio-Editor-Programmen schneiden und montieren, den Klang mit Equalizern korrigieren, mit virtuellen Effekten bearbeiten und anhand von psychoakustischen Gesichtspunkten mischen.
+
+-----
+3D-Rendering
+
+Briefing, Konzept und operative Planung zum Texturieren von 3D Objekten
+UVW-Mapping, Planar- Mapping, Procedural Textures
+Texturing mit 2D-Bildbearbeitungsprogramm
+Texturing mit 3D Bildbearbeitungsprogramm / Clay-Modeller
+Shading und Shader, Toon und Real
+Lights und Light-Setup
+Advanced Render Setup, Radiosity and Caustics
+Rendering und Ausgabe für Film und Game-Preview
+Export für Game
+
+
+Sie kennen die spezifischen Anforderungen und Elemente, die Ausleuchtung, Material, Oberflächenbeschaffenheit an Ojekte in einer 3D-Umgebung stellen und können damit umgehen. Sie sind in der Lage, ziel- und projektgerechte 3D-Szenen für verschiedene Ansprüche zu gestalten und final zu erzeugen.
+In diesem Modul wird optimiertes Texturieren, mit UV-Mapping-Verfahren und mit Normal-Mapping gelehrt. Arbeiten mit verschiedenen virtuellen Beleuchtungen und Lichteinstellungen und Aufsetzen einer Szene, sowie Arbeiten mit verschiedenen virtuellen Kameras gehört ebenfalls zum Unterrichtsstoff. Abschließend wird in den hergestellten Szenen mit verschiedenen Render-Systemen (Mental Ray, Software– und HardRenderer) und an der Bildoptimierung in 3D gearbeitet. Dabei werden auch Möglichkeiten des 3D-Renderings in 2D-Vektor-Grafik aufgezeigt und praktisch umgesetzt.
+
+Enge inhaltliche Beziehungen bestehen zur Veranstaltung Digitale Bildbearbeitung, in der die Postproduktion stattfindet. Die erworbenen Kenntnisse können in der Veranstaltung Game Design verwendet werden und sind auch im ›realen‹ Umfeld des Moduls Filmdreh von großen Nutzen.
+
+Unter dem Sammelbegriff „3D-Artist“ verbergen sich einige Berufsbilder im 3D-Bereich: es wird zwischen 3D Character Animator, 3D Modeler, 3D Lighter, 3D Texturer, FX Animator unterschieden. In kleineren Produktionen kommt der „Generalist“ zum Einsatz, der die einzelnen Techniken in möglichst großer Anzahl beherrscht. Aufgrund stetig wachsenden Anforderungen und immer spezialisiertere Software ist bei großen Produktionen im Film-, TV- und Gamebereich der „Spezialist“ gefordert, der z.B. schnell und effektiv Action-Szenen oder sprudelndes Wasser und sich türmende Wellen, sowie effektvolle Explosionen zum virtuellen Leben erwecken kann.
+
+-----
+Digitale Bildbearbeitung
+Die vorgestellten Techniken zur Bildbearbeitung basieren auf einer ›nicht destruktiver Arbeitsweise‹.
+
+Vorlesung
+
+
+Bildauflösung, Farbräume, Dateiformate
+Erstellen von Bildern
+Bildretusche, Bildoptimierung
+Gradationskurven, Tonwertkorrektur, Farbkorrektur
+S/W und Duplex, Colorieren und Umfärben
+Arbeiten mit Ebenen, Arbeiten mit Masken
+Arbeiten mit Pfaden, Import von Vektordaten
+Digitale Filter, Text-Bild-Integration
+Erstellen von Texturen
+Erstellen von Bildkompositionen
+Komplexe Montagetechniken
+Bildaufbereitung für Web und Print
+Colormanagement
+Bildverwaltung und -Pflege
+Metadaten
+Digitales Negativ und dessen Bearbeitung
+
+
+Übungen / Labor
+
+In begleitenden Übungen im Labor werden die entsprechenden Techniken angewendet.
+
+Sie sind in der Lage, Bilder verschiedener Herkunft für die Verwendung im Web oder Print aufzubereiten und zu optimieren. Sie können aus mehreren Motiven komplexe Bildmontagen erstellen und Entwürfe für Screendesign und Benutzeroberflächen umsetzen.
+
+Es werden die Kenntnisse im Umgang mit Bilder (pixelbasiert) aus gestalterischer und technischer Sicht vermittelt. Dabei wird der technische Produktionsprozess wie das Erstellen bzw. Bereitstellen von Bildmaterial, das technische Umfeld wie Farbraum, Color-Management, Auflösung oder Formate wie die Ausgabe zur weiteren Verwendung in verschiedenen Medienprodukten vermittelt und durch Aufgaben praktisch erarbeitet. Einen weiteren Schwerpunkt bildet die Bildbearbeitung und das Handling mit dem Programm Adobe Photoshop. Der gestalterische Aspekt behandelt den Bildaufbau, das Bildcomposing und die Bildmontage.
+
+Dabei wird auf das Wissen des Moduls Grundlagen der Gestaltung zurückgegriffen, dieses ergänzt und vertieft. Diese Kenntnisse sind auch im Umfeld der Module Interface- und Interaktionsdesign, Konzeption Online/Mobil, Game Design, Gestaltung Online-Medien, Filmschnitt / -Editing, WWW-Programmierung und Generatives Gestalten (5. Semester) von großen Nutzen, da Standbilder mehrheitlich in den verschiedenen Medienprodukten eine wichtige Rollen einnehmen. Der Aspekt der Bild- und Urheberrechte wird im Modul Medienkompetenz behandelt und vermittelt.
+
+-----
+Netzwerk-Kommunikation
+
+Kommunikations-Konzepte und Begriffe
+
+
+Client/Server-Technik
+verbindungslose/verbindungs-orientierte Kommunikation
+Statefull/Stateless Server
+Transactions
+Verschlüsselung &amp; Digitale Signatur
+
+Socket-Programmierung
+
+
+Unter Unix- bzw. Linux
+Unter Windows
+Systemnahe Programmierung mit C
+Java-Sockets
+
+Remote Procedure Call und Nachfolger  
+
+
+CORBA
+Java RMI
+DCOM
+
+SOA und Webservices
+
+
+Sie kennen die grundlegenden Konzepte der Rechner-Kommunikation. Sie sind in der Lage, verteilte Anwendungen im Internet zu programmieren.
+
+-----
+Objektorientierte Programmierung
+Vorlesung
+
+
+Konzepte der objektorientierten Programmierung am Beispiel Java
+
+
+Abstraktion und Kapselung durch Konzepte / Klassen / Objekte
+Sichtbarkeit und Zugriffsrechte
+Beziehungen zwischen Objekten: Vererbung , Komposition
+Klassenhierarchien
+Polymorphismus, virtuelle Funktionen
+abstrakte Klassen
+Schnittstellen (Interfaces)
+Fehlerbehandlung / Ausnahmen
+Generische Funktionen
+
+User-Interface-Frameworks am Beispiel AWT/Swing
+
+
+GUI-Komponenten zur Informationsdarstellung, Interaktion, Navigation 
+Komponenten-Hierarchie
+Layout-Mechanismen für statische und dynamische Darstellungen
+Ereignis-Verarbeitung 
+
+
+
+Labor
+
+Sie konzipieren und erstellen für einfache Anwendungen zunehmend komplexere grafische Benutzerschnittstellen. Dabei nutzen Sie das Framework AWT/Swing und lernen Werkzeuge zur Entwicklung, Analyse, zum Test und zur Dokumentation von Software-Projekten kennen.
+
+
+Integrierte Entwicklungsumgebung (Eclipse)
+Debugging-Werkzeuge
+Tools zur Integration der Dokumentation direkt im Quelltext und zur automatischen Erstellung der Software-Dokumenation  (JavaDoc)
+Versionsverwaltungssysteme (z.B. Subversion, GIT, &#8230;)
+
+
+Sie erlernen den Entwurf und die Programmierung moderner grafischer Benutzeroberflächen mit Methoden und Werkzeugen der objektorientierten Modellierung und Programmierung. Sie kennen Standard-Elemente graphischer Benutzeroberflächen zur Anzeige von Daten, zur Interaktion und Navigation sowie des dynamischen Layouts und können diese mit dem Swing-Framework in der Programmiersprache Java umsetzen.
+
+Sie beherrschen die Konzepte und Methoden (Abstraktion/ Kapselung, Polymorphismus, Schnittstellen / Interfaces) der objektorientierten Modellierung und Programmierung. Sie können sicher Werkzeuge zur Entwicklung, zur Analyse, zum Test und zur Dokumentation von Software-Projekten einsetzen. Sie sind in der Lage, fortgeschrittene Konzepte der objektorientierten Programmierung (Ereignisverarbeitung, generische Funktionen) und komplexe Klassenbibliotheken in ihren Programmen zu nutzen.
+
+Diese Konzepte können Sie beim Entwurf und die Programmierung moderner graphischer Benutzeroberflächen einsetzen, um einfache graphische Benutzerschnittstellen für mobile Endgeräte zu entwickeln.
+
+Die Veranstaltung ist von zentraler Bedeutung für alle nachfolgenden Veranstaltungen des Themenschwerpunktes Mobile Anwendungen und der Themenschwerpunkte Interaktive Systeme und Medienprogrammierung, die auf den in dieser Veranstaltung vermittelten Kompetenzen aufbauen und diese weiter ausbauen.
+
+-----
+Algorithmen und Datenstrukturen
+Grundlagen
+
+
+Menge, Relation, Abbildung, Folge
+Graph: gerichtet/ungerichtet, Pfad, Weg, Kreis, Teilgraph, Zusammenhang, Baum
+
+
+Algorithmen
+
+
+Begriff Algorithmus, Algorithmen im täglichen Leben
+Algorithmus zur Darstellung von Zahlen zur Basis b
+Euklidischer Algorithmus zur Berechnung des größten gemeinsamen Teilers
+Sortieralgorithmen: Insertionsort, Quicksort, Mergesort, Heapsort
+Graphenalgorithmen: Zusammenhangskomponenten, minimaler Spannbaum, kürzeste Wege
+Zeitkomplexität von Algorithmen
+Entwurfsmethoden
+Algorithmisch schwierige Probleme
+Komplexitätsklassen P und NP
+Heuristische Verfahren für algorithmisch schwierige Probleme 
+
+
+Datenstrukturen
+
+
+Array
+Stack
+Queue
+Prioritätenliste
+Verkettete Liste
+Baum
+
+
+In den begleitenden Übungen werden zunächst in kleineren Gruppen die mathematischen Grundlagen geübt. Später werden ausgewählte Algorithmen am Computer programmiert und hinsichtlich ihrer Laufzeiten verglichen.
+
+Sie kennen die mathematischen Konzepte Menge, Relation, Abbildung, Folge und Graph und können damit arbeiten. Sie können Verfahren zur Lösung von Problemen algorithmisch formulieren, und Sie sind in der Lage, die Zeitkomplexität eines Algorithmus zu analysieren. Des weiteren kennen Sie grundlegende Datenstrukturen wie Stack, Queue und Prioritätenliste und können diese geeignet einsetzen. Aufbauend auf der Kenntnis grundlegender Begriffe der Graphentheorie können Sie geeignete Sachverhalte mithilfe von Graphen modellieren. Sie kennen einige wichtige Sortieralgorithmen und Graphenalgorithmen. Sie sind in der Lage, die algorithmische Schwierigkeit von Problemen einzuschätzen. Sie können fortgeschrittene Algorithmen und Datenstrukturen objektorientiert programmieren.
+
+Die Veranstaltung führt die notwendigen Techniken der Informatik zur Analyse von Problemstellungen sowie des Entwurfs komplexer Systeme ein, die in allen Veranstaltungen der Themenkomplexe Mobile Anwendungen, Interaktive Systeme und des Themenkomplexes Medienprogrammierung genutzt werden.
+
+-----
+Filmdreh
+
+Umsetzung der im Storyboard erarbeiteten Motive
+technische Aspekte der Einstellungswahl
+Kameratechnik
+Kameraformate
+digitale Aufzeichnungsformate
+Drehplanung
+Teamzusammenstellung, Arbeitsverteilung
+Dreh - Organisation (Genehmigungen etc.)
+Filmische Umsetzung z.B. einer im Modul „Storyboard“ erarbeiteten Filmidee
+
+
+Sie beherrschen einen grundlegenden Umgang mit einer Video- /Filmkamera, haben grundlegende Kenntnisse über Kameratechnik und Datenformate und haben einen kleinen Dreh selbständig organisiert und durchgeführt.
+
+In diesem Modul kommen die in der Filmsprache vermittelten und im Storyboarding geplanten Inhalte zur Umsetzung. Dabei werden sowohl inhaltliche als auch technische Aspekte bei der Filmproduktion vermittelt. Technische Möglichkeiten verschiedener Kamerasysteme sowie auch technische Grenzen des machbaren sind hier ebenso Thema wie die Planung und Organisation (auch Genehmigungen, Rechte). Die technischen Aspekte werden im Hinblick auf den späteren Workflow in der Postproduktion vermittelt. Daher ist die Verbindung zu sämtlichen Veranstaltungen im Bereich Film gegeben als auch die Verbindungen zu der 3D-Animation und 3D-Rendering, da auch dort virtuelle Filmsets erstellt werden.
+
+-----
+2D-Animation
+
+Briefing, Konzept und operative Planung zur Animation im zweidimensionalen Raum
+2D Animationstechniken: Digital Paperless, Cell-, Stop Motion-, Cut Out-, Clay- Animation
+Digitale Zeichentechniken 2D, Grafik-Tablett
+Advanced Digital Paperless Pixel-Animation für Zeichentrickfilm 
+Advanced 2D-Vektor-Animation für Online-Games
+2D Post-Processing
+Fertigstellung eines Trickfilms, kurzer (20–40 sec.) 2D-Werbefilm-Clip
+
+
+Sie beherrschen verschiedene Trickfilm -Techniken digital und traditionell:
+Cutout-Animation, claymation, cell-animation und „handdrawn digital paperless animation“.
+
+Sie können in den spezifischen Software-Programmen 2D- Charaktere erzeugen, in Frame-to-Frame, Pose-to-Pose oder in Keyframe-Animation  bewegen. Sie können diese Animationen als Film planen und ausgeben. Dabei sind Ihnen die Abläufe der digitalen filmischen Nachbearbeitung geläufig.
+
+Das Modul steht in engen Zusammenhang mit „Digitale Zeichnung/Storyboarding“ und „Filmsprache“, sie ist eine ideale Vorbereitung auf das Modul „3D-Animation“.
+
+Im Berufsfeld erstellt der Trickfilmzeichner  am Computer animierte Illustrationen für Werbespots, Musikclips, Schulungs- oder Unterhaltungsfilme.
+Trickfilmzeichner arbeiten in erster Linie bei Unternehmen der Film- und Fernsehwirtschaft, die Computeranimationen gestalten, Trickfilme herstellen oder animierte Fernsehsendungen produzieren. Dabei agiert der Trickfilmzeichner als Freelancer oder -seltener- in fester Anstellung.
+
+-----
+Konzeption Online/Mobil
+
+Phasen der Konzeption
+Logo
+Corporate Design / Corporate Identity
+Web-Konzeption
+Inhalts-/Funktionsanforderungen
+Umfang/Struktur
+Informationsarchitektur
+Navigation/Interaktion
+Designkonzept
+Konzeption für mobile Anwendungen
+Wireframes
+Prototyping
+
+
+Sie sind in der Lage, selbständig ein Konzept für einen Webauftritt bzw. eine mobile Anwendung zu erarbeiten. Sie können konzeptionelle Vor- und Nachteile von Webauftritten und mobilen Anwendungen beurteilen. Sie sind in der Lage, die Konzepte einzuschätzen und zu diskutieren. Im Mittelpunkt stehen die Phasen der Konzeption, des Entwickeln eines Webauftritts bzw. einer mobilen Anwendung. Dabei werden Aspekte wie Zielgruppe, Umfeld und Konkurrenz des zu erstellenden Medienproduktes intensiv behandelt. Es folgt eine Auseinandersetzung des direkten Umfeldes des Produkts im ›eigenen‹ Unternehmen – Corporate Identity und Corporate Design. Ebenso werden die technischen Aspekte im Kontext des Planens und der Konzeption erarbeitet.
+
+Es besteht die Möglichkeit, im folgenden Semester die Ergebnisse in das Modul Gestaltung Online-Medien einzubringen, indem das Web-Konzept, der Prototyp mit Designkonzept und Wireframe als Basis verwendet wird. Die Umsetzung und Programmierung kann dann wiederum im Modul WWW-Programmierung stattfinden. Eine Ergänzung und Vertiefung der Inhalte in beide Richtungen ist durch das Modul GUI-Programmierung – auch rückblickend – gegeben. Weitere Verknüpfungspunkte bestehen zu den Veranstaltungen Interface- und Interaktionsdesign und Game Design, in denen das erlangte Wissen und der Umgang in der Praxis auf jeweilige Aufgabenstellungen transferiert – auch im Rückblick – und verwendet werden kann.
+
+-----
+Game Design Projekt
+Themen der Vorlesung
+
+
+Spiele: Definitionen, Merkmale
+Spiele-Produktion 
+Workshop Konzeptentwicklung
+Entwicklungsdokumente 
+Game Design 
+Story / Character Design
+Interface &amp; Interaction Design für Spiele 
+Spiel-Elemente 
+Gameplay &amp; Spiele-Balance 
+Serious Gaming 
+
+
+Der Schwerpunkt der Veranstaltung liegt nicht vorrangig im Erlernen von spezifischen Entwicklungsumgebungen, Programmiersprachen oder Werkzeugen zur Entwicklung von Computerspielen, sondern in der Entwicklung innovativer Spielkonzepte. Die Spiele müssen von neuen Benutzern schnell zu begreifen und intuitiv zu bedienen sein, trotzdem aber eine hohe Langzeit-Motivation bieten. Solche Spielkonzepte werden als Casual Games bezeichnet. Die Spielkonzepte sind prototypisch umzusetzen, um ihre Tragfähigkeit im Playtesting untersuchen zu können.
+
+Der Schwerpunkt der Hausarbeit bildet die Konzeption und die Entwicklung eines Casual Game  in einem Team von 3-4 Studierenden. Die Projektarbeit umfasst folgende Meilensteine:
+
+
+Pitch der Spiele-Idee 
+Präsentation eines Game Design Dokumentes
+Playtesting #1
+Playtesting #2
+Pitch der Spiele-Idee für Casual Game
+Abschlusspräsentation
+
+
+Bei der Entwicklung eines Spielkonzepts für ein Gelegenheitsspiel und dessen prototypischer Umsetzung nutzen und vertiefen Sie alle bisher erworbenen konzeptionellen und methodischen Fähigkeiten bei der Konzeption und der Entwicklung einer interaktiven Anwendung. Ausgehend von einer Markt- und Konkurrenzanalyse definitieren Sie eine Zielgruppe, arbeiten die Alleinstellungsmerkmale des angestrebten Produkts heraus und entwickeln anschließend einen voll funktionsfähigen, nur im Umfang eingeschränkten Spiel-Prototyp. Sie sind in der Lage, in der Produktionsvorbereitung die benötigten Medieninhalte und Funktionen detailliert zu spezifizieren und dadurch den Produktionsaufwand genau einzuschätzen. Sie können die Produktidee in mehreren Zyklen öffentlich präsentieren und anhand kontinuierlicher Nutzertests die von Ihnen entwickelten Konzepte bewerten.
+
+Die Veranstaltung führt die im Themenbereich der Übergreifenden Qualifikation erworbenen Kompetenzen zu Entwicklung innovativer Produktideen, deren Präsentation gegenüber dem Auftraggeber (Ideenfindung und Kommunikation), einer zielgerichteten und effizienten Projektarbeit (Projektmanagement) sowie der Gestaltung qualitativ hochwertiger Medieninhalte (Grundlagen der Gestaltung, Interface- und Interaktionsdesign) zusammen. Zur Umsetzung der Spiele-Logik werden die in den Informatik-Veranstaltungen (Strukturierte Programmierung, Objektorientierte Programmierung) erworbenen konzeptuellen Fähigkeiten und Programmiererfahrungen beim Entwurf und der Umsetzung eines ersten vollständig spielbaren Prototyps eingesetzt. Die Veranstaltung bündelt im vorlesungsbegleitenden Projekt die bisher erworbenen Kompetenzen aller Themenstränge des Curriculums der Medieninformatik und nutzt die besonderen gestalterischen oder informatischen Fähigkeiten der Studierenden beider Studienschwerpunkte Film bzw. Medienprogrammierung in gemeinsamen Teams.
+
+-----
+Spiele-Programmierung
+Heutige Computerspiele stellen in Echtzeit höchst komplexe virtuelle Welten dar, die von einer Vielzahl selbstständig handelnden Agenten bevölkert werden. In der Veranstaltung werden Techniken der Computergrafik und der künstlichen Intelligenz vorgestellt, die den Kern heutiger Game-Engines von Computerspielen bilden.
+
+Inhalte:
+
+
+Aufgaben und Aufbau von Game Engines
+2D-Beschleunigungstechniken:
+
+
+Billboards
+Billboard-Clouds
+
+fortgeschrittene Beleuchtungstechniken und Shader-Programmierung
+3D-Beschleunigungstechniken
+
+
+Level-of-Detail
+
+Kollisionserkennung und Sichtbarkeitsbestimmung
+
+
+Schnitt-Tests
+Hüllkörper
+Raum-Unterteilungen
+BSP-Bäume 
+
+Erzeugung und Darstellung großer Karten durch kachelbasierte Ansätze
+Wegfindung für autonome Agenten
+
+
+A-Stern Algorithmus
+Strategische Planung mit A*
+
+Einfache Steuerung autonomer Agenten:
+
+
+Endliche Automaten
+
+Physik-Engines
+Generative Modellierung
+Terrain-Erzeugung 
+Multiplayer Games / Netzwerke
+
+
+Tools:
+
+
+3D Game Engine: Unity3D 
+
+
+Hinweis: Studierende des Studienganges Medieninformatik (auslaufende PSO 2011) können diese Veranstaltung als Wahlpflichtfach Informatik (5. Semester) oder als Wahlpflichtfach (6. Semester) belegen.
+
+Sie beherrschen die mathematischen Grundlagen sowie die theoretischen Konzepte, Verfahren und Methoden zur effizienten Darstellung und sowie der Animation von und Interaktion mit komplexen virtuellen 3D-Welten.
+
+Sie vertiefen Ihr Verständnis der Funktionsweise und der Programmierung aktueller Grafik-Hardware. Sie erkennen, welche der Algorithmen und Datenstrukturen in High-Level Grafik-Bibliotheken und Game Engines eingesetzt werden und wie diese in Anwendungsprogrammen genutzt werden.
+
+Sie wenden abstraktes mathematisches Denken zur Analyse und Klassifikation von Problemen und bei der Entwicklung kreativer Lösungen an.
+
+Sie können in der Game Engine Unity3D und der Programmiersprache JavaScript bzw. C# eigene Projekte für einfache 2D- und 3D-Computerspiele erstellen. Sie können einzelne Bestandteile einer Game-Engine für 2D- oder 3D- Spiele erschaffen.
+
+-----
+Mobile Computing
+Grundlagen
+    Überblick Mobile Betriebssysteme
+    Plattform Android
+    Entwicklungsumgebung
+    Wiederholung UML
+GUI-Programmierung
+    Anatomie der ersten Android App
+    2D Grafik-Programmierung (Einführung)
+    Widgets
+Location Based Services
+    Einführung GPS
+    LBS App mit grafischer Darstellung
+Structure Topics
+    Lebenszyklus
+    Activities, Intents, Fragments
+    Model-View Controller als Basisstruktur
+Mobil- und Wirelesskommunikation
+    LTE/GSM, WLAN, Bluetooth
+Special Topics
+    Sensoren
+    Multithreading
+    File I/O
+
+Im Labor werden Android-Apps passend zu den Themen der Vorlesung entworfen (z.B.: GUI-Apps, grafischer GPS-Tracker, Sensor gesteuerte Gaming-Pads (Kommunikation via WLAN), …).
+
+Sie kennen die wichtigsten aktuellen mobilen Betriebssysteme sowie Kommunikationsstandards. Sie beherrschen die Entwicklungswerkzeuge und den Entwicklungszyklus für mobile Anwendungen (Android) und kennen sich insbesondere mit verschiedenen Debugging-Verfahren aus. Sie sind in der Lage, stabile Android-Applikationen zu entwerfen. Sie können die Möglichkeiten und
+Einschränkungen bzgl. Quality of Service (QoS) und Sicherheit der zugrundeliegenden Kommunikationssysteme (GPS, GSM, GPRS, UMTS, LTE, WLAN, Bluetooth, …) beim Entwurf Ihrer Apps sinnvoll berücksichtigen.
+Die Veranstaltung nutzt die in den Veranstaltungen Strukturierte Programmierung und GUIProgrammierung
+erworbenen Basis-Fähigkeiten und vertieft die Kenntnisse der Nutzung
+komplexer Programm-Bibliotheken. Die erworbenen Fähigkeiten können beim Entwurf interaktiver Anwendungen in der parallel laufenden
+Veranstaltung Game Design, für Web-Basierte Anwendungen, die im Rahmen der
+Veranstaltungen Datenbanken bzw. WWW-Programmierung entwickelt werden oder bei
+Projekten im Rahmen von Veranstaltungen des Wahlpflichtbereichs oder des Projektstudiums
+genutzt werden.
+
+-----
+Signalverarbeitung und Mustererkennung
+Einführung
+Anwendungsbereiche Media-Processing, Einführung in die Entwurfsumgebung Matlab, Einführung Audio-Zugriff in Android
+
+Grundlagen
+Abtastung, Abtasttheorem, Signale, Systeme, Erzeugung menschliche Sprache
+
+Signalsynthese   
+Fourierreihenentwicklung, Erzeugung komplexer Signale (Klingeltöne, Ruftöne, Sprache)
+
+Signalanalyse
+Diskrete Fouriertransformation, Abschätzung Spektrum eines Signals, Kompression (MP3), Filterung im Frequenzbereich
+
+Filter
+Filterung im Zeitbereich (FIR-Filter),  Equalizer,  Abtastratenumsetzer
+
+Korrelation
+Einführung, Erkennung von Musik, Echoerkennung
+
+Mustererkennung
+Grundlegende Verfahren der Mustererkennung
+
+Implementationsaspekte
+Zugriff Audiodaten in aktuellen APIs, Streaming-/Dateiformate im Bereich Audio
+
+Jeder Abschnitt der Veranstaltung (Signalsynthese, Signalanalyse,&#8230;) startet mit einer einleitenden Betrachtung/Analyse der in Anwendungen auftretenden Signalverarbeitungen. Aufbauend auf den dann folgenden Grundlagen und der Entwicklung des Algorithmus wird der Entwurf einer Reihe von konkreten Implementierungen in einer aktuellen Anwendungsumgebung diskutiert.
+
+Im Labor werden Übungen und Versuche passend  zu den Themen der Vorlesung (z.B. Entwicklung Sprachansagesystem, Equalizer, &#8230;)  behandelt.
+
+Die Veranstaltung führt die mathematischen Grundlagen (Nyquist-Theorem, Fourierreihen,
+Diskrete Fouriertransformation) zur Analyse und zur Synthese eindimensionaler Signale (Audio)
+ein, stellt Algorithmen zur Manipulation von Signalen (Filter) und zur Merkmalsextraktion vor
+und setzt direkt diese im Programm Matlab um. Zudem werden Verfahren zur effizienten
+Speicherung analoger Signale sowie verlustfreie und verlustbehaftete Kompressionsformate
+vorgestellt.
+Die Veranstaltung nutzt die in den Veranstaltungen Strukturierte Programmierung, GUIProgrammierung
+und Algorithmen und Datenstrukturen erworbenen Programmier-
+Kompetenzen und legt die mathematischen und konzeptuellen Grundlagen der
+Signalverarbeitung von Medieninhalten. Grundlegende Konzepte und Methoden der
+Signalverarbeitung werden anhand der Analyse von Audiodaten vorgestellt und praktisch
+eingeübt. Die nachfolgende Veranstaltung Bild- und Videoverarbeitung wendet diese Konzepte
+auf mehrdimensionale Daten an und erweitert die in dieser Veranstaltung erworbenen
+Kompetenzen.
+
+-----
+Filmschnitt / -Editing
+
+Einführung in Filmschnitt / Montage, Geschichte des Filmschnitts
+Analyse Filmschnitt
+Postproduktions-Workflow
+Technische Formate (Produktion - Postproduktion - Ausgabe)
+Projektorganisation
+Schnittprogramme, Aufbau und Bedienung, Vertiefend anhand von Adobe Premiere Pro
+Audioschnitt
+Programm-Setup
+Erstellen eines fertigen Filmes, inkl. Masterausgabe
+
+
+Sie beherrschen die Mittel der Filmsprache und sind in der Lage diese in der Montage gezielt anzuwenden. Sie beherrschen den digitale Daten-Workflow des Filmschnittes Online unf Offline, und können dabei gezielt die richtigen Codecs und Kompressionsformate einsetzen. Sie sind in der Lage das Filmmaterial zu sichten, zu schneiden und bis zur Masterausgabe fertigzustellen.
+
+Aufbauend auf den Erfahrungen und den Ergebnissen aus dem Modul Filmdreh werden hier sämtliche Aspekte der Bearbeitung des Filmes im Bereich ›Schnitt‹ betrachtet. Vertiefend zur Filmsprache werden hier filmsprachliche Mittel im Bereich der Montage analysiert. Neben dem inhaltlichen, künstlerischen Aspekt wird aber auch der digitale Daten-Workflow betrachtet. Der Umgang mit verschiedenen Kompressionsformaten im Schnitt, Vorteiler unterschiedlicher Codecs, verschiedene Verfahren beim Schnitt (Offline, Online).
+
+Anhand des Schnittprogramms Adobe Premiere Pro wird der typische Workflow und Ablauf verschiedener Produktionen dargestellt. Von dem einfachen Webclip über eine große Werbefilmproduktion bis hin zu einer umfassenden Dokumentation mit mehreren Stunden Material. Es werden dabei aber auch organisatorische Kenntnisse vermittelt, die für einen reibungslosen Postproduktionsprozess notwendig sind.
+
+Das benötigte Wissen baut auf den vorausgegangenen Modulen im Bereich ›Film‹ auf und findet Anwendung in den folgenden Modulen aus dem Bereich ›Film‹, aber auch z. B. in der Bild- &amp; Video-Verarbeitung.
+
+-----
+3D-Animation
+
+Briefing, Konzept und operative Planung von 3D-Animations-Vorhaben
+Animationsregeln und -techniken
+MoCap, Expressions, Bones: Rigging, IK und FK
+Camera und Camera-Effects
+Lights, Radiosity, Global Illumination, Dynamics, Particle Effects
+Rendering und Ausgabe für Film
+Export für Game
+
+
+Sie sind in der Lage Drahtgittermodellen ein virtuelles Skelett („Bones“) zu geben, dieses können Sie mittels Inversiver Kinematik und/oder Forward Kinematik animierfähig bereitstellen.
+Sie können den Knochen Einflussbereiche („Weights“) auf dem Drahtgittermodell zuordnen.
+Sie können die Modelle mittels Frame-to-Frame-Animation, Pose-to-Pose-Animation und interpolierter Keyframe-Animation in Bewegung setzen.
+Sie beherrschen die Animationsregeln und können diese auf 3D-Figuren übertragen und anwenden.
+Zusätzlich können Sie Particle Effects, Crowds and Flocks, Haar-Animation und Kleider-Animation anwenden.
+Virtuelle Kameras und Light-Setups können sie erzeugen und steuern.
+Sie können für Games Bewegungsloops und entsprechende Daten ausgeben und ebenso Film-Sequenzen erzeugen.
+
+Das Modul „3D Animation“ baut auf „3D-Rendering“ und „3D-Modeling“ auf, es ist besonders vorteilhaft, die Erkenntnisse aus 2D Animation (z.B. angewandte Animationsregeln) hier einzusetzen.
+
+Unter dem Sammelbegriff „3D-Artist“ verbergen sich einige Berufsbilder im 3D-Bereich: es wird zwischen 3D Character Animator, 3D Modeler, 3D Lighter, 3D Texturer, FX Animator unterschieden. In kleineren Produktionen kommt der „Generalist“ zum Einsatz, der die einzelnen Techniken in möglichst großer Anzahl beherrscht. Aufgrund stetig wachsenden Anforderungen und immer spezialisiertere Software ist bei großen Produktionen im Film-, TV- und Gamebereich der „Spezialist“ gefordert, der z.B. schnell und effektiv Action-Szenen oder sprudelndes Wasser und sich türmende Wellen, sowie effektvolle Explosionen zum virtuellen Leben erwecken kann.
+
+-----
+Gestaltung Online-Medien
+
+Aufgaben des Screendesign
+Anforderungen des Medium
+aktuelle Standards im Screendesign (z.B. HTML, CSS, Javascript)
+Orientierung und Navigation
+Screen-Typografie
+Responsives Screen-Layout
+Farben
+Rastersysteme
+Trennung: Struktur, Präsentation, Interaktion
+Interaktionsmöglichkeiten
+Barrierefreiheit
+
+
+Sie kennen die spezifischen Anforderungen und Elemente, die screen-basierte Medien an Typografie, Layout, Farbe, Navigation und Interaktion stellen und können damit umgehen. Sie sind in der Lage, mediengerechte Entwürfe für Online-Medien zu gestalten.
+
+In diesem Modul wird die zielgruppengerechte Gestaltung von Webauftritten vermittelt. Insbesondere werden hier die spezifische Anforderungen, Einschränkungen und Möglichkeiten
+zur Gestaltung des Mediums Web in den Bereichen Typografie, Layout, Farbe, grafischen und interaktiven Elementen erarbeitet und deren Umsatzung mittels HTML5 und CSS geübt.
+
+Das Modul vertieft und erweitert die Ergebnisse aus dem Modul Grundlagen der Gestaltung (1. Semester) bezogen auf das Medium Web. Die Erkenntnisse aus den Modulen Konzeption Online/Mobile (3. Semester) und Interface- und Interaktionsdesign (1. Semester) können hier angewendet werden. Die client- und server-seitige Programmierung der Websites wird darauf aufbauend im Modul WWW-Programmierung (5. Semester) vermittelt.
+
+-----
+Datenbanken
+Vorlesung
+
+
+Datenbanken - Grundlagen und Einführung
+Datenanalyse, Datenmodellierung und Datenbank-Entwurf
+(Relationenmodell, Normalisierung)
+Structured Query Language (SQL)
+Sicherheit (Rechte, Schutz vor SQL-Injektion)
+Datenbank-Anwendungen
+Integration in Webanwendungen mit aktuellen Programmiersprachen (z.B. mit PHP, Ruby, Node.js)
+Datenbankabstraktionschichten / Frameworks
+Ausblick auf aktuell Entwicklungen, z.B. NoSQL-Datenbanken
+
+
+Labor
+
+In den begleitenden Labor wird eine webbasierte Datenbankanwendung erstellt.
+
+Sie verstehen Aufbau und Wirkungsweise von Datenbanksystemen. Sie sind in der Lage, einen Datenbankentwurf durchzuführen, Datenbanken zu implementieren, Datenbanken interaktiv aus Webanwendungen abzufragen und zu manipulieren und dabei Sicherheitsaspekte zu berücksichtigen. Sie kennen die wichtigsten Anweisungen der Programmiersprachen SQL und PHP und können damit arbeiten.
+
+Die nachfolgende Veranstaltung WWW-Programmierung stellt in Datenbanken gespeicherte Inhalte dar und manipuliert diese. Da fast alle mobilen und interaktiven Anwendungen den effizienten Zugriff auf große Datenmengen erfordern, liefert die Veranstaltung Basis-Kompetenzen für alle fortgeschrittenen Veranstaltungen der Themenfelder Mobile Anwendungen, Interaktive Systeme und Medienprogrammierung.
+
+-----
+Bild- und Videoverarbeitung
+Grundlagen
+Einführung in die Bild-/Videoverarbeitung, Einführung in die Matlab Image Processing Toolbox, Abbildung und Koordinatentransformationen
+
+Image Enhancement
+Punktoperationen, Mittelung,  Schärfen/Kanten
+
+Kompressionsverfahren für Einzelbilder
+Einführung Diskrete Cosinus Transformation,  JPEG
+
+Kompressionsverfahren für Video
+Bewegungsschätzung, MPEG 1/2, MPEG-4, H.263, H.264
+
+Objektidentifikation
+Segmentierung, Formanalyse,  Objektklassifizierung
+
+Aspekte der 3D Bildverarbeitung
+Implementationsaspekte
+Streaming-/Dateiformate im Bereich Einzelbild und Video,  Zugriff  auf Bild-/Videodaten in aktuellen APIs
+
+Im Labor werden Übungen und Versuche passend zu den Themen der Vorlesung (z.B. Entwicklung Barcode-Leser, Erkennung Verkehrsschilder, Video-Überwachungssystem…) behandelt.
+.
+
+Die Veranstaltung führt die mathematischen Grundlagen (Kernel-Operationen, Diskrete Cosinus
+Transformation) zur Analyse und Manipulation mehrdimensionaler Signale (Bild und Video) ein,
+stellt Algorithmen zur Manipulation von Signalen (z.B. Kantenfilter, Schärfungs- und
+Weichzeichnungsoperationen) und zur Merkmalsextraktion vor und setzt direkt diese im
+Programm Matlab um. Anhand mehrdimensionaler Merkmalsvektoren werden Verfahren zur
+Klassifikation, Segmentierung und Objektidentifikation vorgestellt. Zudem werden Verfahren zur
+effizienten Speicherung von Bild- und Videodaten sowie verlustfreie und verlustbehaftete
+Kompressions-formate vorgestellt.
+Die Veranstaltung nutzt die in den Veranstaltungen Strukturierte Programmierung, GUIProgrammierung
+und Algorithmen und Datenstrukturen erworbenen Programmier-
+Kompetenzen und legt die mathematischen und konzeptuellen Grundlagen der
+Signalverarbeitung von und der Mustererkennung in Medieninhalten. Grundlegende Konzepte
+und Methoden der Signalverarbeitung werden anhand der Analyse von Bild- und
+Videoverarbeitung vorgestellt und praktisch eingeübt.
+
+-----
+Medienrecht
+
+Medienwirtschaftsrecht
+
+
+Grundlagen der Vertragsgestaltung
+Software-Vertrags- und Lizenzrecht
+
+Bürgerliches Medienrecht
+
+
+Recht geistigen Eigentums
+Urheber- und Markenrecht
+Recht am eigenen Bild
+Unterlassungsanspruch
+Gegendarstellungsanspruch
+
+Öffentliches Medienrecht
+
+
+Telekommunikationsgesetz
+Rundfunkstaatsvertrag
+Jugendmedienschutz
+
+Medienstrafrecht
+
+
+Abmahnungen
+Unterlassungsansprüche
+Schadensersatzansprüche
+Mängel- / Produkthaftung 
+
+Besonderheiten einzelner Medien
+
+
+Presserecht
+Filmrecht
+Internet- bzw. Online Recht
+
+
+
+Sie erlangen Grundkenntnisse über den Aufbau und die Systematik des deutschen und der internationalen Rechtssysteme in den Bereichen Software-Entwicklung und Medienrecht. Sie erlangen Kenntnisse juristischer Grundbegriffe und Argumentationsfiguren.
+Anhand von Fallbeispielen können sie die gesetzlichen Grundlagen auf Rechtsfragen anzuwenden und rechtliche Argumentationen nachzuvollziehen.
+
+-----
+Medienwirksamkeit
+
+gesellschaftlich relevante Phänomene der Medienwirkung (Bsp.):
+
+
+Medien und Gewalt
+Mediensucht
+Medien als Markt
+Jugendliche und Medien
+
+Medienwirkungsforschung:
+
+
+Forschungsgeschichte
+Forschungsrichtungen
+Forschungspraxis
+
+
+
+Sie lernen gesellschaftliche Diskussion von Medienwirkungen auf dem Hintergrund wissenschaftlicher Forschung einzuschätzen. Sie können diese Einschätzungen für Ihre kommenden eigenen Medien-Veröffentlichungen nachvollziehen.
+
+-----
+Medienkompetenz
+
+
+-----
+Postproduction
+
+Übersicht über verschiedene Aspekte der Postproduktion (Retusche, Compositing, grafische Animation)
+Einführung die Grundlegende bedienung einer Compositing-Software (Adobe After Effects)
+Tracking, Keying, Animation
+Analyse verschiedener Clips im Hinblick auf Preproduktions-Planung
+Konzeption und operative Planung eine kleinen Greenscreen-Anwendung (Film)
+Einführung in das Greenscreen-Labor
+Dreh im Greenscreen-Labor
+Umsetzung der selbst erarbeiteten Greenscreen-Anwendung
+
+
+Sie beherrschen die für den Medieninformatiker wichtigsten inhaltlichen, theoretischen und operativen Techniken zur Umsetzung eines kurzen Greenscreen-Clips (bis 60 Sekunden). Sie verstehen die in der Postproduktion angesiedelten Prozesse und können ein Projekt diesbezüglich konzipieren, planen und durchführen.
+
+Ein immer wichtigerer werdendes Thema im Bereich der Filmproduktion ist die digitale Nachbearbeitung. Ein Film ist nach dem Schnitt zumeist noch nicht fertig. Neben einfachen Titelarbeiten (Verbindung zu 2D-Animation oder 3D-Animation) spielt die Farbkorrektur (zum Teil selektiv) aber auch darüber hinaus gehenden Retusche- und Compositing-Arbeiten eine wichtige Rolle. Hier werden verschiedene Elemente kombiniert, teilweise Elemente ausgetauscht. Hier kommt zumeist der Greenscreen zum Einsatz. Die Studierenden lernen mit eigenen Greenscreen-Aufnahmen zu arbeiten, diese mit realen Aufnahmen zu kombinieren. Dabei wird ein hohes Maß an planerischer Vorarbeit benötigt. Die hierzu benötigten Kenntnisse werden den Studierenden anhand von gemeinsamen Arbeiten verdeutlicht.
+
+Es besteht eine direkte Verbindung zu dem Modul MoCap/Greenscreen und den vorangegangenen Modulen im Bereich der 3D-Animation, 3D-Rendering und Digitale Bildbearbeitung (›Digital Matte Painting‹), da das dort erlangte Wissen um die künstliche Erstellung von Bildinhalten hier praktische Anwendung findet.
+
+-----
+Wahlpflichtfach Design
+Siehe Katalog der Wahlpflichtveranstaltungen Design.
+
+
+-----
+Wahlpflichtfach Informatik
+Siehe Katalog der Wahlpflichtveranstaltungen Informatik.
+
+
+-----
+WWW-Programmierung
+Vorlesung
+
+
+Basis-Technologien
+
+
+Dokumentbeschreibungssprachen (insb. HTML und XML)
+Darstellung im Web (insb. Cascading Style Sheets)
+
+Clientseitige Programmierung
+
+
+JavaScript
+DOM-Scripting
+JSON
+Frameworks (z.B.jQuery)
+
+Serverseitige Programmierung
+
+
+PHP
+.Net/C#
+HTML5-APIs (z.B. Client-Datenbanken, Geolocation)
+
+Zustandsverwaltung
+Ausblick auf aktuelle Entwicklungen
+z.B. Coffeescript, Node.js
+
+
+Labor
+
+Im Labor wird eine Web-Applikation mit Frontend und Backend entwickelt.
+
+Sie beherrschen die client- und serverseitige Techniken von Web-Applikationen. Sie können diese mit darauf aufbauenden Frameworks zur Entwicklung von Web-Applikation selbständig anwenden.
+
+Die Veranstaltung nutzt die in der Veranstaltung Datenbanken (4. Semester) erworbenen Kompetenzen, um Datenbank-gestützte mobile Anwendungen zu entwickeln. Die nachfolgende Veranstaltung stellt in Datenbanken gespeicherte Inhalte dar und manipuliert diese. Da fast alle mobilen und interaktiven Anwendungen den effizienten Zugriff auf große Datenmengen erfordern, liefert die Veranstaltung Basis-Kompetenzen für alle fortgeschrittenen Veranstaltungen der Themenfelder Mobile Anwendungen, Interaktive Systeme und Medienprogrammierung.
+
+Eine mögliche Vertiefung stellen folgende Wahlmodule (6. Semester) dar: Content-Management-Systeme
+
+-----
+Virtuelle und erweiterte Realität
+
+Immersive Benutzungsschnittstellen
+
+
+Anwendungen
+Hardware: klassische und VR/AR-Interaktionsgeräte
+Architektur von VR/AR-Anwendungen, Interaktionsschleife
+
+Bildanalyse
+
+
+Segmentierung
+Formbeschreibung
+Texturanalyse, Morphologie, Bewegungsanalyse
+Marker-Tracking
+
+Bildverstehen 
+
+
+räumliches Sehen und optische Illusionen
+Stereoskopie
+geometrische und photometrische Rekonstruktion von Szenen
+wissensbasierte und statistische Interpretation von Szenen
+
+Bildsynthese
+
+
+Stereoskopie
+Kugel- und Zylinderprojektionen
+verteilte Bildsynthese
+
+
+
+Sie sind in der Lage, durch Analyse und Integration der Daten optischer / akkustischer Sensoren neuartige Interaktionsmechanismen zu konzipieren und prototypisch zu realisieren. Sie kennen die Nutzung der moderner Sensoren (IR-Kameras, Kinect) und sind in der Lage, unter Nutzung von Standard-Biobliotheken (OpenCV, OpenAR, &#8230;)  im Team eigene innovative Anwendungen zu entwickeln.
+
+-----
+Digitale Geschäftsmodelle
+
+Was ist ein Unternehmer?
+Unternehmensziele
+Erfolgsfaktoren
+Entscheidungstheorie
+Technik- und Technologiegeschichte - Learnings
+Branchen- und Wettbewerbsanalyse
+Umfeldanalyse
+Trendanalyse
+5-Forces zur Bestimmung der Wettbewerbsintensität
+Psychologische und Soziale Faktoren des Konsumentenverhaltens
+Marketing-Mix
+Überblick Geschäftsmodelle
+Klassifizierungen digitaler Geschäftsmodelle
+Grundlagen zur Businessplanerstellung
+
+
+Sie beherrschen die betriebswirtschaftlicher Grundlagen für die Realisierung von digitalen Geschäftsmodellen. Sie können für unternehmerische Ideen und digitale Projekte einen ersten Businessplan entwerfen.
+
+-----
+Projekt
+Die Projekt-Arbeitsgruppe durchläuft folgende Stationen:
+
+
+Spezifizierung
+
+
+Aufgabenstellung 
+Projektdefinition 
+
+Strukturierung
+
+
+Arbeitspakete 
+Meilensteine 
+Terminplan 
+
+Umsetzung
+
+
+praktische Arbeit 
+Programmierung 
+
+Dokumentation
+
+
+Präsentation 
+Abschlussbericht
+
+
+
+Sie sind in der Lage, im Team ein anspruchsvolles Projekt aus dem Bereich der Medieninformatik durchzuführen. Sie können ein Projekt mittels geeigneter Instrumente und Techniken des Projektmanagements planen, durchführen, präsentieren und dokumentieren. Sie bringen Ihre Sozialkompetenz ein, um planvoll und zielgerichtet im Team erfolgreich zu arbeiten bzw. ein erfolgreiches Team zu bilden und zu leiten. Sie können die Ergebnisse Ihres Projekts in einer öffentlichen Präsentation attraktiv darstellen und in einem Abschlussbericht in verständlicher Form zusammenfassen.
+
+-----
+Wahlpflichtfach 1
+In diesem Modul bestehen Wahlmöglichkeiten (siehe Katalog der Wahlpflichtfächer des Studienganges Medieninformatik).
+
+Das Angebot an Wahlpflichtfächern der einzelnen Studiengänge wird semesterweise aktualisiert und rechtzeitig vor Beginn des Semesters vom Dekanat durch Aushang bekanntgegeben.
+
+
+-----
+Wahlpflichtfach 2
+In diesem Modul bestehen Wahlmöglichkeiten (siehe Katalog der Wahlpflichtfächer des Studienganges Medieninformatik).
+
+Das Angebot an Wahlpflichtfächern der einzelnen Studiengänge wird semesterweise aktualisiert und rechtzeitig vor Beginn des Semesters vom Dekanat durch Aushang bekanntgegeben.
+
+
+-----
+Wahlpflichtfach 3
+In diesem Modul bestehen Wahlmöglichkeiten (siehe Katalog der Wahlpflichtfächer des Studienganges Medieninformatik).
+
+Im Wahlpflichtfach 3 können zusätzlich zum Katalog der Wahlpflichtfächer des Studienganges Medieninformatik auch Fächer aus dem Katalog der Wahlpflichtfächer der Studiengänge Angewandte Informatik oder Wirtschaftsinformatik gewählt werden.
+
+Das Angebot an Wahlpflichtfächern der einzelnen Studiengänge wird semesterweise aktualisiert und rechtzeitig vor Beginn des Semesters vom Dekanat durch Aushang bekanntgegeben.
+
+
+-----
+Nichttechnisches Wahlpflichfach
+In diesem Modul bestehen Wahlmöglichkeiten (siehe Katalog der nichttechnischen Fächer des Studienganges Medieninformatik).
+
+Das Angebot an nichttechnischen Wahlpflichtfächern wird semesterweise aktualisiert. Der Programmverantwortliche des Studienganges Medieninformatik wählt aus dem Angebot nichttechnischer Fächer des Fachbereiches Technik für das Berufsfeld der Medieninformatik nutzbringende Veranstaltungen aus und veröffentlicht diese rechtzeitig vor Beginn des Semesters per Aushang beim Dekanat.
+
+Bei einer 4-SWS-Veranstaltung (5CP) ist eine Studienleistung (SL) zu erbringen. Bei zwei 2-SWS-Veranstaltungen sind pro Veranstaltung eine Studienleistung (SL) zu erbringen.
+
+
+-----
+Berufspraktikum
+Das dreimonatige Berufspraktikum absolvieren Sie in einem Betrieb Ihrer Wahl. Sie werden dabei von einem Ansprechpartner im Betrieb und fachlich betreut. Nach Abschluss des Berufspraktikums berichten Sie über Ablauf und Inhalt ihres Berufspraktikums in Form eines Abschlussvortrags oder eines schriftlichen Abschlussberichts.
+
+Im Berufspraktikum werden Sie an die ingenieurmäßige Tätigkeit im Bereich der der Medieninformatik herangeführt. Sie erlangen durch praktische, wenn möglich projektbezogene, Mitarbeit Kenntnisse über vielfältigen betrieblichen Aufgaben im Medienbereich.  Dadurch wird eine enge Verbindung zwischen Studium und Berufspraxis hergestellt. Sie erlangen Einblick in betriebliche Abläufe vom Auftragseingang bis zur Ablieferung.  Im Vordergrund steht nicht der Erwerb von Fertigkeiten oder Detailwissen, sondern das Erfassen von betrieblichen Zusammenhängen.
+
+-----
+Bachelor-Thesis
+Die Bachelor-Arbeit ist eine das Bachelor-Studium abschließende Prüfungsarbeit. Das Thema der Arbeit können Sie selbst vorschlagen — meist ergibt es sich im vorausgehenden Berufspraktikum. Die Bearbeitungszeit der Abschlussarbeit beträgt zwei Monate. Zur Bachelor-Prüfung gehört ein Kolloquium, in dem Sie die Ergebnisse Ihrer Arbeit erläutern.
+
+
+Auswahl eines Themenfeldes / einer konkreten Anwendungsproblems in Absprache mit dem betreuenden Dozenten bzw. der betreuenden Dozentin 
+Durchführung einer Problemanalyse und Literaturrecherche
+Analyse geeigneter Werkzeuge zur Lösung der Problemstellung
+Formulieren eines bearbeitbaren Arbeitsauftrages / einer Forschungsfrage 
+Erarbeitung des Konzeptes einer Lösung
+Entwicklung eines eigenständigen wissenschaftlichen Beitrages unter Nutzung vorhandener Werkzeuge
+Datenerhebung und -auswertung
+Ausarbeitung einer wissenschaftlichen Abschlusspräsentation in schriftlicher Form (Bachelor-Thesis)
+mündliche Präsentation der erreichten Ergebnisse in einem 45-minütiges Kolloquium
+
+
+In der Bachelor-Arbeit sollen Sie zeigen, dass sie in der Lage sind, ein Problem ihres Anwendungsfeldes selbstständig auf wissenschaftlicher Grundlage methodisch zu bearbeiten. Sie können eine komplexe Aufgabenstellung eigenständig unter Anwendung wissenschaftlicher Methoden und Erkenntnisse analysieren und fächerübergreifenden Zusammenhänge erkennen. Sie können innerhalb eines vorgegebenen Zeitrahmens wissenschaftliche Erkenntnisse anwenden oder weiterentwickeln und dadurch eine der Problemstellung finden. Sie sind in der Lage, die Problemstellung einer konketen Anwendung, den Stand der Kunst und die möglichen Lösungsalternativen in einer wissenschaftlichen Ausarbeitung systematisch darzustellen, grundlegende Konzepte und Ergebnisse der erreichten Ergebnisse verständlich zu präsentieren und hinsichtlich der Anforderungen der Problemstellung und des Standes der Kunst kritisch zu bewerten.
+
+-----
+Fach-Englisch
+
+Grammatikstrukturen, z.B. Passiv, Wortstellung, Satzbau 
+Begriffe aus den Bereichen Design und Informatik
+Mathematische Begriffe: to subtract, to divide, to cancel, fraction, &#8230;
+
+
+Sie können englischsprachige Texte aus den Bereichen Design und Informatik verstehen und wissenschaftliche Zusammenhänge auf Englisch formulieren. Hierfür verfügen Sie über einen entsprechenden Wortschatz und Kenntnisse der Grammatik. Sie sind in der Lage, das Gelernte in fachlichen Diskussionen, Telefongesprächen, Bewerbungen usw. anzuwenden.
+
+-----
+Wirtschaft und Sprachen
+
+
+-----
+Vertonung Film
+
+Sequenzing:
+
+
+Programme: Audio-Midi-Sequenzer, Plug-Ins  
+Mididaten und -Bearbeitung, Automation      
+Grundlagen der Musik (Rhythmik, Harmonik, Melodik) 
+Bearbeitung von Rhythmik, Harmonik, Tempo, Synchonisierung   
+
+Arrangement Film- / Gamemusik:
+
+
+Wahrnehmungspsychologische Grundlagen  
+Analyse von Stilmitteln, Einsätzen, Klängen  
+Konzept und Produktionsplan der Vertonung 
+Komposition, Arrangement und Satztechniken    
+
+Klanggestaltung:
+
+
+Instrumentenkunde, Instrumentierung  
+Klangerzeugungen, Synthesizer  
+Mischung, kreative Audiobearbeitung
+
+
+
+Die musikalische Komponente ist zentral für die emotionale Wirkung von Medien, wobei ein der Erzählung und dem Medium angepasster ›Score‹ andere Abläufe und innere Strukturen hat als vorgefertigte Musik oder Pop-Musik. In der Veranstaltung wird für im Studienablauf erschaffene Medieninhalte (Filme, Games oder Hörspiele) solche Score-Musik am Computer komponiert und produziert. Die Schritte Konzeption, Komposition, Arrangement und Instrumentierung werden anhand von Beispielen analysiert und dann in begleiteter Eigenarbeit bei der eigenen Vertonung angewendet. Analyse und Eigen-Konzeption dienen dem Verständnis des Zusammenspieles von Vertonung und Bild, Dramaturgie bzw. Text oder Spielablauf, um die emotionalen Wirkungen der Musik planvoll einsetzen zu können. Zur Einarbeitung werden Übungen zu Rhythmik, Harmonik und Komposition am Midi-Sequenzer angeboten.
+
+Lernziele: Sie können für Filme, Games oder Hörspiele Musik planen, komponieren, arrangieren und mit natürlichen und elektronischen Klängen instrumentieren. Sie können den Kompositionsvorgang und die gesamte Produktion am Computer ausführen. Die emotionalen Wirkungen von Musik und Geräuschen im Zusammenhang mit Bild, Dramaturgie und Dialogen können zielgerichtet eingesetzt werden. Sie kennen die grundlegenden Parameter von Synthesizer-PlugIns und digitaler Klangbearbeitung und können damit Klänge generien, gestalten und verfremden.
+
+-----
+Digitales Zeichnen und Storyboarding
+
+traditionelles Zeichenmaterial, Papier und Stifte
+Scribble und Skizze
+Vergleich digitales Zeichen und traditionelles Zeichnen
+Figuren -Objektzeichnen und deren „Shortcuts“ im Storyboard
+Figuren zeichnen und entwickeln, Profile, Character Design
+Asset Design
+Kamera-Einstellungen und deren „Shortcuts“
+Framing, Kompositionsregeln
+Bewegung und Posen von Figuren
+Action, Performance, Stage im Storyboard
+Kamera-Einstellungen und deren „Shortcuts“
+Framing, Kompositionsregeln
+Action, Performance, Stage im Storyboard
+Einbindung von vorhandenen Sounds in einem Animatic
+Erstellung eines Animatic auf Grundlage eines Storyboards
+
+
+Sie sind in der Lage mithilfe von zeichnerischen Kürzeln sich bildnerisch auszudrücken, so dem Filmteam und dem Kameramann eine erste Vorschau auf den zu produzierenden Film oder Clip zu geben.
+Sie beherrschen die Transformation von Drehbüchern zu Storyboards, deren Erzeugung digital und non-digital.
+Sie können animierte Storyboards, Animatics, mit Zeitmaß und Sound erstellen.
+
+Sie sind mit den Grundlagen und Problemstellungen des Character-Designs für Film und Game vertraut.
+
+Das Modul bildet eine Grundlage als Planungsphase für die Module Filmdreh (3.Sem.), Filmschnitt (4.Sem.), Postproduktion (5.Sem.). Die erworbenen Fähigkeiten können zudem in 2D-Animation (4.Sem.), 3D-Animation (5.Sem.) angewendet werden.
+
+Storyboarding Designer/Artists finden in jeglicher Filmplanung für TV-, Kino- und  Trickanimationsproduktionen eine berufliche Betätigung in fester Anstellung oder als Freelancer. Sie arbeiten eng mit dem Produktionsteam, den Drehbuchautoren, dem Kameramann und der Regie zusammen.
+
+-----
+3D-Computergrafik
+Vorlesung
+
+
+3D-Computergrafik: Vorgehen, Anwendungen
+Modellierung geometrischer Körper
+Software-Architektur 
+
+
+Grafik-Pipeline
+Grafikbibliotheken (OpenGL) und programmierbare Grafik-Hardware
+
+Mathematische Grundlagen der 3D Computergrafik
+
+
+Vektoren, Matrizen, Vektor- und Matrix-Operationen
+homogene Koordinaten
+affine Tansformationen
+Koordinatensysteme und Koordinaten-Transformationen
+
+Algorithmen der grafischen Datenverarbeitung 
+
+
+verwendete Koordinatensysteme und Transformationen in der Grafik-Pipeline
+Projektionen
+lokale Beleuchtungsmodelle und Schattierungsverfahren
+Textur-Mapping
+
+2D &amp; 3D-Programmierung mit Processing
+Shader-Sprachen zur Programmierung von Grafik-Hardware
+
+
+Labor / Programmier-Tutorium
+
+
+Einführung in Processing
+Nutzung geometrischer Primitive / Definition komplexerer geometrischer Körper
+Vektoren, Matrizen, Vektor- und Matrix-Operationen
+Transformationen / Animation / Interaktion
+Beleuchtung  / Texturen / Shader-Programmierung
+Kamera-Steuerung
+
+
+Sie erlernen die mathematischen Grundlagen, die theoretische Konzepte sowie Algorithmen zur Repräsentation der Oberflächen von geometrischen Körpern in der Computergrafik (Modellierung) sowie der Bildsynthese (Rendern) und wenden diese Kenntnisse bei der Entwicklung von interaktiven Anwendungen an.
+
+Sie erkennen, wie physikalische Modelle des Lichttransports in der Grafik-Pipeline umgesetzt werden und erlangen Grundkenntnisse der Programmierung moderner Grafikkarten mit Shadersprachen. Sie können die Plattformübergreifende Grafik-Bibliotheken OpenGL und WebGL nutzen, um interaktive 3D-Inhalte darzustellen.
+
+Im vorlesungsbegleitenden Labor entwickeln Sie Anwendungsprogramme, welche die Funktionsweise der einzelnen Verfahren der Grafik-Pipeline demonstrieren. Dabei werden alle Parameter der zugrunde liegenden Algorithmen über interaktive Elemente einer grafischen Benutzerschnittstelle zugänglich gemacht, um so deren Einfluss verdeutlichen. Sie nutzen die auf Java basierende Sprache Processing und die Grafik-Bibliothek OpenGL.
+
+Die Veranstaltung zeigt die mathematischen Grundlagen und die Umsetzung der in den Veranstaltungen des Themenschwerpunktes 3D (3D-Modellierung, 3D-Rendering, 3D-Animation) genutzten Modellierungs- und Rendering-Werkzeuge. Sie legt die Grundlagen für weiterführende Veranstaltungen im Bereich der Grafik-Programmierung (Spieleprogrammierung, Wahlpflichtfächer).
+
+Studierende, welche den Studienschwerpunkt Medienprogrammierung wählen, lernen in den Veranstaltungen Signalverarbeitung und Mustererkennung sowie Bild- und Videoverarbeitung fundamentale Algorithmen der Bildanalyse kennen. Die Veranstaltung Virtual and Augmented Reality verknüpft Bildanalyse und Bildsynthese und führt die in genannten Veranstaltungen erworbenen Kompetenzen beim Entwurf und der Umsetzung von interaktiven Anwendungen zusammen.
+
+Hinweis: Studierende des Studienganges Angewandte Informatik können diese Veranstaltung als Wahlpflichtfach (6. Semester) belegen.
+
