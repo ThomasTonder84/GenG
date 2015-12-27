@@ -28,8 +28,10 @@ int toolHeight;
 int infoWidth;
 int infoHeight;
 
-
-DataReader poiBrunnen;
+//Daten einlesen
+String[] poiFiles;
+String busFile;
+DataReader readData;
 
 
 
@@ -42,15 +44,34 @@ DataReader poiBrunnen;
 void setup()
 {
   size(1024,768);
-  //poiBrunnen = new DataReader("D:\\FH\\GenG\\Daten\\poi\\");
-  poiBrunnen = new DataReader("poi\\");
- 
-  println(poiBrunnen.getCurrentPath());
   
-  poiBrunnen.getData("brunnen.csv");
+  poiFiles = new String[]{"brunnen.csv","kinos.csv","musikclubs.csv","touristeninformation.csv"};
+  busFile = "haltestellen.csv";
   
-  println("Sketch Path --> "+sketchPath());
-  println("Data Path   --> "+dataPath(""));
+  //readData = new DataReader("D:\\FH\\GenG\\Daten\\poi\\");
+  readData = new DataReader();
+  readData.SetFolder("poi\\");
+  
+  ArrayList<HashMap> Test = new ArrayList<HashMap>();
+  //TODO: Hier fehlt noch die Zuweisung an entsprechendes Objekt
+  Test = readData.getAllDataPoi(poiFiles);
+  
+  
+  //Test = readData.getDataPoi("unterkuenfte.csv");
+  
+  int testcount = 0;
+  println ("<<<<<<<<<<<<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Enthaltene Datensätze XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>>>>>>>>>>>>>>>>>>>");
+  for (HashMap test : Test)
+  {
+    println(test.get("uuid") + " | " + test.get("latitude") + " | " + test.get("longitude"));
+    testcount++;
+  }
+  
+  println("Anzahl --> " + testcount);
+  
+  //Buslinien auslesen
+  readData.SetFolder("\\");
+  readData.getDataBus(busFile);
   
   
 }
