@@ -8,10 +8,10 @@ public class DataReader
   private String csvFile;
   private String csvDir;
   private String[] rawData;
+  private ArrayList<String> busLinesAvailable;
   
   public void SetFolder(String csvDir)
   {
-    //FIXME: Pfad auf abschließenden Backslash prüfen
     this.csvDir = csvDir;
     
     //Auf abschließenden Bachshlash prüfen
@@ -24,7 +24,13 @@ public class DataReader
     println("Pfad --> " + this.csvDir);
     
   }
-    
+
+  //Ausgabe der kompletten Buslinien
+  public ArrayList<String> getAvailableBusLines()
+  {
+    return busLinesAvailable;
+  }
+     
   public ArrayList<HashMap> getAllDataPoi(String[] fileNames)
   {
     ArrayList<HashMap> allObjectData = new ArrayList<HashMap>();
@@ -47,7 +53,6 @@ public class DataReader
   }
   
 
-  //FIXME: void muss durch DataObject ersetzt werden, da dieses Objekt am Ende zurückgegeben werden soll
   //Muss zeilenweise verarbeitet werden
   public ArrayList<HashMap> getDataPoi(String fileName)
   {
@@ -56,24 +61,9 @@ public class DataReader
     this.csvFile = fileName;   
     rawData = loadStrings(csvDir+this.csvFile);
         
-    //objectData = new HashMap[(rawData.length-1)];
-   
-   
-   
-    //INFO: Ausgabe der eingelesenen Csv Daten
-    //printArray(rawData[0]);
     
     //Auslesen der Feldbeschreibungen
     String[] headDescription = split(rawData[0], ',');
-    
-    //TODO: 
-    //Leerzeichen mit trim(String) vorne und hinten entfernen
-    //Anführungszeichen mit String.replace('old','new') entfernen
-    
-    //TODO:
-    //statt split muss jeder String bis zum jeweiligen Komma durchgeganen und aufgeteilt werden.
-    
-        
     
     //Aufbereiten der Csv-Daten
     for (int i=1; i < rawData.length; i++)
@@ -93,10 +83,7 @@ public class DataReader
       {
         String tmpColData = "";
         
-        //TODO:
-        //Abfrage ob endCounter == lastindexOf(',') --> Dann letzten SubString lesen
-        //Sonst wie gewohnt weiter
-        
+        //FIXME: Debugging       
         println("Position des letzten Kommas --> " + tmpRawData.lastIndexOf(','));
         
         if ((tmpRawData.length()-1) != startCounter)
@@ -111,20 +98,13 @@ public class DataReader
             endCounter = tmpRawData.length()-1;
           }
           
-          //TODO:
-          //Prüfen ob StartCounter == " 
-          //Prüfen ob EndCounter Inhalt == "
           if (tmpRawData.charAt(startCounter) == '"')
           {
             
             int tmpCounter  = endCounter + 1;
-            println ("XXXXXXXXXX In Abfrage Anführungszeichen! tmpCounter --> " + tmpCounter);
+            println ("XXXXXXXXXX In Abfrage Anführungszeichen! tmpCounter --> " + tmpCounter); //FIXME: Debugging
             endCounter = tmpRawData.indexOf(',',tmpCounter);
             
-            //if (tmpRawData.charAt(endCounter-1) == '"')
-            //{
-            //  endCounter--;
-            //}
           }
           
           
@@ -149,35 +129,28 @@ public class DataReader
           startCounter = endCounter+1;
         }
       }
- //<>//
+      
+      //Aufbereitete Daten zur ArrayList hinzufügen //<>//
       objectData.add(tmpData); //<>//
       
       
-      
+    //FIXME: Debugging
     println("Datensatz "+i);
     printArray(objectData.get(i-1));
       
     }
     
     
-    
+    //FIXME: Debugging
     printArray(headDescription);
-    
-    
-    //TODO: Löschen nur zum Test
-    HashMap test = objectData.get(1);
-    println(test.get("bezeichnung"));
-    println(test.keySet());
-    println(test.values());
-    
     
     return objectData;
     
   }
   
-  //TODO: Rückgabe vom Typ ArrayList<HashMap>
+  //TODO: verschiedene Buslinien in separatem Array speichern busLinesAvailable!!!!!!
   //Einlesen der Busverbindungen
-  public void getDataBus(String fileName)
+  public ArrayList<HashMap> getDataBus(String fileName)
   {
     String busCategory = "Stadtbus";
     String tmpColData = "";
@@ -186,6 +159,8 @@ public class DataReader
     HashMap tmpData;
     ArrayList<String> busRawData = new ArrayList<String>();
     ArrayList<HashMap> busData = new ArrayList<HashMap>();
+    
+    busLinesAvailable = new ArrayList<String>();
     
     
     this.csvFile = fileName;   
@@ -203,7 +178,7 @@ public class DataReader
       }
     }
       
-    //FIXME: Debug
+    //FIXME: Debugging
     println("Verbleibend --> " + busRawData.size());
     
     
@@ -235,7 +210,8 @@ public class DataReader
       startCounter = bus.indexOf(busCategory);
       startCounter += busCategory.length() + 1;
       
-      //TODO: Auslesen der Linien bis " vor dem Komma
+      //Auslesen der Linien bis " vor dem Komma
+      //Damit die Aufteilung der Datenfelder korrekt ist
       if ((bus.charAt(startCounter)) == '"')
       {
         startCounter++;
@@ -247,34 +223,53 @@ public class DataReader
         endCounter = bus.indexOf(',',startCounter);
       }
       
-      //TODO: Leerzeichen entfernen!!!!!!!
+      //Aufteilen und Hinzufügen der Buslinien
       tmpColData = bus.substring(startCounter,endCounter);
+      tmpBusLines = new String[tmpColData.split(",").length];
+      tmpBusLines = tmpColData.split(",");
       
-      for (int i=0; i < tmpColData.length(); i++)
+      
+      //Leerzeichen entfernen
+      for (int i=0; i < tmpBusLines.length; i++)
       {
-        String tmpLine = "";
+        String tmpLine = tmpBusLines[i].trim();
+        tmpBusLines[i] = tmpLine;
         
-        //TODO: Leerzeichen entfernen
+        //FIXME: Debugging
+        println("Ausgabe hoffentlich ohne Leerzeichen -->" + tmpLine + "|" );
+        
+      }
+      
+      //TODO: Aufnehmen der Buslinien
+      for (String line : tmpBusLines)
+      {
+        if (busLinesAvailable.contains(line) == false && line.equals("") != true && line.equals("Schulschwimmen") != true)
+        {
+          busLinesAvailable.add(line);
+        }
+        //FIXME: Else nur für Debugging
+        else
+        {
+          println("Buslinie schon vorhanden --> " + line);
+        }
       }
       
       
-      //TODO: Vor hinzufügen der Werte müssen die Leerzeichen entfernt werden trim()
-      tmpBusLines = new String[tmpColData.split(",").length];
-      tmpBusLines = tmpColData.split(",");
+      
+      //FIXME: Debugging
+      println ("Buslinien komplett:");
+      printArray(busLinesAvailable);
+      println("\n\n");
       println ("Anzahl ------------------------------------------> " + tmpBusLines.length + " ||| Buslinien --> ");
-      printArray(tmpBusLines);
+      printArray(tmpBusLines);      
       
       tmpData.put("linien",tmpBusLines);
       
       //FIXME: Debugging
       println ("StartCounter Position --> " + startCounter + " | EndCounter Position --> " + endCounter + " || Länge Stadtbus --> " + busCategory.length() + " || Neuer Index --> " + (startCounter+busCategory.length()));
       println ("Bus --> Linien --> " + tmpColData + "\n");
-      
-      if (tmpData.get("linien") != null || tmpData.get("linien") != "" )
-      {
-        busData.add(tmpData);
-      }
-      
+     
+      busData.add(tmpData);
       
       //Counter zurücksetzen
       startCounter = 0;
@@ -283,8 +278,7 @@ public class DataReader
     
     
     //FIXME: Debugging
-    println("\n\nDie eingelesenen Buslinien --> ");
-    
+    println("\n\nDie eingelesenen Buslinien --> ");  
     for (HashMap bus : busData)
     {
       println("\nLatitude --> " + bus.get("latitude"));
@@ -292,6 +286,9 @@ public class DataReader
       println("Linien --> ");
       printArray(bus.get("linien"));
     }
+    
+    
+    return busData;
     
   }
 
