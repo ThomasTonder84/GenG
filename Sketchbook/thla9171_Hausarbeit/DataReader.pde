@@ -75,8 +75,9 @@ public class DataReader
       
       HashMap tmpData = new HashMap();
       
-      println("Länge des aktuellen Satzes --> " + tmpRawData.length());
-      println("Auszug aus RawData --> Index:"+i+" --> " + tmpRawData);
+      //FIXME: Debugging
+      //println("Länge des aktuellen Satzes --> " + tmpRawData.length());
+      //println("Auszug aus RawData --> Index:"+i+" --> " + tmpRawData);
       
       
       for (int j=0; j < headDescription.length; j++)
@@ -84,7 +85,7 @@ public class DataReader
         String tmpColData = "";
         
         //FIXME: Debugging       
-        println("Position des letzten Kommas --> " + tmpRawData.lastIndexOf(','));
+        //println("Position des letzten Kommas --> " + tmpRawData.lastIndexOf(','));
         
         if ((tmpRawData.length()-1) != startCounter)
         {
@@ -102,7 +103,7 @@ public class DataReader
           {
             
             int tmpCounter  = endCounter + 1;
-            println ("XXXXXXXXXX In Abfrage Anführungszeichen! tmpCounter --> " + tmpCounter); //FIXME: Debugging
+            //println ("XXXXXXXXXX In Abfrage Anführungszeichen! tmpCounter --> " + tmpCounter); //FIXME: Debugging
             endCounter = tmpRawData.indexOf(',',tmpCounter);
             
           }
@@ -120,30 +121,27 @@ public class DataReader
           tmpData.put(headDescription[j],tmpColData);
                     
           //FIXME: Debugging
+         /* printArray(headDescription);
           println("Head Length --> " + headDescription.length);
           println("StartCounter --> " + startCounter + " | EndCounter --> " + endCounter);
           println("Start Inhalt --> " + tmpRawData.charAt(startCounter) + " | End Inhalt --> " + tmpRawData.charAt(endCounter));
-          println("Substring --> " + tmpColData);
+          println("Substring --> " + tmpColData);*/
                     
           //StartCounter erhöhen
           startCounter = endCounter+1;
         }
+       
       }
       
       //Aufbereitete Daten zur ArrayList hinzufügen //<>//
       objectData.add(tmpData); //<>//
       
-      
     //FIXME: Debugging
-    println("Datensatz "+i);
-    printArray(objectData.get(i-1));
+    //println("Datensatz "+i);
+    //printArray(objectData.get(i-1));
       
     }
-    
-    
-    //FIXME: Debugging
-    printArray(headDescription);
-    
+   
     return objectData;
     
   }
@@ -156,7 +154,7 @@ public class DataReader
     String tmpColData = "";
     String[] tmpBusLines;
     int startCounter = 0, endCounter = 0;
-    HashMap tmpData;
+    HashMap<String, Object> tmpData;
     ArrayList<String> busRawData = new ArrayList<String>();
     ArrayList<HashMap> busData = new ArrayList<HashMap>();
     
@@ -166,12 +164,14 @@ public class DataReader
     this.csvFile = fileName;   
     rawData = loadStrings(csvDir+this.csvFile);
     
-    println("<<<<<<<<<<<<<Haltestellen>>>>>>>>>>>>>>>");
-    printArray(rawData);
+    //FIXME: Debugging
+    //println("<<<<<<<<<<<<<Haltestellen>>>>>>>>>>>>>>>");
+    //printArray(rawData);
     
     for (int i=1; i < rawData.length; i++)
     {
-      println("Enthält Stadtbus --> " + rawData[i].contains(busCategory));
+      //FIXME: Debugging
+      //println("Enthält Stadtbus --> " + rawData[i].contains(busCategory));
       if (rawData[i].contains(busCategory) == true)
       {
         busRawData.add(rawData[i]);
@@ -179,12 +179,12 @@ public class DataReader
     }
       
     //FIXME: Debugging
-    println("Verbleibend --> " + busRawData.size());
+    //println("Verbleibend --> " + busRawData.size());
     
     
     for (String bus : busRawData)
     {
-      tmpData = new HashMap();
+      tmpData = new HashMap<String, Object>();
       
       //Latitude auslesen
       endCounter = bus.indexOf(',');
@@ -192,7 +192,7 @@ public class DataReader
       tmpData.put("latitude",tmpColData);
       
       //FIXME: Debugging
-      println ("Bus --> Latitude --> " + tmpColData);
+      //println ("Bus --> Latitude --> " + tmpColData);
       
       
       
@@ -203,7 +203,7 @@ public class DataReader
       tmpData.put("longitude",tmpColData);
       
       //FIXME: Debugging
-      println ("Bus --> Longitude --> " + tmpColData);
+      //println ("Bus --> Longitude --> " + tmpColData);
       
       
       //Linien auslesen
@@ -225,6 +225,10 @@ public class DataReader
       
       //Aufteilen und Hinzufügen der Buslinien
       tmpColData = bus.substring(startCounter,endCounter);
+      
+      //FIXME: Anpassung String mit Buslinien, statt Array
+      tmpData.put("linien",tmpColData);
+      
       tmpBusLines = new String[tmpColData.split(",").length];
       tmpBusLines = tmpColData.split(",");
       
@@ -236,7 +240,7 @@ public class DataReader
         tmpBusLines[i] = tmpLine;
         
         //FIXME: Debugging
-        println("Ausgabe hoffentlich ohne Leerzeichen -->" + tmpLine + "|" );
+        //println("Ausgabe hoffentlich ohne Leerzeichen -->" + tmpLine + "|" );
         
       }
       
@@ -250,24 +254,25 @@ public class DataReader
         //FIXME: Else nur für Debugging
         else
         {
-          println("Buslinie schon vorhanden --> " + line);
+          //println("Buslinie schon vorhanden --> " + line);
         }
       }
       
       
       
       //FIXME: Debugging
-      println ("Buslinien komplett:");
+      /*println ("Buslinien komplett:");
       printArray(busLinesAvailable);
       println("\n\n");
       println ("Anzahl ------------------------------------------> " + tmpBusLines.length + " ||| Buslinien --> ");
-      printArray(tmpBusLines);      
+      printArray(tmpBusLines);*/      
       
-      tmpData.put("linien",tmpBusLines);
+      //FIXME: Auskommentiert
+      //tmpData.put("linien",tmpBusLines);
       
       //FIXME: Debugging
-      println ("StartCounter Position --> " + startCounter + " | EndCounter Position --> " + endCounter + " || Länge Stadtbus --> " + busCategory.length() + " || Neuer Index --> " + (startCounter+busCategory.length()));
-      println ("Bus --> Linien --> " + tmpColData + "\n");
+      //println ("StartCounter Position --> " + startCounter + " | EndCounter Position --> " + endCounter + " || Länge Stadtbus --> " + busCategory.length() + " || Neuer Index --> " + (startCounter+busCategory.length()));
+      //println ("Bus --> Linien --> " + tmpColData + "\n");
      
       busData.add(tmpData);
       
@@ -276,7 +281,7 @@ public class DataReader
       endCounter = 0;
     }
     
-    
+    /*
     //FIXME: Debugging
     println("\n\nDie eingelesenen Buslinien --> ");  
     for (HashMap bus : busData)
@@ -285,7 +290,7 @@ public class DataReader
       println("Longitude --> " + bus.get("longitude"));
       println("Linien --> ");
       printArray(bus.get("linien"));
-    }
+    }*/
     
     
     return busData;

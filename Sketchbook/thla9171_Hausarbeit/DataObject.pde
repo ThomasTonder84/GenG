@@ -13,3 +13,9 @@ public class DataObject
   //Nächster und vorheriger Punkt --> erstellen nach Linien sortiert
   //
 }
+
+//TODO: KLasse für Buslinie, die aus DataObjects besteht
+//Props:
+//isVisible
+//color
+//

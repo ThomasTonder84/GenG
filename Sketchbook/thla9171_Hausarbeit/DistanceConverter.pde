@@ -72,9 +72,9 @@ public class DistanceConverter
       xCoord *= -1f;
     }
     //FIXME: Debugging
-    println ("xCoord --> " + xCoord);
+    //println ("xCoord --> " + xCoord);
     
-    return xCoord;
+    return (xCoord + xOrigin);
   }
   
   //Longitude zu y
@@ -89,10 +89,11 @@ public class DistanceConverter
       yCoord *= -1;
     }
     
-    //FIXME: Debugging
-    println ("yCoord --> " + yCoord);
     
-    return yCoord;
+    //FIXME: Debugging
+    //println ("yCoord --> " + yCoord);
+    
+    return (yCoord + yOrigin);
   }
   
   //FIXME: Kann eigentlich gelöscht werden
