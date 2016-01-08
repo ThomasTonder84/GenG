@@ -13,10 +13,6 @@ import controlP5.*;
 ////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////
-// Größen der verschiedenen Elemente
-////////////////////////////////////////////////////////////////
-
 //Geo Koordinaten
 //TODO: Prüfen ob Ausschnitt in Ordnung
 final float MAXLATITUDE = 54.2444; //Norden
@@ -56,14 +52,21 @@ DataReader readData;
 ArrayList<HashMap> poiData;
 ArrayList<HashMap> busData;
 
+//FIXME: Testing
+ArrayList<HashMap> tmpLine;
+
+
 //Konverter
 DistanceConverter distConverter;
 
 //Sort
-SortBusStations sortStations;
+SplitBusStations sortStations;
 
 //Zoom
 float graphicScale = 1.0f;
+
+
+ArrayList<PoiTouristenInfo> testpoi;
 
 
 ////////////////////////////////////////////////////////////////
@@ -110,12 +113,14 @@ void setup()
   //FIXME: Debugging
   int testcount = 0;
   println ("<<<<<<<<<<<<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Enthaltene Datensätze POIs XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>>>>>>>>>>>>>>>>>>>");
-  /*for (HashMap test : poiData)
+  for (HashMap test : poiData)
   {
     println(test.get("uuid") + " | " + test.get("latitude") + " | " + test.get("longitude"));
     testcount++;
   }
-  println("Anzahl der POI --> " + testcount);*/
+  println("Anzahl der POI --> " + testcount);
+  printArray(poiData.get(0));
+  
   
   //Buslinien auslesen
   readData.SetFolder("\\");
@@ -141,8 +146,12 @@ void setup()
   printArray(readData.getAvailableBusLines());
   
   //TODO: aufrufen des Getters und zuweisen der Rückgabedaten
-  sortStations = new SortBusStations(busData, readData.getAvailableBusLines());
+  sortStations = new SplitBusStations(busData);
   
+  //FIXME: Testing
+  tmpLine = sortStations.Split("31");
+  println("Testing Linie 16 --> ");
+  printArray(tmpLine);
   
   //public DistanceConverter(float latitudeTop, float longitudeTop, float latitudeBottom, float longitudeBottom, float widthDrawing, float heightDrawing, float originX, float originY)
   //TODO: Testen der Koordinatenumrechnung
@@ -153,6 +162,19 @@ void setup()
   println ("Origins | X --> " + distConverter.LatitudeToX(MAXLATITUDE) + " | Y --> " + distConverter.LongitudeToY(MINLONGITUDE) );
   println ("Umrechnung Latitude --> " + distConverter.LatitudeToX(MINLATITUDE) + " | Longitude --> " + distConverter.LongitudeToY(MAXLONGITUDE));
   println ("Bus --> " + busData.get(23));
+  
+  
+  //FIXME: Testing
+  testpoi = new ArrayList<PoiTouristenInfo>();
+  testpoi.add(new PoiTouristenInfo(400f,400f,54.22222f,12.222222f,10f,10f));
+  testpoi.add(new PoiTouristenInfo(400f,430f,54.22222f,12.222222f,10f,10f));
+  /*
+  println("Tests --> TouriPoi");
+  println("xPos --> " + testpoi.GetXPosition() + " | yPos --> " + testpoi.GetYPosition());
+  testpoi.SetOffset(-11f,-22f);
+  println("xPos neu --> " + testpoi.GetXPosition() + " | yPos neu --> " + testpoi.GetYPosition());
+  testpoi.SetScaleFactor(10);
+  */
 }
 
 
@@ -187,6 +209,8 @@ int zoomXOrigin;
 int zoomYOrigin;
 int xOffset;
 int yOffset;
+int xOffsetPrev;
+int yOffsetPrev;
 Boolean moveXDirection = true;
 Boolean moveYDirection = true;
 
@@ -195,60 +219,31 @@ void mousePressed()
   //Ausgangsposition des Clicks ermitteln
   zoomXOrigin = mouseX;
   zoomYOrigin = mouseY;
+  
+  //Zwischenspeichern Offset
+  xOffsetPrev = xOffset;
+  yOffsetPrev = yOffset;
 }
 
 void mouseDragged()
 {
-  //Reset des Offset
-  xOffset = 0;
-  yOffset = 0;
+  //Zwischenspeicher vorheriger Offset
+  //xOffset = 0;
+  //yOffset = 0;
   
   //println("mouseDragged x --> " + mouseX + " | y --> " + mouseY);
   println("mouseOrigin  x --> " + zoomXOrigin + " | y --> " + zoomYOrigin);
-  
-  
-  
+ 
+   
   //Offset berechnen und invertieren
   if (mouseX > infoWidth && mouseY > toolHeight)
   {
-    xOffset = (zoomXOrigin - mouseX) * (-1);
-    yOffset = (zoomYOrigin - mouseY) * (-1);
+    xOffset = (zoomXOrigin - mouseX) * (-1) + xOffsetPrev;
+    yOffset = (zoomYOrigin - mouseY) * (-1) + yOffsetPrev;
   }
   
   
-  
-  
-    
-  
-  
-  
-    println("Offset  x --> " + xOffset + " | y --> " + yOffset);
-  
-  
-  
-  ////FIXME: Testing
-  //  for (HashMap poi : poiData)
-  //{
-  //  float xCoord = Float.parseFloat(poi.get("latitude").toString());
-  //  float yCoord = Float.parseFloat(poi.get("longitude").toString());
-    
-  //  float xPixel = distConverter.LatitudeToX(xCoord);
-  //  float yPixel = distConverter.LongitudeToY(yCoord);
-    
-  //  xPixel += float(xOffset);
-  //  yPixel += float(yOffset);
-    
-  //  pushStyle();
-    
-  //  fill(25);
-  //  //rect(distConverter.LatitudeToX(xCoord), distConverter.LongitudeToY(yCoord),5f,5f);
-  //  rect(xPixel, yPixel,5f,5f);
-  //  popStyle();
-  //}
-  
-  
-  
-  
+    println("Offset  x --> " + xOffset + " | y --> " + yOffset);  
 }
 
 
@@ -268,6 +263,7 @@ void draw()
   rect(0f,0f,toolWidth,toolHeight);
   popStyle();
   
+  //TODO: Muss in die Klasse InfoPanel verlegt werden
   //Infobereich zeichnen
   pushStyle();
   fill(111);
@@ -275,19 +271,59 @@ void draw()
   popStyle();
   
   
+  scale(graphicScale);
+  
+  //Testing
+  PoiTouristenInfo test;
+  
+  testpoi.get(0).draw();
+  testpoi.get(1).draw();
+  testpoi.get(0).SetColor(color(122,255,190));
+  test = testpoi.get(0);
+  test.SetVisibility(true);
+  test.SetInformation(poiData.get(0));
+  test.SetOffset(xOffset,yOffset);
   
   
-  
-   scale(graphicScale);
+   
+   
+   //FIXME: Stadtmitte
+   float MitteX = 54.0924445;
+   float MitteY = 12.1286127;
+   float MitteXPixel = distConverter.LatitudeToX(MitteX);
+   float MitteYPixel = distConverter.LongitudeToY(MitteY);
+   pushStyle();
+   fill(255,200,200);
+   noStroke();
+   ellipse(MitteXPixel,MitteYPixel,10f,10f);
+   popStyle();
   
   //FIXME: Testing
-  for (HashMap busStop : busData)
-  {
-    float xCoord = Float.parseFloat(busStop.get("latitude").toString());
-    float yCoord = Float.parseFloat(busStop.get("longitude").toString());
+    for (int i=0; i < tmpLine.size(); i++)
+    {
+      HashMap tmpBusStation = tmpLine.get(i);
+      float xCoord = Float.parseFloat(tmpBusStation.get("latitude").toString());
+    float yCoord = Float.parseFloat(tmpBusStation.get("longitude").toString());
+    float xPixel = distConverter.LatitudeToX(xCoord);
+    float yPixel = distConverter.LongitudeToY(yCoord);
+      ellipse(distConverter.LatitudeToX(xCoord), distConverter.LongitudeToY(yCoord),5f,5f);
+      
+      if ((i+1)<tmpLine.size())
+      {
+      tmpBusStation = tmpLine.get(i+1);
+      float xCoordNext = Float.parseFloat(tmpBusStation.get("latitude").toString());
+      float yCoordNext = Float.parseFloat(tmpBusStation.get("longitude").toString());
+      float xPixelNext = distConverter.LatitudeToX(xCoordNext);
+    float yPixelNext = distConverter.LongitudeToY(yCoordNext);
+      pushStyle();
+      stroke(5f);
+      line(xPixel,yPixel,xPixelNext,yPixelNext);
+      popStyle();
+      }
+    }
     
-    ellipse(distConverter.LatitudeToX(xCoord), distConverter.LongitudeToY(yCoord),5f,5f);
-  }
+  
+  
   
   
   //TODO: Wenn einzelne Punkte über die entsprechenden Grenzen hinausgehen
