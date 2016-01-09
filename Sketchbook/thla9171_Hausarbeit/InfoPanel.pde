@@ -13,8 +13,8 @@ public class InfoPanel
   //Erstellen und Anzeige der Legende
   //Symbole festlegen
   //Haltestelle Kreis
-  //Brunnen Quadrat
+  //Brunnen Quadrat violett
   //INfo blaues Dünnes Rechteck
-  //Kino Dreieck
-  //Musikclub was auch immer
+  //Kino Dreieck braun
+  //Musikclub umgedrehtes Dreieck grün
 }

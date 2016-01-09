@@ -15,10 +15,19 @@ import controlP5.*;
 
 //Geo Koordinaten
 //TODO: Prüfen ob Ausschnitt in Ordnung
-final float MAXLATITUDE = 54.2444; //Norden
-final float MAXLONGITUDE = 12.2958; //Osten
-final float MINLATITUDE = 54.0501; //Süden
-final float MINLONGITUDE = 11.9964; //Westen
+//final float MAXLATITUDE = 54.2444; //Norden
+//final float MAXLONGITUDE = 12.2958; //Osten
+//final float MINLATITUDE = 54.0501; //Süden
+//final float MINLONGITUDE = 11.9964; //Westen
+
+final float MAXLATITUDE = 54.1878; //Norden
+final float MAXLONGITUDE = 12.2161; //Osten
+final float MINLATITUDE = 54.0505; //Süden
+final float MINLONGITUDE = 12.0184; //Westen
+
+
+
+
 
 //Größe der Zeichenfläche 
 //(WICHTIG --> Größe der Zeichenfläche muss
@@ -52,9 +61,20 @@ DataReader readData;
 ArrayList<HashMap> poiData;
 ArrayList<HashMap> busData;
 
-//FIXME: Testing
-ArrayList<HashMap> tmpLine;
+//Busdaten
+ArrayList<BusStation> busStation;
+ArrayList<BusLine> busLine;
+ArrayList<String> busLinesAvailable;
+ArrayList<HashMap> tmpLine; //Temporäre Verarbeitung
 
+//Farben
+//TODO: Farben für Buslinien und Pois festlegen
+
+//Points of Interes
+ArrayList<PoiTouristenInfo> poiTouristInfo;
+ArrayList<PoiMusikClub> poiMusik;
+ArrayList<PoiKino> poiKino;
+ArrayList<PoiBrunnen> poiBrunnen;
 
 //Konverter
 DistanceConverter distConverter;
@@ -66,7 +86,17 @@ SplitBusStations sortStations;
 float graphicScale = 1.0f;
 
 
-ArrayList<PoiTouristenInfo> testpoi;
+
+int zoomXOrigin;
+int zoomYOrigin;
+int xOffset;
+int yOffset;
+int xOffsetPrev;
+int yOffsetPrev;
+Boolean moveXDirection = true;
+Boolean moveYDirection = true;
+
+
 
 
 ////////////////////////////////////////////////////////////////
@@ -96,17 +126,69 @@ void setup()
   graphicYOffset = toolHeight;
   infoYOffset = toolHeight;
   
+  //Init des Distance Konverters
+  distConverter = new DistanceConverter(MAXLATITUDE, MINLONGITUDE, MINLATITUDE, MAXLONGITUDE, graphicWidth, graphicHeight, graphicXOffset, graphicYOffset);
+  
+  //Init Poi Files
   poiFiles = new String[]{"brunnen.csv","kinos.csv","musikclubs.csv","touristeninformation.csv"};
   busFile = "haltestellen.csv";
   
-  //readData = new DataReader("D:\\FH\\GenG\\Daten\\poi\\");
+  //Init Poi Types
+  poiBrunnen = new ArrayList<PoiBrunnen>();
+  
+  //Init Bus Types
+  busLinesAvailable = new ArrayList<String>();
+  busLine = new ArrayList<BusLine>();
+  
+  //Daten einlesen
   readData = new DataReader();
   readData.SetFolder("poi\\");
   
   
-  //Points of Interest einlesen
-  poiData = readData.getAllDataPoi(poiFiles);
+    //FIXME: Testing
+   //float xPositionPixel, float yPositionPixel, float latitude, float longitude, float xWidth, String availableLines)
+  //busStation = new ArrayList<BusStation>();
+  //busStation.add(new BusStation(400f,510f,54.22222f,12.222222f,10f,busData.get(100).get("linien").toString()));
   
+  
+  //poiTouristInfo = new ArrayList<PoiTouristenInfo>();
+  //poiTouristInfo.add(new PoiTouristenInfo(400f,400f,54.22222f,12.222222f,3f,10f));
+  //poiTouristInfo.add(new PoiTouristenInfo(400f,430f,54.22222f,12.222222f,3f,10f));
+  
+  //poiMusik = new ArrayList<PoiMusikClub>();
+  //poiMusik.add(new PoiMusikClub(400f,450f,54.22222f,12.222222f,10f,10f));
+  
+  //poiKino = new ArrayList<PoiKino>();
+  //poiKino.add(new PoiKino(400f,470f,54.22222f,12.222222f,10f,10f));
+  
+  //
+  //poiBrunnen.add(new PoiBrunnen(400f,490f,54.22222f,12.222222f,10f));
+  
+  
+  
+  float tmpX = 0f;
+  float tmpY = 0f;
+  float tmpXPixel = 0f;
+  float tmpYPixel = 0f;
+  
+  //TODO: Poi einzeln einlesen und zuweisen
+  //Points of Interest einlesen
+  int poiCounter = 0;
+  poiData = readData.getDataPoi(poiFiles[poiCounter]);
+  
+  for (HashMap tmpPoi : poiData)
+  {
+    tmpX = Float.parseFloat(tmpPoi.get("latitude").toString());
+    tmpY = Float.parseFloat(tmpPoi.get("longitude").toString());
+    tmpXPixel = distConverter.LatitudeToX(tmpX);
+    tmpYPixel = distConverter.LongitudeToY(tmpY);
+    
+    
+    poiBrunnen.add(new PoiBrunnen(tmpXPixel,tmpYPixel,tmpX,tmpY,10f));
+    poiBrunnen.get(poiCounter).SetInformation(tmpPoi);
+    
+    poiCounter++;
+  }
   //FIXME: Muss raus
   //Test = readData.getDataPoi("unterkuenfte.csv");
   
@@ -125,6 +207,7 @@ void setup()
   //Buslinien auslesen
   readData.SetFolder("\\");
   busData = readData.getDataBus(busFile);
+  busLinesAvailable = readData.getAvailableBusLines();
   
   //FIXME: Debugging
   /*testcount = 0;
@@ -139,41 +222,67 @@ void setup()
     
     testcount++;
   }*/
-  
   println("Anzahl der Haltestellen --> " + testcount);
-  
   println("Buslinien --> ");
-  printArray(readData.getAvailableBusLines());
+  printArray(busLinesAvailable);
   
-  //TODO: aufrufen des Getters und zuweisen der Rückgabedaten
+  //Aufteilen nach Buslinien
   sortStations = new SplitBusStations(busData);
   
-  //FIXME: Testing
-  tmpLine = sortStations.Split("31");
-  println("Testing Linie 16 --> ");
-  printArray(tmpLine);
+  //Aufbereiten der Buslinien  
+  for (String tmpBusLine : busLinesAvailable)
+  {
+    int idCount = 0;
+    tmpLine = sortStations.Split(tmpBusLine);  
+    
+    //FIXME: Debugging
+    println("Verarbeitung Linie --> " + tmpBusLine);
+    //printArray(tmpLine);
+    
+      
+    //Konvertieren der Geo zu Pixel Koordinaten
+    for (HashMap tmpStation : tmpLine)
+    {
+      println("Station --> ");
+      printArray(tmpStation);
+      
+      idCount++;
+      
+      tmpX = Float.parseFloat(tmpStation.get("latitude").toString());
+      tmpY = Float.parseFloat(tmpStation.get("longitude").toString());
+      tmpXPixel = distConverter.LatitudeToX(tmpX);
+      tmpYPixel = distConverter.LongitudeToY(tmpY);
+      
+      tmpStation.put("x",tmpXPixel);
+      tmpStation.put("y",tmpYPixel);
+      tmpStation.put("id",idCount);
+    }
+    
+    //Erstellen des Buslinien Objekts
+    busLine.add(new BusLine(tmpLine,10f));
+  }
   
-  //public DistanceConverter(float latitudeTop, float longitudeTop, float latitudeBottom, float longitudeBottom, float widthDrawing, float heightDrawing, float originX, float originY)
-  //TODO: Testen der Koordinatenumrechnung
-  distConverter = new DistanceConverter(MAXLATITUDE, MINLONGITUDE, MINLATITUDE, MAXLONGITUDE, graphicWidth, graphicHeight, graphicXOffset, graphicYOffset);
+  
+  
+  
+  
+  
+  
   
   //FIXME: Debugging
   println ("<<<<<<<<<<<<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GEO TESTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>>>>>>>>>>>>>>>>>>>");
   println ("Origins | X --> " + distConverter.LatitudeToX(MAXLATITUDE) + " | Y --> " + distConverter.LongitudeToY(MINLONGITUDE) );
   println ("Umrechnung Latitude --> " + distConverter.LatitudeToX(MINLATITUDE) + " | Longitude --> " + distConverter.LongitudeToY(MAXLONGITUDE));
-  println ("Bus --> " + busData.get(23));
+  //println ("Bus --> " + busData.get(23));
   
   
-  //FIXME: Testing
-  testpoi = new ArrayList<PoiTouristenInfo>();
-  testpoi.add(new PoiTouristenInfo(400f,400f,54.22222f,12.222222f,10f,10f));
-  testpoi.add(new PoiTouristenInfo(400f,430f,54.22222f,12.222222f,10f,10f));
+
   /*
   println("Tests --> TouriPoi");
-  println("xPos --> " + testpoi.GetXPosition() + " | yPos --> " + testpoi.GetYPosition());
-  testpoi.SetOffset(-11f,-22f);
-  println("xPos neu --> " + testpoi.GetXPosition() + " | yPos neu --> " + testpoi.GetYPosition());
-  testpoi.SetScaleFactor(10);
+  println("xPos --> " + poiTouristInfo.GetXPosition() + " | yPos --> " + poiTouristInfo.GetYPosition());
+  poiTouristInfo.SetOffset(-11f,-22f);
+  println("xPos neu --> " + poiTouristInfo.GetXPosition() + " | yPos neu --> " + poiTouristInfo.GetYPosition());
+  poiTouristInfo.SetScaleFactor(10);
   */
 }
 
@@ -205,14 +314,7 @@ void mouseWheel(MouseEvent zoomEvent)
 }
 
 
-int zoomXOrigin;
-int zoomYOrigin;
-int xOffset;
-int yOffset;
-int xOffsetPrev;
-int yOffsetPrev;
-Boolean moveXDirection = true;
-Boolean moveYDirection = true;
+
 
 void mousePressed()
 {
@@ -220,17 +322,14 @@ void mousePressed()
   zoomXOrigin = mouseX;
   zoomYOrigin = mouseY;
   
-  //Zwischenspeichern Offset
+  //Zwischenspeichern des vorherigen Offset
   xOffsetPrev = xOffset;
   yOffsetPrev = yOffset;
 }
 
 void mouseDragged()
 {
-  //Zwischenspeicher vorheriger Offset
-  //xOffset = 0;
-  //yOffset = 0;
-  
+  //FIXME: Debugging
   //println("mouseDragged x --> " + mouseX + " | y --> " + mouseY);
   println("mouseOrigin  x --> " + zoomXOrigin + " | y --> " + zoomYOrigin);
  
@@ -242,7 +341,7 @@ void mouseDragged()
     yOffset = (zoomYOrigin - mouseY) * (-1) + yOffsetPrev;
   }
   
-  
+    //FIXME: Debugging
     println("Offset  x --> " + xOffset + " | y --> " + yOffset);  
 }
 
@@ -270,24 +369,29 @@ void draw()
   rect(0f,toolHeight,infoWidth,infoHeight);
   popStyle();
   
-  
+  //Skalierung --> Zoom
   scale(graphicScale);
   
-  //Testing
-  PoiTouristenInfo test;
+  //FIXME: Testing
+  //PoiTouristenInfo test;
   
-  testpoi.get(0).draw();
-  testpoi.get(1).draw();
-  testpoi.get(0).SetColor(color(122,255,190));
-  test = testpoi.get(0);
-  test.SetVisibility(true);
-  test.SetInformation(poiData.get(0));
-  test.SetOffset(xOffset,yOffset);
+  //poiTouristInfo.get(0).draw();
+  //poiTouristInfo.get(1).draw();
+  //poiTouristInfo.get(0).SetColor(color(122,255,190));
+  //test = poiTouristInfo.get(0);
+  //test.SetVisibility(true);
+  //test.SetSelected(true);
+  ////test.SetInformation(poiData.get(0));
+  //test.SetOffset(xOffset,yOffset);
   
+  //poiMusik.get(0).draw();
+  //poiKino.get(0).draw(); 
+  
+  
+  //busStation.get(0).draw();
   
    
-   
-   //FIXME: Stadtmitte
+   //Stadtmitte einzeichnen
    float MitteX = 54.0924445;
    float MitteY = 12.1286127;
    float MitteXPixel = distConverter.LatitudeToX(MitteX);
@@ -295,8 +399,21 @@ void draw()
    pushStyle();
    fill(255,200,200);
    noStroke();
-   ellipse(MitteXPixel,MitteYPixel,10f,10f);
+   ellipse((MitteXPixel+xOffset),(MitteYPixel+yOffset),10f,10f);
    popStyle();
+  
+  //TODO: Nötige Abfragen zum Verschieben etc. einbauen
+  //Brunnen darstellen
+  for (PoiBrunnen tmpBrunnen : poiBrunnen)
+  {
+    tmpBrunnen.SetOffset(xOffset,yOffset);
+    
+    
+    tmpBrunnen.draw();
+  }
+  
+  
+  
   
   //FIXME: Testing
     for (int i=0; i < tmpLine.size(); i++)
@@ -323,6 +440,28 @@ void draw()
     }
     
   
+  //Buslinien darstellen
+  for (BusLine tmpLine : busLine)
+  {
+     tmpLine.SetOffset(xOffset,yOffset);
+    
+    if (tmpLine.GetXPosition() <= infoWidth || tmpLine.GetYPosition() <= toolHeight)
+    {
+      moveXDirection = false;
+      //tmpLine.SetStationVisibility(tmpLine.,)
+    }
+    else
+    {
+      tmpLine.SetVisibility(true);
+    }
+    
+    tmpLine.draw();
+  }
+  
+  //BusLine testbus = busLine.get(0);
+  //testbus.SetSelected(true);
+  //testbus.draw();
+  //println("Zeichne Line Nummer --> " + testbus.GetLineNumber());
   
   
   
