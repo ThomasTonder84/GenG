@@ -15,16 +15,23 @@ import controlP5.*;
 
 //Geo Koordinaten
 //TODO: Prüfen ob Ausschnitt in Ordnung
-//final float MAXLATITUDE = 54.2444; //Norden
-//final float MAXLONGITUDE = 12.2958; //Osten
-//final float MINLATITUDE = 54.0501; //Süden
-//final float MINLONGITUDE = 11.9964; //Westen
+final float MAXLATITUDE = 54.2444; //Norden
+final float MAXLONGITUDE = 12.2958; //Osten
+final float MINLATITUDE = 54.0501; //Süden
+final float MINLONGITUDE = 11.9964; //Westen
 
-final float MAXLATITUDE = 54.1878; //Norden
-final float MAXLONGITUDE = 12.2161; //Osten
-final float MINLATITUDE = 54.0505; //Süden
-final float MINLONGITUDE = 12.0184; //Westen
+//FIXME: Neuer Ausschnitt
+//final float MAXLATITUDE = 54.1878; //Norden
+//final float MAXLONGITUDE = 12.2161; //Osten
+//final float MINLATITUDE = 54.0505; //Süden
+//final float MINLONGITUDE = 12.0184; //Westen
 
+
+//FIXME: Nur zum Testen
+//final float MAXLATITUDE = 55.2444; //Norden
+//final float MAXLONGITUDE = 13.2958; //Osten
+//final float MINLATITUDE = 53.0501; //Süden
+//final float MINLONGITUDE = 10.9964; //Westen
 
 
 
@@ -45,6 +52,7 @@ int graphicYOffset;
 //Tool
 int toolWidth;
 int toolHeight;
+int toolYOffset;
 
 //Informationen
 int infoWidth;
@@ -56,11 +64,13 @@ InfoPanel infoPanel;
 //Daten einlesen
 String[] poiFiles;
 String busFile;
+String borderFile;
 DataReader readData;
 
 //Aufbereitete Daten
 ArrayList<HashMap> poiData;
 ArrayList<HashMap> busData;
+ArrayList<HashMap<String,String>> borderData;
 
 //Busdaten
 ArrayList<BusStation> busStation;
@@ -68,8 +78,8 @@ HashMap<String,BusLine[]> busLine;
 ArrayList<String> busLinesAvailable;
 ArrayList<HashMap> tmpLine; //Temporäre Verarbeitung
 
-//Farben
-//TODO: Farben für Buslinien und Pois festlegen
+//Stadtgrenze
+ArrayList<CityBorder> cityBorder; 
 
 //Points of Interes
 ArrayList<PoiTouristenInfo> poiTouristInfo;
@@ -84,16 +94,15 @@ DistanceConverter distConverter;
 SplitBusStations sortStations;
 
 //Farben
-color colorStations;
-color colorBrunnen;
-color colorMusik;
-color colorKino;
-color colorInfo;
 color colorBackground;
 color colorCityCenter;
 color colorRed;
 color colorBlue;
 color colorWhite;
+color colorGreen;
+color colorBrown;
+color colorPurple;
+color colorLightBlue;
 
 //Zoom
 float graphicScale = 1.0f;
@@ -103,6 +112,16 @@ int xOffset;
 int yOffset;
 int xOffsetPrev;
 int yOffsetPrev;
+
+
+//GUI
+ControlP5 cp5;
+Button guiHelpButton;
+Button guiFilterStations;
+Button guiFilterKinos;
+Button guiFilterBrunnen;
+Button guiFilterMusik;
+Button guiFilterInfo;
 
 
 
@@ -125,7 +144,7 @@ void setup()
   toolWidth = SKETCHWIDTH;
   graphicWidth = SKETCHWIDTH - infoWidth;
   graphicXOffset = infoWidth;
-  infoXOffset = 0;
+  infoXOffset = 10;
   
   //Höhen
   toolHeight =  100;
@@ -133,6 +152,7 @@ void setup()
   infoHeight = SKETCHHEIGHT;
   graphicYOffset = toolHeight;
   infoYOffset = toolHeight;
+  toolYOffset = infoXOffset;
   
   //Init des Distance Konverters
   distConverter = new DistanceConverter(MAXLATITUDE, MINLONGITUDE, MINLATITUDE, MAXLONGITUDE, graphicWidth, graphicHeight, graphicXOffset, graphicYOffset);
@@ -140,29 +160,31 @@ void setup()
   //Init Farben
   colorRed = color(#d81920);
   colorBlue = color(#006cb7);
+  colorLightBlue = color(#19a1ff);
   colorWhite = color(#f3f3f3);
-  
-  colorStations = colorBlue;
-  colorBrunnen = colorRed;
-  colorMusik = colorRed;
-  colorKino = colorRed;
-  colorInfo = colorRed;
+  //colorGreen = color(#008B25);
+  colorGreen = color(#028B26); //19D84B
+  colorBrown = color(#B76C00);
+  colorPurple = color(#7C30DE);
   colorBackground = colorWhite;
-  colorCityCenter = color(#7c19a1);
-  
+  colorCityCenter = colorRed;
   
   //Init InfoPanel
-  infoPanel = new InfoPanel(0,toolHeight,infoWidth,infoHeight,colorBlue);
+  infoPanel = new InfoPanel(0,toolHeight,(infoWidth - infoXOffset),infoHeight,colorBlue);
   
   //Init Poi Files
   poiFiles = new String[]{"brunnen.csv","kinos.csv","musikclubs.csv","touristeninformation.csv"};
   busFile = "haltestellen.csv";
+  borderFile = "gemeindeflaeche.json"; //FIXME: Anpassung gemacht auf JSON
   
   //Init Poi Types
   poiBrunnen = new ArrayList<PoiBrunnen>();
   poiKino = new ArrayList<PoiKino>();
   poiMusik = new ArrayList<PoiMusikClub>();
   poiTouristInfo = new ArrayList<PoiTouristenInfo>();
+  
+  //Init CityBorder
+  cityBorder = new ArrayList<CityBorder>();
   
   //Init Bus Types
   busLinesAvailable = new ArrayList<String>();
@@ -171,8 +193,10 @@ void setup()
   
   //Daten einlesen
   readData = new DataReader();
-  readData.SetFolder("poi\\");
+  //readData.SetFolder("poi\\"); //FIXME: Auskommentiert
   
+  //Menü
+  cp5 = new ControlP5(this);
   
   //Temp Variablen für Koordinatentransformation
   float tmpX = 0f;
@@ -266,43 +290,29 @@ void setup()
   
   
   
-  
-  //FIXME: Muss raus
-  //Test = readData.getDataPoi("unterkuenfte.csv");
-  
-  //FIXME: Debugging
-  int testcount = 0;
-  println ("<<<<<<<<<<<<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Enthaltene Datensätze POIs XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>>>>>>>>>>>>>>>>>>>");
-  for (HashMap test : poiData)
-  {
-    println(test.get("uuid") + " | " + test.get("latitude") + " | " + test.get("longitude"));
-    testcount++;
-  }
-  println("Anzahl der POI --> " + testcount);
-  printArray(poiData.get(0));
-  
-  
   //Buslinien auslesen
-  readData.SetFolder("\\");
+  //readData.SetFolder("\\");
   busData = readData.getDataBus(busFile);
+  busData.remove("Schulschwimmen");
+  busData.remove("");
   busLinesAvailable = readData.getAvailableBusLines();
   
-  //FIXME: Debugging
-  /*testcount = 0;
-  println ("<<<<<<<<<<<<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX Enthaltene Datensätze Haltestellen XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>>>>>>>>>>>>>>>>>>>");
-  for (HashMap test : busData)
+  //Stadtgrenzen einlesen
+  borderData = readData.getCityBorder(borderFile);
+  
+  //Koordinaten der Grenzen konvertieren
+  for (HashMap<String,String> tmpPoint : borderData)
   {
-    
-    
-    println(test.get("latitude") + " | " + test.get("longitude") + " | " + test.keySet());
-    printArray(test.get("linien"));
-    println ("\n");
-    
-    testcount++;
-  }*/
-  println("Anzahl der Haltestellen --> " + testcount);
-  println("Buslinien --> ");
-  printArray(busLinesAvailable);
+      tmpX = Float.parseFloat(tmpPoint.get("latitude").toString());
+      tmpY = Float.parseFloat(tmpPoint.get("longitude").toString());
+      tmpXPixel = distConverter.LatitudeToX(tmpX);
+      tmpYPixel = distConverter.LongitudeToY(tmpY);
+  
+      //Neues Grenzelement erzeugen
+      cityBorder.add(new CityBorder(tmpXPixel,tmpYPixel,tmpX,tmpY,2f,tmpPoint.get("id")));
+  }
+  
+ 
   
   //Aufteilen nach Buslinien
   sortStations = new SplitBusStations(busData);
@@ -314,12 +324,6 @@ void setup()
     tmpLine = sortStations.Split(tmpBusLine);  
     int lineSize = tmpLine.size();
     BusLine[] tmpLineBuffer = new BusLine[lineSize];
-    
-    
-    //FIXME: Debugging
-    println("Verarbeitung Linie --> " + tmpBusLine);
-    //printArray(tmpLine);
-    
       
     //Konvertieren der Geo zu Pixel Koordinaten
     for (HashMap tmpStation : tmpLine)
@@ -334,14 +338,13 @@ void setup()
       tmpLineBuffer[idCount-1] = new BusLine(tmpXPixel,tmpYPixel,tmpX,tmpY,10f,tmpBusLine,idCount);
     }
 
-    println("HashMap Print --> " + tmpLineBuffer.length);
-    
     //Erstellen des Buslinien Objekts
     busLine.put(tmpBusLine,tmpLineBuffer);
   }
   
   
   //Stationen einlesen
+  int busIndex = 0;
   for (HashMap tmpStation : busData)
   {
       tmpX = Float.parseFloat(tmpStation.get("latitude").toString());
@@ -349,9 +352,12 @@ void setup()
       tmpXPixel = distConverter.LatitudeToX(tmpX);
       tmpYPixel = distConverter.LongitudeToY(tmpY);
   
-        //public BusStation(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float xWidth, String availableLines)
       busStation.add(new BusStation(tmpXPixel,tmpYPixel,tmpX,tmpY,6f,tmpStation.get("linien").toString()));
+      busStation.get(busIndex).SetInformation(tmpStation);
+      busIndex++;
   }
+  
+  setupGUI();
   
   //FIXME: Debugging
   println ("<<<<<<<<<<<<<XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX GEO TESTS XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX>>>>>>>>>>>>>>>>>>>>>");
@@ -359,6 +365,27 @@ void setup()
   println ("Umrechnung Latitude --> " + distConverter.LatitudeToX(MINLATITUDE) + " | Longitude --> " + distConverter.LongitudeToY(MAXLONGITUDE));
   //println ("Bus --> " + busData.get(23));
 
+}
+
+void DisplayHeader()
+{
+  int Offset = 20;
+  String headText = "Reiseplanung Rostock";
+  
+  pushStyle();
+  fill(colorWhite);
+  textSize(40);
+  text(headText,(toolWidth-Offset-textWidth(headText)),(toolHeight/2) + Offset);
+  popStyle();
+}
+
+void setupGUI()
+{
+  
+  
+
+  
+  cp5.addButton("showHelp").setCaptionLabel("Hilfe").setSize(100,20).setColorBackground(colorWhite).setPosition(20,20);
 }
 
 
@@ -420,7 +447,7 @@ void mouseDragged()
     //println("Offset  x --> " + xOffset + " | y --> " + yOffset);  
 }
 
-BusStation markedStation;
+
 //Auslesen der Informationen
 void mouseClicked(MouseEvent clickEvent)
 {
@@ -503,12 +530,15 @@ void mouseClicked(MouseEvent clickEvent)
           
           //TODO: Bei Selektion mittig ausrichten
           
-          
+
           for (String tmpLine : tmpStation.GetBusLines())
           {
-            for (BusLine tmpBusLine : busLine.get(tmpLine))
+            if (tmpLine.equals("") == false)
             {
-              tmpBusLine.SetSelected(true);
+              for (BusLine tmpBusLine : busLine.get(tmpLine))
+              {
+                tmpBusLine.SetSelected(true);
+              }
             }
           }
           
@@ -640,6 +670,18 @@ void mouseClicked(MouseEvent clickEvent)
   }
 }
 
+void mouseHover()
+{
+  float xPosition = 0;
+  float yPosition = 0;
+  
+  
+  for (BusStation tmpStation : busStation)
+  {
+    //xPosition = tmpStation.ge
+  }
+}
+
 
 void draw()
 {
@@ -651,22 +693,20 @@ void draw()
   
   background(colorBackground);
   
+ 
+  
   //Tool zeichnen
   pushStyle();
-  fill(#006cb7);
+  fill(colorBlue);
   strokeWeight(1f);
-  rect(0f,0f,toolWidth,toolHeight);
-  popStyle();
-  
-  //TODO: Muss in die Klasse InfoPanel verlegt werden
-  //Infobereich zeichnen
-  pushStyle();
-  fill(colorBackground);
   stroke(colorBlue);
-  strokeWeight(1f);
-  rect(0f,toolHeight,infoWidth,infoHeight);
-  popStyle();
+  rect(0f,0f,toolWidth,(toolHeight - toolYOffset));
+  DisplayHeader();
   
+  //Infobereich zeichnen
+  fill(colorBackground);
+  rect(0f,(toolHeight - toolYOffset),(infoWidth-infoXOffset),infoHeight);
+  popStyle();
   infoPanel.draw();
   
   //Skalierung --> Zoom
@@ -674,7 +714,7 @@ void draw()
    
    
    
-     //Buslinien darstellen
+   //Buslinien darstellen
   for (String tmpBusLine : busLinesAvailable)
   {
     float pointOneX = 0f;
@@ -722,7 +762,46 @@ void draw()
    
    
    
+  //Stadtgrenze einzeichnen
+  for (int i=0; i < cityBorder.size(); i++)
+  {
+    cityBorder.get(i).SetOffset(xOffset,yOffset);
+    
+   if ((i+1) < cityBorder.size())
+   {
+     float pointOneX = cityBorder.get(i).GetXPosition();
+     float pointOneY = cityBorder.get(i).GetYPosition();
+     float pointTwoX = cityBorder.get(i+1).GetXPosition();
+     float pointTwoY = cityBorder.get(i+1).GetYPosition();
+     
+     if ((pointOneX*graphicScale) <= infoWidth || (pointTwoX*graphicScale) <= infoWidth || (pointOneY*graphicScale) <= toolHeight || (pointTwoY*graphicScale) <= toolHeight)
+     {
+      cityBorder.get(i).SetVisibility(false);
+      cityBorder.get(i+1).SetVisibility(false);
+     }
+     else
+     {
+      cityBorder.get(i).SetVisibility(true);
+      cityBorder.get(i+1).SetVisibility(true);
+     }
+     
+     
+     if (cityBorder.get(i).GetVisibility() == true && cityBorder.get(i+1).GetVisibility() == true)
+     {
+       pushStyle();
+       stroke(cityBorder.get(i).GetHighlightColor());
+       strokeWeight(cityBorder.get(i).GetLineWeight());
+       line(pointOneX,pointOneY,pointTwoX,pointTwoY);
+       popStyle();
+     }
+     
+     //FIXME: Debugging
+     //println("Anzahl Punkte in if --> " + i);   
+     
+   }
    
+   //println("Anzahl Punkte nach if --> " + i);
+  }
    
    
    

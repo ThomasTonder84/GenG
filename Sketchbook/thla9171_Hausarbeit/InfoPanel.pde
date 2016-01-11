@@ -33,8 +33,8 @@ public class InfoPanel
   //Format
   private int Offset;
   private final int headSize = 16;
-  private final int headSubSize = 14;
-  private final int textSize = 12;
+  private final int headSubSize = 12;
+  private final int textSize = 14;
   
   private float tmpPosXHead;
   private float tmpPosXText;
@@ -80,7 +80,7 @@ public class InfoPanel
     //Farbe zuweisen
     this.sepColor = sepColor;
     
-    this.Offset = 20;
+    this.Offset = 15;
     
     
     
@@ -110,58 +110,82 @@ public class InfoPanel
     float tmpPosXText = tmpPosXSign + Offset;
     float tmpPosY = sepStartY;
     
-    //TODO: Legende anzeigen
+    //FIXME: Änderungen vorgenommen
+    textSize(headSubSize);
     
     pushStyle();
-    fill(sepColor);
-    noStroke();
-    
+    fill(sepColor); //FIXME: Änderung
+    noStroke();    //FIXME: Änderung
     rect(sepStartX,tmpPosY,xWidth,sepThick);
+    popStyle();
     
+    pushStyle();
     tmpPosY += 2 * Offset;
-    
+    stroke(sepColor); //FIXME: Änderung
     //Bushaltestellen
-    ellipse(tmpPosXSign,tmpPosY,objWidth,objHeight);
+    ellipse((tmpPosXSign + (objWidth/2)),tmpPosY,objWidth,objHeight);
     tmpPosY += objHeight/2;
+    fill(sepColor); //FIXME: Änderung
     text("Haltestelle Stadtbus",tmpPosXText,tmpPosY);
     
     tmpPosY += Offset;
+    noStroke(); //FIXME: Änderung
     
-    //Bushaltestellen
+    //Brunnen
+    pushStyle();
+    fill(colorBrown);
     rect(tmpPosXSign,tmpPosY,objWidth,objHeight);
+    popStyle();
     tmpPosY += objHeight;
     text("Brunnen",tmpPosXText,tmpPosY);
     
     tmpPosY += Offset;
-    
-    //Bushaltestellen
+    pushStyle();
+    //Touristeninformation
+    fill(colorGreen);
     rect(tmpPosXSign,tmpPosY,5,objHeight);
+    popStyle();
     tmpPosY += objHeight;
     text("Touristeninformation",tmpPosXText,tmpPosY);
     
     tmpPosY += Offset;
     
-    //Bushaltestellen
+    //Kinos
+    pushStyle();
+    fill(colorLightBlue);
     triangle(tmpPosXSign+(objWidth/2),tmpPosY - (objHeight/2),tmpPosXSign-(objWidth/2),tmpPosY + objHeight,tmpPosXSign+(objWidth),tmpPosY + objHeight);
+    popStyle();
     tmpPosY += objHeight;
     text("Kinos",tmpPosXText,tmpPosY);
     
     tmpPosY += Offset;
     
-    //Bushaltestellen
-    triangle(tmpPosXSign+(objWidth/2),tmpPosY - (objHeight/2),tmpPosXSign-(objWidth/2),tmpPosY + objHeight,tmpPosXSign+(objWidth),tmpPosY + objHeight);
+    //Musikclubs
+    pushStyle();
+    fill(colorPurple);
+    triangle(tmpPosXSign-(objWidth/2),tmpPosY - (objHeight/2),tmpPosXSign+objWidth,tmpPosY - (objHeight/2),tmpPosXSign,tmpPosY + objHeight);
+    popStyle();
     tmpPosY += objHeight;
     text("Musikclubs",tmpPosXText,tmpPosY);
     
+    tmpPosY += Offset;
+    
+    //Buslinien
+    stroke(colorBlue);
+    line(tmpPosXSign,(tmpPosY + (objHeight/2)), tmpPosXSign+objWidth, (tmpPosY + (objHeight/2)));
+    tmpPosY += objHeight;
+    text("Buslinie",tmpPosXText,tmpPosY);
     
     
     tmpPosY += Offset;
     
-    stroke(colorRed);
-    //Bushaltestellen
-    line(tmpPosXSign,tmpPosY, tmpPosXSign+objWidth, tmpPosY);
-    tmpPosY += objHeight;
-    text("Buslinie",tmpPosXText,tmpPosY);
+    //Stadtmitte
+    noStroke();
+    fill(colorCityCenter);
+    ellipse((tmpPosXSign + (objWidth/2)),tmpPosY,objWidth,objHeight);
+    tmpPosY += objHeight/2;
+    fill(sepColor);
+    text("Stadtmitte",tmpPosXText,tmpPosY);
     
     popStyle();
   }
@@ -215,30 +239,50 @@ public class InfoPanel
   {
     //Position
     float PosX = tmpPosXText;
-    float PosY = tmpPosYText; 
-    
+    float PosY = tmpPosYText;
+    String[] busLineArray = busStation.GetBusLines();
+    String busLines = "";
     HashMap<String,String> stationInfo = busStation.GetInformation();
     
     pushStyle();
     fill(sepColor);
-
     
-    //for (int i=0; i < stationInfo.size(); i++)
-    //{
-    //  for (String tmpKey : stationInfo.keySet())
-    //  {
+    for (int i=0; i < busLineArray.length; i++)
+    {
+      busLines += busLineArray[i];
+      
+      if ((i+1) != busLineArray.length)
+      {
+        busLines += ", ";
+      }
+    }
+    
+    PosY += (2* Offset);
+    textSize(headSubSize);
+    text("Haltende Linien",tmpPosXText,PosY,xWidth,PosY);
+      
+    PosY += (1* Offset);
+    textSize(textSize);
+    text(busLines,tmpPosXText,PosY,xWidth,PosY);
+    
+    
+   for (String tmpKey : stationInfo.keySet())
+   {
+     String tmpInfo = stationInfo.get(tmpKey); 
+     String tmpUpper = tmpKey.substring(0,1).toUpperCase();
+     tmpUpper += tmpKey.substring(1);
+     
+     if (tmpInfo.equals("") == false)
+     {
+       PosY += (2* Offset);
+       textSize(headSubSize);
+       text(tmpUpper,tmpPosXText,PosY,xWidth,PosY);
         
-        
-    //    tmpPosY += (2* Offset);
-    //    textSize(headSubSize);
-    //    text(tmpKey,tmpPosXText,tmpPosY);
-        
-    //    tmpPosY += (1* Offset);
-    //    textSize(textSize);
-    //    text(stationInfo.get(tmpKey),tmpPosXText,tmpPosY);
-        
-    //  }
-    //}
+       PosY += (1* Offset);
+       textSize(textSize);
+       text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
+     }
+   }
     
     popStyle();
   }
@@ -259,16 +303,18 @@ public class InfoPanel
    for (String tmpKey : stationInfo.keySet())
    {
      String tmpInfo = stationInfo.get(tmpKey); 
+     String tmpUpper = tmpKey.substring(0,1).toUpperCase();
+     tmpUpper += tmpKey.substring(1);
      
      if (tmpInfo.equals("") == false)
      {
        PosY += (2* Offset);
        textSize(headSubSize);
-       text(tmpKey,tmpPosXText,PosY);
+       text(tmpUpper,tmpPosXText,PosY,xWidth,PosY);
         
        PosY += (1* Offset);
        textSize(textSize);
-       text(tmpInfo,tmpPosXText,PosY);
+       text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
      }
    }
   
@@ -290,19 +336,21 @@ public class InfoPanel
     
     
     
-   for (String tmpKey : stationInfo.keySet())
+    for (String tmpKey : stationInfo.keySet())
    {
      String tmpInfo = stationInfo.get(tmpKey); 
+     String tmpUpper = tmpKey.substring(0,1).toUpperCase();
+     tmpUpper += tmpKey.substring(1);
      
      if (tmpInfo.equals("") == false)
      {
        PosY += (2* Offset);
        textSize(headSubSize);
-       text(tmpKey,tmpPosXText,PosY);
+       text(tmpUpper,tmpPosXText,PosY,xWidth,PosY);
         
        PosY += (1* Offset);
        textSize(textSize);
-       text(tmpInfo,tmpPosXText,PosY);
+       text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
      }
    }
   
@@ -324,19 +372,21 @@ public class InfoPanel
     
     
     
-   for (String tmpKey : stationInfo.keySet())
+    for (String tmpKey : stationInfo.keySet())
    {
      String tmpInfo = stationInfo.get(tmpKey); 
+     String tmpUpper = tmpKey.substring(0,1).toUpperCase();
+     tmpUpper += tmpKey.substring(1);
      
      if (tmpInfo.equals("") == false)
      {
        PosY += (2* Offset);
        textSize(headSubSize);
-       text(tmpKey,tmpPosXText,PosY);
+       text(tmpUpper,tmpPosXText,PosY,xWidth,PosY);
         
        PosY += (1* Offset);
        textSize(textSize);
-       text(tmpInfo,tmpPosXText,PosY);
+       text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
      }
    }
   
@@ -358,19 +408,21 @@ public class InfoPanel
     
     
     
-   for (String tmpKey : stationInfo.keySet())
+    for (String tmpKey : stationInfo.keySet())
    {
      String tmpInfo = stationInfo.get(tmpKey); 
+     String tmpUpper = tmpKey.substring(0,1).toUpperCase();
+     tmpUpper += tmpKey.substring(1);
      
      if (tmpInfo.equals("") == false)
      {
        PosY += (2* Offset);
        textSize(headSubSize);
-       text(tmpKey,tmpPosXText,PosY);
+       text(tmpUpper,tmpPosXText,PosY,xWidth,PosY);
         
        PosY += (1* Offset);
        textSize(textSize);
-       text(tmpInfo,tmpPosXText,PosY);
+       text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
      }
    }
   

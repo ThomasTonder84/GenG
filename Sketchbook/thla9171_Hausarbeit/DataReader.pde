@@ -6,10 +6,11 @@
 public class DataReader
 {
   private String csvFile;
-  private String csvDir;
+  private String csvDir; //FIXME: Prop kann raus
   private String[] rawData;
   private ArrayList<String> busLinesAvailable;
   
+  //FIXME: Methode kann raus
   public void SetFolder(String csvDir)
   {
     this.csvDir = csvDir;
@@ -38,8 +39,6 @@ public class DataReader
     
     for (String fileName: fileNames)
     {
-      //FIXME: Debugging
-      println("<<<<<<<<<<<<<< " + fileName + "  >>>>>>>>>>>>>>>>>>>>>>>>>");
       tmpObjectData = getDataPoi(fileName);
       
       for (HashMap poiObject : tmpObjectData)
@@ -49,7 +48,6 @@ public class DataReader
     }
     
     return allObjectData;
-    
   }
   
 
@@ -59,7 +57,7 @@ public class DataReader
     ArrayList<HashMap> objectData = new ArrayList<HashMap>();
     
     this.csvFile = fileName;   
-    rawData = loadStrings(csvDir+this.csvFile);
+    rawData = loadStrings(/*csvDir+*/this.csvFile);
         
     
     //Auslesen der Feldbeschreibungen
@@ -75,17 +73,9 @@ public class DataReader
       
       HashMap tmpData = new HashMap();
       
-      //FIXME: Debugging
-      //println("Länge des aktuellen Satzes --> " + tmpRawData.length());
-      //println("Auszug aus RawData --> Index:"+i+" --> " + tmpRawData);
-      
-      
       for (int j=0; j < headDescription.length; j++)
       {
         String tmpColData = "";
-        
-        //FIXME: Debugging       
-        //println("Position des letzten Kommas --> " + tmpRawData.lastIndexOf(','));
         
         if ((tmpRawData.length()-1) != startCounter)
         {
@@ -103,11 +93,9 @@ public class DataReader
           {
             
             int tmpCounter  = endCounter + 1;
-            //println ("XXXXXXXXXX In Abfrage Anführungszeichen! tmpCounter --> " + tmpCounter); //FIXME: Debugging
+
             endCounter = tmpRawData.indexOf(',',tmpCounter);
-            
           }
-          
           
           if ((endCounter-startCounter)==1)
           {
@@ -120,13 +108,6 @@ public class DataReader
           //Für weitere Verarbeitung speichern
           tmpData.put(headDescription[j],tmpColData);
                     
-          //FIXME: Debugging
-         /* printArray(headDescription);
-          println("Head Length --> " + headDescription.length);
-          println("StartCounter --> " + startCounter + " | EndCounter --> " + endCounter);
-          println("Start Inhalt --> " + tmpRawData.charAt(startCounter) + " | End Inhalt --> " + tmpRawData.charAt(endCounter));
-          println("Substring --> " + tmpColData);*/
-                    
           //StartCounter erhöhen
           startCounter = endCounter+1;
         }
@@ -135,18 +116,86 @@ public class DataReader
       
       //Aufbereitete Daten zur ArrayList hinzufügen //<>//
       objectData.add(tmpData); //<>//
-      
-    //FIXME: Debugging
-    //println("Datensatz "+i);
-    //printArray(objectData.get(i-1));
-      
     }
    
     return objectData;
     
   }
   
-  //TODO: verschiedene Buslinien in separatem Array speichern busLinesAvailable!!!!!!
+  
+  
+  
+  
+  //Einlesen der Stadtgrenzen
+  public ArrayList<HashMap<String,String>> getCityBorder(String fileName)
+  {
+    String triggerText = "[ [ ";
+    String tmpColData = "";
+    String tmpSplitCoords = "";
+    String[] tmpSplitData;
+    int startCounter = 0, endCounter = 0;
+    int tmpIndex = 0;
+    HashMap<String, String> tmpData;
+    ArrayList<HashMap<String,String>> borderData = new ArrayList<HashMap<String,String>>();
+    
+    
+    this.csvFile = fileName;   
+    rawData = loadStrings(/*csvDir+*/this.csvFile);
+        
+    //Benötigte Daten aus String ausschneiden
+    startCounter = rawData[4].indexOf(triggerText) + triggerText.length();
+    triggerText = "] ] } }";
+    endCounter = rawData[4].indexOf(triggerText);
+    tmpColData = rawData[4].substring(startCounter,endCounter);
+    
+    ////Substring aufsplitten
+    tmpSplitData = tmpColData.split(",");
+    
+    for (int i=0; i < tmpSplitData.length; i=i+2)
+    {
+      if ((i+1) < tmpSplitData.length)
+      {
+         tmpData = new HashMap<String,String>();
+         tmpData.put("id",String.valueOf(i));
+         
+         //Longitude
+         tmpSplitCoords = tmpSplitData[i];
+         tmpIndex = tmpSplitCoords.indexOf("[")+2;
+         tmpColData = tmpSplitCoords.substring(tmpIndex);
+         tmpData.put("longitude",tmpColData);
+
+         //Latitude
+         tmpSplitCoords = tmpSplitData[i+1];
+         tmpIndex = tmpSplitCoords.indexOf("]")-1;
+         tmpColData = tmpSplitCoords.substring(0, tmpIndex);
+         tmpData.put("latitude",tmpColData);
+          
+         borderData.add(tmpData);
+      }
+    }
+    
+    return borderData;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  //TODO: Auslesen der Haltestellennamen, etc.
   //Einlesen der Busverbindungen
   public ArrayList<HashMap> getDataBus(String fileName)
   {
@@ -154,6 +203,7 @@ public class DataReader
     String tmpColData = "";
     String[] tmpBusLines;
     int startCounter = 0, endCounter = 0;
+    int commaMAX = 20, commaStrasse = 13, commaHnr = 15, commaPlz = 17, commaBez = 18, commaBetr = 19;
     HashMap<String, Object> tmpData;
     ArrayList<String> busRawData = new ArrayList<String>();
     ArrayList<HashMap> busData = new ArrayList<HashMap>();
@@ -162,7 +212,7 @@ public class DataReader
     
     
     this.csvFile = fileName;   
-    rawData = loadStrings(csvDir+this.csvFile);
+    rawData = loadStrings(/*csvDir+*/this.csvFile);
     
     //FIXME: Debugging
     //println("<<<<<<<<<<<<<Haltestellen>>>>>>>>>>>>>>>");
@@ -205,7 +255,6 @@ public class DataReader
       //FIXME: Debugging
       //println ("Bus --> Longitude --> " + tmpColData);
       
-      
       //Linien auslesen
       startCounter = bus.indexOf(busCategory);
       startCounter += busCategory.length() + 1;
@@ -232,7 +281,6 @@ public class DataReader
       tmpBusLines = new String[tmpColData.split(",").length];
       tmpBusLines = tmpColData.split(",");
       
-      
       //Leerzeichen entfernen
       for (int i=0; i < tmpBusLines.length; i++)
       {
@@ -244,19 +292,70 @@ public class DataReader
         
       }
       
-      //TODO: Aufnehmen der Buslinien
+      //Aufnehmen der Buslinien
       for (String line : tmpBusLines)
       {
         if (busLinesAvailable.contains(line) == false && line.equals("") != true && line.equals("Schulschwimmen") != true)
         {
           busLinesAvailable.add(line);
         }
-        //FIXME: Else nur für Debugging
-        else
-        {
-          //println("Buslinie schon vorhanden --> " + line);
-        }
       }
+      
+      endCounter = 0;
+      startCounter = 0;
+      
+      for (int i=0; i < commaMAX; i++)
+      {
+        endCounter = bus.indexOf(',',startCounter);
+        
+        
+        if (i == commaStrasse)
+        {
+         // println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
+          println("SubString Strasse --> " + bus.substring(startCounter,endCounter));
+          tmpColData = bus.substring(startCounter,endCounter);
+          tmpData.put("strasse",tmpColData);
+        }
+        
+        if (i == commaHnr)
+        {
+         // println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
+          println("SubString Hausnummer --> " + bus.substring(startCounter,endCounter));
+          tmpColData = bus.substring(startCounter,endCounter);
+          tmpData.put("hausnummer",tmpColData);
+        }
+        
+        if (i == commaPlz)
+        {
+       //   println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
+          println("SubString PLZ --> " + bus.substring(startCounter,endCounter));
+          tmpColData = bus.substring(startCounter,endCounter);
+          tmpData.put("plz",tmpColData);
+        }
+        
+        if (i == commaBez)
+        {
+    //      println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
+          println("SubString Bezeichnung --> " + bus.substring(startCounter,endCounter));
+          tmpColData = bus.substring(startCounter,endCounter);
+          tmpData.put("bezeichnung",tmpColData);
+        }
+        
+        if (i == commaBetr)
+        {
+   //       println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
+          println("SubString Betreiber --> " + bus.substring(startCounter,endCounter));
+          tmpColData = bus.substring(startCounter,endCounter);
+          tmpData.put("betreiber",tmpColData);
+        }
+        
+                
+        startCounter = endCounter + 1;
+        
+      }
+      
+      
+      
       
       
       

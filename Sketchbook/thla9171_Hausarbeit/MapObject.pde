@@ -167,182 +167,62 @@ public class MapObject
   
 }
 
-  //TODO:
-  //Draw der einzelen Punkte
-  //Festlegen von Symbolen
-  //Speichern von Geo und Pixelkoordinaten
-  //Speichern von Farben
-  //Nächster und vorheriger Punkt --> erstellen nach Linien sortiert
-  //isVisible
-  //color
-  //
   
-  //TODO: BusLine
 
-
-//public class BusLine extends MapObject
-//{
-//  private float objWidth;
-//  private float objHeight;
-//  private float busSpeed;
   
-//  //Abfahrtszeit der ersten Haltestelle
-//  private int busDepHour;
-//  private int busDepMin;
+public class CityBorder extends MapObject
+{
+  private float lineWeight;
+  private String pointId;
   
-//  private ArrayList<HashMap> busLine;
-//  private String busLineNumber;
-  
-//  public BusLine(ArrayList<HashMap> busLine, float xWidth)
-//  {
-//    //TODO: Position der ersten Haltestelle
-//    //Konstruktur der Basisklasse aufrufen
-//    super();
-    
-//    this.busLine = new ArrayList<HashMap>();
+  public CityBorder(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float Weight, String pointId)
+  {
+    //Konstruktur der Basisklasse aufrufen
+    super(xPositionPixel, yPositionPixel, latitude, longitude);
        
-//    //Aufbereiten der Daten
-//    this.busLineNumber = busLine.get(0).get("linien").toString();
-    
-            
-//    for(HashMap bus : busLine)
-//    {
-
-//      bus.remove("linien");
-//      bus.put("visible",true);
-//      this.busLine.add(bus);
-//    }
-    
-//    //FIXME: Debugging
-//    println("Aufruf aus BusLine Klasse --> Linie: " + this.busLineNumber);
-//    printArray(this.busLine);
-    
-//    //Größe festlegen
-//    this.objWidth = xWidth;
-//    this.objHeight = xWidth;
+    this.lineWeight = Weight;
+    this.pointId = pointId;
         
-//    //Farben setzen
-//    super.SetColor(#1630FF);
-//  }
+    //TODO: Farben auswählen1!!!!!!"!"
+    //Standardfarben setzen
+    super.SetColor(colorRed);
+    
+    super.SetVisibility(true);
+  }
+ 
+  public float GetLineWeight()
+  {
+    return this.lineWeight;
+  }
+ 
+  public String GetId()
+  {
+    return this.pointId;
+  }
+}
   
-//  public void SetStationVisibility(float xPosition, float yPosition, Boolean isVisible)
-//  {
-//    for (HashMap tmpStation : busLine)
-//    {
-//      float xStation = Float.parseFloat(tmpStation.get("x").toString());
-//      float yStation = Float.parseFloat(tmpStation.get("y").toString());
-      
-//      if (xStation == xPosition && yStation == yPosition)
-//      {
-//        tmpStation.replace("visible",isVisible);
-//      }
-//    }
-//  }
-    
-    
-//  //Setzen der Abfahrtszeit, der Station
-//  public void SetDepature(int hour, int minute)
-//  {
-//     this.busDepHour = hour;
-//     this.busDepMin = minute;
-//  }
   
-//  public String GetLineNumber()
-//  {
-//    return this.busLineNumber;
-//  }
-   
-//  public int GetStationNumber(float xPosition, float yPosition)
-//  {
-    
-//    //TODO: Ermitteln der Stationsnummer durch Position
-    
-//    return 1;
-//  }
   
-//  public int GetDepatureHour(float xPosition, float yPosition)
-//  {
-//    //TODO: Ermitteln der Abfahrtszeit durch Stationsnummer --> Interpolation
-    
-//     return this.busDepHour;
-//  }
   
-//  public int GetDepatureMinute(float xPosition, float yPosition)
-//  {
-//     return this.busDepMin;
-//  }
   
-//  //TODO: Positionen ermitteln und zurückgeben
-//  public PVector GetFirstStation()
-//  {
-//    return new PVector(11,22);
-//  }
   
-//  public PVector GetLastStation()
-//  {
-//    return new PVector(22,11);
-//  }
   
-//  void draw()
-//  {
-//    //TODO: Alle Punkte der Linie zeichnen
-//    //Punkte nur zeichnen wenn highlight
-//    //sonst nur die LInien einzeichnen
-    
-    
-    
-//    if(super.GetVisibility() == true)
-//    {
-//      float pointOneX = 0f;
-//      float pointOneY = 0f;
-//      float pointTwoX = 0f;
-//      float pointTwoY = 0f;
-      
-      
-//      pushStyle();
-      
-//      strokeWeight(objWidth/5);
-
-//      if (super.GetSelected() == false)
-//      {
-//        stroke(super.GetColor());
-//        //line(
-//      }
-//      else
-//      {
-//        fill(super.GetHighlightColor());
-//      }
-      
-      
-      
-//      for (int i=0; i < busLine.size(); i++)
-//      {
-//        pointOneX = Float.parseFloat(busLine.get(i).get("x").toString()) + super.GetXOffset();
-//        pointOneY = Float.parseFloat(busLine.get(i).get("y").toString()) + super.GetYOffset();
-        
-//        if((i+1) < busLine.size())
-//        {
-//          pointTwoX = Float.parseFloat(busLine.get(i+1).get("x").toString()) + super.GetXOffset();
-//          pointTwoY = Float.parseFloat(busLine.get(i+1).get("y").toString()) + super.GetYOffset();
-          
-//          line(pointOneX,pointOneY,pointTwoX,pointTwoY);
-          
-//          println("Zeichne Linie von X|Y --> " + pointOneX + " | " + pointTwoY + "  ||| Nach X|Y -->" + pointTwoX + " | " + pointTwoY);
-//        }
-        
-//        if (super.GetSelected() == true && busLine.get(i).get("visible").equals(true))
-//        {
-//          ellipse(pointOneX,pointOneY,objWidth,objHeight);
-//        }
-
-//      }
-      
-      
-//      popStyle();
-//    }
-//  }
-
-//}  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   
   
@@ -368,11 +248,11 @@ public class BusLine extends MapObject
         
     //TODO: Farben auswählen1!!!!!!"!"
     //Standardfarben setzen
-    super.SetColor(#1630FF);
+    super.SetColor(colorBlue);
+    super.SetHighlightColor(colorBlue);
     
     super.SetVisibility(false);
   }
- 
   
   public String GetLineNumber()
   {
@@ -383,45 +263,7 @@ public class BusLine extends MapObject
   {
     return this.stationId;
   }
-  
-    
-  
-  //void draw()
-  //{
-  //  if(super.GetVisibility() == true)
-  //  {
-  //    pushStyle();
-  //    noStroke();
-      
-  //    if (super.GetSelected() == false)
-  //    {
-  //      fill(super.GetColor());
-  //    }
-  //    else
-  //    {
-  //      fill(super.GetHighlightColor());
-  //    }
-      
-      
-  //    ellipse((super.GetXPosition()+super.GetXOffset()),(super.GetYPosition()+super.GetYOffset()),objWidth,objHeight);
-  //    popStyle();
-  //  }
-  //}
-
 }  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   
@@ -430,6 +272,7 @@ public class BusStation extends MapObject
 {
   private float objWidth;
   private float objHeight;
+  private float objSizeHover;
  
   private String[] busLines;
   
@@ -453,19 +296,12 @@ public class BusStation extends MapObject
     {
       String tmpLine = busLines[i].trim();
       busLines[i] = tmpLine;
-      
-      //FIXME: Debugging
-      println("Ausgabe hoffentlich ohne Leerzeichen -->" + tmpLine + "|");  
     }
-    
-    println("Und alle Buslinien --> " );
-    printArray(busLines);
-    
     
     //Größe festlegen
     this.objWidth = xWidth;
     this.objHeight = xWidth;
-        
+    this.objSizeHover = xWidth * 2;
     //TODO: Farben auswählen1!!!!!!"!"
     //Standardfarben setzen
     super.SetColor(#1630FF);
@@ -475,19 +311,24 @@ public class BusStation extends MapObject
   //Setzen der zusätzlichen Informationen für Infobereich
   public void SetInformation(HashMap<String,Object> information)
   {
-    /*super.SetInformation (
+    super.SetInformation (
           information.get("bezeichnung").toString(),
-          information.get("strasse_name").toString(),
+          information.get("strasse").toString(),
           information.get("hausnummer").toString(),
-          information.get("postleitzahl").toString(),
-          information.get("gemeindeteil_name").toString(),
+          information.get("plz").toString(),
           "",
-          "");*/
+          "",
+          "");
   }
   
   public String[] GetBusLines()
   {
     return this.busLines;
+  }
+  
+  public float GetHoverWidth()
+  {
+    return this.objSizeHover;
   }
   
   public Boolean ContainsBusLine(String busLine)
@@ -505,21 +346,23 @@ public class BusStation extends MapObject
     return busLineAvailable;
   }
   
-  
+  //FIXME: Anpassungen gemacht
   void draw()
   {
     if(super.GetVisibility() == true)
     {
       pushStyle();
-      noStroke();
+      //noStroke();
       
       if (super.GetSelected() == false)
       {
-        fill(super.GetColor());
+        //fill(super.GetColor());
+        stroke(super.GetColor());
       }
       else
       {
-        fill(super.GetHighlightColor());
+        //fill(super.GetHighlightColor());
+        stroke(super.GetHighlightColor());
       }
       
       
@@ -547,9 +390,8 @@ public class PoiBrunnen extends MapObject
     this.objWidth = xWidth;
     this.objHeight = xWidth;
         
-    //TODO: Farben auswählen1!!!!!!"!"
     //Standardfarben setzen
-    super.SetColor(#1630FF);
+    super.SetColor(colorBrown);
   }
   
    
@@ -615,7 +457,7 @@ public class PoiKino extends MapObject
         
     //TODO: Farben auswählen1!!!!!!"!"
     //Standardfarben setzen
-    super.SetColor(#1630FF);
+    super.SetColor(colorLightBlue);
     //super.SetHighlightColor(#7209FF);
   }
   
@@ -710,7 +552,7 @@ public class PoiMusikClub extends MapObject
         
     //TODO: Farben auswählen1!!!!!!"!"
     //Standardfarben setzen
-    super.SetColor(#1630FF);
+    super.SetColor(colorPurple);
     //super.SetHighlightColor(#7209FF);
   }
   
@@ -802,7 +644,7 @@ public class PoiTouristenInfo extends MapObject
         
     //TODO: Farben auswählen1!!!!!!"!"
     //Standardfarben setzen
-    super.SetColor(#1630FF);
+    super.SetColor(colorGreen);
   }
   
    

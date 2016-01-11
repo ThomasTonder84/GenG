@@ -17,11 +17,8 @@ class SplitBusStations
 
   public ArrayList<HashMap> Split(String busLine)
   {
-    //TODO: Buslinien müssen nicht gesplittet werden --> geht mit .contains()
-    
     ArrayList<HashMap> currentLine = new ArrayList<HashMap>();
-    HashMap<String, Object> tmpEntry;
-    
+    HashMap<String, Object> tmpEntry; 
     
     for (HashMap entry : myUnsortedStations)
     {
@@ -34,10 +31,6 @@ class SplitBusStations
         tmpEntry.putAll(entry);
         tmpEntry.replace("linien",busLine);
         currentLine.add(tmpEntry);
-        
-        //FIXME: Debugging
-        printArray(tmpEntry);
-        
       }
       
     }
