@@ -121,7 +121,201 @@ public class DataReader
     return objectData;
     
   }
+
+
+    //Einlesen der Strassen
+  public ArrayList<HashMap<String,String>> getCityStreets(String fileName)
+  {
+    String triggerText = "";
+    String tmpColData = "";
+    String tmpSplitCoords = "";
+    String streetName = "";
+    
+    int startCounter = 0, endCounter = 0;
+    //int startIndex = 3, endIndex = 0;
+    HashMap tmpData;
+    ArrayList<HashMap<String,String>> streetData = new ArrayList<HashMap<String,String>>();
+    
+    this.csvFile = fileName;   
+    rawData = loadStrings(this.csvFile);
+    
+    
+       ////Substring aufsplitten
+    //tmpSplitData = tmpColData.split(",");
+    println (">>>>>>>>>>>>>>>>>>>>>>>>> START");
+    for (int i = 1; i < rawData.length; i++)
+    {
+     tmpData = new HashMap();
+     tmpColData = rawData[i];
+     
+     //Bezeichnung auslesen
+     endCounter = tmpColData.lastIndexOf(",");
+     startCounter = tmpColData.lastIndexOf(",",endCounter-1) + 1;
+     streetName = tmpColData.substring(startCounter,endCounter);
+     tmpData.put("bezeichnung",streetName);
+     
+     //Koordinaten vorverarbeiten und ausschneiden
+     triggerText = "((";
+     startCounter = tmpColData.indexOf(triggerText) + triggerText.length();
+     triggerText = "))\",";
+     endCounter = tmpColData.indexOf(triggerText);
+     tmpSplitCoords = tmpColData.substring(startCounter,endCounter).replace("),(",";");
+     
+     tmpData.put("coords",tmpSplitCoords);
+      
+     streetData.add(tmpData);
+      
+     //FIXME: Debugging
+     //println ("Bezeichnung --> " + tmpData.get("bezeichnung") + " | start --> " + startCounter + " | end --> " + endCounter);
+     //println (" | start --> " + startCounter + " | end --> " + endCounter + " | String L --> " + tmpColData.length());
+     //println (tmpSplitCoords);
+     //println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+     //println(tmpColData);
+     //printArray(tmpSplitData);
+    }
+    
+    
+    
+    
+    
+    return streetData;
+  }
+
+
+
+
+    //Einlesen der Parks
+  public ArrayList<HashMap<String,String>> getCityBusLines(String fileName)
+  {
+    String triggerText = "";
+    String tmpColData = "";
+    String tmpSplitCoords = "";
+    int startCounter = 0, endCounter = 0;
+    HashMap tmpData;
+    ArrayList<HashMap<String,String>> busData = new ArrayList<HashMap<String,String>>();
+    
+    
+    this.csvFile = fileName;   
+    rawData = loadStrings(this.csvFile);
+    
+    for (int i = 1; i < rawData.length; i++)
+    {
+      tmpData = new HashMap();
+      
+      tmpData.put("id",String.valueOf(i));
+      
+      //Bezeichnung auslesen
+      tmpColData = rawData[i];
+      startCounter = tmpColData.lastIndexOf(",") + 1;
+      endCounter = tmpColData.length();
+      tmpData.put("linien",tmpColData.substring(startCounter,endCounter).replace("-"," "));
+      
+      //Koordinaten vorverarbeiten und ausschneiden
+      triggerText = " ((";
+      startCounter = tmpColData.indexOf(triggerText) + triggerText.length();
+      triggerText = "))\",";
+      endCounter = tmpColData.indexOf(triggerText);
+      
+      tmpSplitCoords = tmpColData.substring(startCounter,endCounter).replace("),(",",");
+      
+      ////Koordinaten speichern
+      tmpData.put("coords",tmpSplitCoords);
+      
+      busData.add(tmpData);
+
+    }
+    
+    return busData;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+    //Einlesen der Parks
+  public ArrayList<HashMap<String,String>> getCityParks(String fileName)
+  {
+    String triggerText = "";
+    String tmpColData = "";
+    String tmpSplitCoords = "";
+    String[] tmpSplitData;
+    int startCounter = 0, endCounter = 0;
+    int startIndex = 3, endIndex = 0;
+    HashMap tmpData;
+    ArrayList<HashMap<String,String>> parkData = new ArrayList<HashMap<String,String>>();
+    
+    
+    this.csvFile = fileName;   
+    rawData = loadStrings(this.csvFile);
+    endIndex = rawData.length - 3;
+    //Benötigte Daten aus String ausschneiden
+    //startCounter = rawData[4].indexOf(triggerText) + triggerText.length();
+    //triggerText = "] ] } }";
+    //endCounter = rawData[4].indexOf(triggerText);
+    //tmpColData = rawData[4].substring(startCounter,endCounter);
+    
+    ////Substring aufsplitten
+    //tmpSplitData = tmpColData.split(",");
+    
+    for (int i = startIndex; i <= endIndex; i++)
+    {
+      tmpData = new HashMap();
+      
+      //Bezeichnung auslesen
+      triggerText = "bezeichnung";
+      tmpColData = rawData[i];
+      startCounter = tmpColData.indexOf(triggerText) + triggerText.length() + 2;
+      triggerText = " }, ";
+      endCounter = tmpColData.indexOf(triggerText,startCounter);
+      tmpData.put("bezeichnung",tmpColData.substring(startCounter,endCounter));
+      
+      //Koordinaten vorverarbeiten und ausschneiden
+      triggerText = "[ [ [ [ ";
+      startCounter = tmpColData.indexOf(triggerText) + triggerText.length();
+      triggerText = " ] ] ] ] } }";
+      endCounter = tmpColData.indexOf(triggerText);
+      
+      tmpSplitCoords = tmpColData.substring(startCounter,endCounter).replace(" ], [",";");
+      tmpSplitCoords = tmpSplitCoords.replace("[","").replace("]","").replace(" ","");
+      
+      //Koordinaten aufbereiten
+      //tmpSplitData = tmpSplitCoords.split(";");
+      tmpData.put("coords",tmpSplitCoords);
+      
+      parkData.add(tmpData);
+      
+      //FIXME: Debugging
+      //println ("Bezeichnung --> " + tmpData.get("bezeichnung") + " | start --> " + startCounter + " | end --> " + endCounter);
+     //println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      //println(tmpSplitCoords);
+      //printArray(tmpSplitData);
+    }
+    
+    //HashMap test = parkData.get(0);
+    //String hoschi = String.valueOf(test.get("coords"));
+    ////FIXME: Debugging
+    //println ("Park Data --> ");
+    //printArray (parkData.get(0).get("coords"));
+    //println ("Ende der Datensätze --> " + rawData.length + " | Inhalt last --> " + rawData[endIndex]);
+    
+    
+    return parkData;
+  }
   
   
   
@@ -140,7 +334,7 @@ public class DataReader
     
     
     this.csvFile = fileName;   
-    rawData = loadStrings(/*csvDir+*/this.csvFile);
+    rawData = loadStrings(this.csvFile);
         
     //Benötigte Daten aus String ausschneiden
     startCounter = rawData[4].indexOf(triggerText) + triggerText.length();
@@ -311,40 +505,30 @@ public class DataReader
         
         if (i == commaStrasse)
         {
-         // println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
-          println("SubString Strasse --> " + bus.substring(startCounter,endCounter));
           tmpColData = bus.substring(startCounter,endCounter);
           tmpData.put("strasse",tmpColData);
         }
         
         if (i == commaHnr)
         {
-         // println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
-          println("SubString Hausnummer --> " + bus.substring(startCounter,endCounter));
           tmpColData = bus.substring(startCounter,endCounter);
           tmpData.put("hausnummer",tmpColData);
         }
         
         if (i == commaPlz)
         {
-       //   println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
-          println("SubString PLZ --> " + bus.substring(startCounter,endCounter));
           tmpColData = bus.substring(startCounter,endCounter);
           tmpData.put("plz",tmpColData);
         }
         
         if (i == commaBez)
         {
-    //      println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
-          println("SubString Bezeichnung --> " + bus.substring(startCounter,endCounter));
           tmpColData = bus.substring(startCounter,endCounter);
           tmpData.put("bezeichnung",tmpColData);
         }
         
         if (i == commaBetr)
         {
-   //       println("Start Counter --> " + startCounter + " | End Counter --> " + endCounter);
-          println("SubString Betreiber --> " + bus.substring(startCounter,endCounter));
           tmpColData = bus.substring(startCounter,endCounter);
           tmpData.put("betreiber",tmpColData);
         }

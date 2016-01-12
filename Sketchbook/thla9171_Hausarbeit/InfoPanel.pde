@@ -47,6 +47,7 @@ public class InfoPanel
   private Boolean isKino;
   private Boolean isInfo;
   private Boolean isMusik;
+  private Boolean isHelpActive;
   
   //Anzeigedaten
   private BusStation busStation;
@@ -68,6 +69,7 @@ public class InfoPanel
     this.isKino = false;
     this.isInfo = false;
     this.isMusik = false;
+    this.isHelpActive = true;
     
     //Aufteilen des Infobereichs
     this.yLegendStart = this.yHeight - (this.yHeight / 100 * 30);
@@ -97,6 +99,57 @@ public class InfoPanel
     textSize(headSize);
     text("Informationen zur Auswahl",tmpPosXHead,tmpPosYHead);
     popStyle();
+  }
+  
+  public void DisplayHelp()
+  {
+    float PosX = tmpPosXHead;
+    float PosY = tmpPosYText;
+    
+    pushStyle();
+    fill(sepColor);
+    textSize(headSize);
+    text("Anleitung zur Bedienung",tmpPosXHead,tmpPosYHead);
+    
+    
+     PosY += (2* Offset);
+     textSize(textSize);
+     text("Click",PosX,PosY,xWidth,PosY);
+        
+     PosY += (1.5f* Offset);
+     textSize(headSubSize);
+     text("Anzeige von Informationen des Objekts (siehe Legende)",PosX,PosY,xWidth-Offset,PosY);
+     
+     PosY += (3* Offset);
+     textSize(textSize);
+     text("Mausrad",PosX,PosY,xWidth,PosY);
+        
+     PosY += (1.5f* Offset);
+     textSize(headSubSize);
+     text("Karte herein oder heraus zoomen",PosX,PosY,xWidth-Offset,PosY);
+     
+    PosY += (2* Offset);
+     textSize(textSize);
+     text("Maustaste gedrückt halten",PosX,PosY,xWidth,PosY);
+        
+     PosY += (1.5f* Offset);
+     textSize(headSubSize);
+     text("Die Karte kann nach rechts, links, oben und unten verschoben werden",PosX,PosY,xWidth-Offset,PosY);
+     
+        PosY += (3* Offset);
+     textSize(textSize);
+     text("Ziel der Anwendung",PosX,PosY,xWidth,PosY);
+        
+     PosY += (1.5f* Offset);
+     textSize(headSubSize);
+     text("Wird eine Haltestelle angeklickt zeigt die Anwendung entlang aller abfahrenden Buslinien die Erreichbarkeit ...",PosX,PosY,xWidth-Offset,PosY);
+     
+     popStyle();
+  }
+  
+  private void SetHelpActive(Boolean isActive)
+  {
+    this.isHelpActive = isActive;
   }
   
   private void DisplayLegend()
@@ -172,9 +225,18 @@ public class InfoPanel
     
     //Buslinien
     stroke(colorBlue);
+    strokeWeight(3f);
     line(tmpPosXSign,(tmpPosY + (objHeight/2)), tmpPosXSign+objWidth, (tmpPosY + (objHeight/2)));
     tmpPosY += objHeight;
     text("Buslinie",tmpPosXText,tmpPosY);
+    
+    tmpPosY += Offset;
+    
+    //Straßen
+    stroke(colorGray);
+    line(tmpPosXSign,(tmpPosY + (objHeight/2)), tmpPosXSign+objWidth, (tmpPosY + (objHeight/2)));
+    tmpPosY += objHeight;
+    text("Straße",tmpPosXText,tmpPosY);
     
     
     tmpPosY += Offset;
@@ -186,6 +248,11 @@ public class InfoPanel
     tmpPosY += objHeight/2;
     fill(sepColor);
     text("Stadtmitte",tmpPosXText,tmpPosY);
+    
+    
+    textSize(11);
+     tmpPosY +=  2 * Offset;
+     text("Genutzte Datensätze: http://www.opendata-hro.de",tmpPosXSign,tmpPosY,xWidth-Offset,tmpPosY);
     
     popStyle();
   }
@@ -200,8 +267,6 @@ public class InfoPanel
     this.isMusik = isVisible;
   }
   
-  //TODO: Für alle relevanten Objekte Überladung
-  //Aufbau --> Symbol Erklärung
   //Setzen der Anzeigeart
   public void SetDisplayData(BusStation busStation)
   {
@@ -342,7 +407,7 @@ public class InfoPanel
      String tmpUpper = tmpKey.substring(0,1).toUpperCase();
      tmpUpper += tmpKey.substring(1);
      
-     if (tmpInfo.equals("") == false)
+     if (tmpInfo.equals("") == false && tmpKey != "website")
      {
        PosY += (2* Offset);
        textSize(headSubSize);
@@ -353,6 +418,18 @@ public class InfoPanel
        text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
      }
    }
+   
+   
+    if (stationInfo.get("website").equals("") == false)
+    {
+         PosY += (2* Offset);
+       textSize(headSubSize);
+       text("Website",tmpPosXText,PosY,xWidth,PosY);
+        
+       PosY += (1* Offset);
+       textSize(textSize);
+       text(stationInfo.get("website"),tmpPosXText,PosY,xWidth-(3*Offset),PosY);
+    }
   
     
     popStyle();
@@ -372,13 +449,13 @@ public class InfoPanel
     
     
     
-    for (String tmpKey : stationInfo.keySet())
+   for (String tmpKey : stationInfo.keySet())
    {
      String tmpInfo = stationInfo.get(tmpKey); 
      String tmpUpper = tmpKey.substring(0,1).toUpperCase();
      tmpUpper += tmpKey.substring(1);
      
-     if (tmpInfo.equals("") == false)
+     if (tmpInfo.equals("") == false && tmpKey != "website")
      {
        PosY += (2* Offset);
        textSize(headSubSize);
@@ -389,8 +466,18 @@ public class InfoPanel
        text(tmpInfo,tmpPosXText,PosY,xWidth,PosY);
      }
    }
-  
-    
+   
+     if (stationInfo.get("website").equals("") == false)
+    {
+         PosY += (2* Offset);
+       textSize(headSubSize);
+       text("Website",tmpPosXText,PosY,xWidth,PosY);
+        
+       PosY += (1* Offset);
+       textSize(textSize);
+       text(stationInfo.get("website"),tmpPosXText,PosY,xWidth-(3*Offset),PosY);
+    }
+
     popStyle();
   }
   
@@ -414,7 +501,7 @@ public class InfoPanel
      String tmpUpper = tmpKey.substring(0,1).toUpperCase();
      tmpUpper += tmpKey.substring(1);
      
-     if (tmpInfo.equals("") == false)
+     if (tmpInfo.equals("") == false && tmpKey != "website")
      {
        PosY += (2* Offset);
        textSize(headSubSize);
@@ -426,6 +513,16 @@ public class InfoPanel
      }
    }
   
+  if (stationInfo.get("website").equals("") == false)
+  {
+         PosY += (2* Offset);
+       textSize(headSubSize);
+       text("Website",tmpPosXText,PosY,xWidth,PosY);
+        
+       PosY += (1* Offset);
+       textSize(textSize);
+       text(stationInfo.get("website"),tmpPosXText,PosY,xWidth-(3*Offset),PosY);
+  }
     
     popStyle();
   }
@@ -437,8 +534,15 @@ public class InfoPanel
   {
     
     DisplayLegend();
-    DisplayHeader();
     
+    if (isHelpActive == false)
+    {
+      DisplayHeader();
+    }
+    else
+    {
+      DisplayHelp();
+    }
     //TODO: Alles Anzeigetypen anzeigen wenn true
     if (isBusStation == true)
     {

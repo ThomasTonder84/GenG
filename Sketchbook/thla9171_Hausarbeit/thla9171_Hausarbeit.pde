@@ -64,13 +64,18 @@ InfoPanel infoPanel;
 //Daten einlesen
 String[] poiFiles;
 String busFile;
+String busLineFile;
 String borderFile;
+String parkFile;
+String streetFile;
 DataReader readData;
 
 //Aufbereitete Daten
 ArrayList<HashMap> poiData;
 ArrayList<HashMap> busData;
 ArrayList<HashMap<String,String>> borderData;
+ArrayList<HashMap<String,String>> parkData, streetData;
+ArrayList<HashMap<String,String>> busLineData;
 
 //Busdaten
 ArrayList<BusStation> busStation;
@@ -80,6 +85,11 @@ ArrayList<HashMap> tmpLine; //Temporäre Verarbeitung
 
 //Stadtgrenze
 ArrayList<CityBorder> cityBorder; 
+
+//Stadtfläche
+HashMap<String,CityPark[]> cityPark;
+HashMap<String,CityStreet[]> cityStreet;
+
 
 //Points of Interes
 ArrayList<PoiTouristenInfo> poiTouristInfo;
@@ -103,6 +113,7 @@ color colorGreen;
 color colorBrown;
 color colorPurple;
 color colorLightBlue;
+color colorGray;
 
 //Zoom
 float graphicScale = 1.0f;
@@ -166,6 +177,7 @@ void setup()
   colorGreen = color(#028B26); //19D84B
   colorBrown = color(#B76C00);
   colorPurple = color(#7C30DE);
+  colorGray = color(#A69696);
   colorBackground = colorWhite;
   colorCityCenter = colorRed;
   
@@ -175,7 +187,10 @@ void setup()
   //Init Poi Files
   poiFiles = new String[]{"brunnen.csv","kinos.csv","musikclubs.csv","touristeninformation.csv"};
   busFile = "haltestellen.csv";
-  borderFile = "gemeindeflaeche.json"; //FIXME: Anpassung gemacht auf JSON
+  borderFile = "gemeindeflaeche.json"; 
+  parkFile = "parkanlagen.json";
+  streetFile = "strassen.csv"; 
+  busLineFile = "stadtbuslinien.csv";
   
   //Init Poi Types
   poiBrunnen = new ArrayList<PoiBrunnen>();
@@ -185,6 +200,12 @@ void setup()
   
   //Init CityBorder
   cityBorder = new ArrayList<CityBorder>();
+  
+  //Init Parks
+  cityPark = new HashMap<String,CityPark[]>();
+  
+  //Init Streets
+  cityStreet = new HashMap<String,CityStreet[]>();
   
   //Init Bus Types
   busLinesAvailable = new ArrayList<String>();
@@ -314,33 +335,33 @@ void setup()
   
  
   
-  //Aufteilen nach Buslinien
-  sortStations = new SplitBusStations(busData);
+  ////Aufteilen nach Buslinien
+  //sortStations = new SplitBusStations(busData);
   
-  //Aufbereiten der Buslinien  
-  for (String tmpBusLine : busLinesAvailable)
-  {
-    int idCount = 0;
-    tmpLine = sortStations.Split(tmpBusLine);  
-    int lineSize = tmpLine.size();
-    BusLine[] tmpLineBuffer = new BusLine[lineSize];
+  ////Aufbereiten der Buslinien  
+  //for (String tmpBusLine : busLinesAvailable)
+  //{
+  //  int idCount = 0;
+  //  tmpLine = sortStations.Split(tmpBusLine);  
+  //  int lineSize = tmpLine.size();
+  //  BusLine[] tmpLineBuffer = new BusLine[lineSize];
       
-    //Konvertieren der Geo zu Pixel Koordinaten
-    for (HashMap tmpStation : tmpLine)
-    {     
-      idCount++;
+  //  //Konvertieren der Geo zu Pixel Koordinaten
+  //  for (HashMap tmpStation : tmpLine)
+  //  {     
+  //    idCount++;
       
-      tmpX = Float.parseFloat(tmpStation.get("latitude").toString());
-      tmpY = Float.parseFloat(tmpStation.get("longitude").toString());
-      tmpXPixel = distConverter.LatitudeToX(tmpX);
-      tmpYPixel = distConverter.LongitudeToY(tmpY);
+  //    tmpX = Float.parseFloat(tmpStation.get("latitude").toString());
+  //    tmpY = Float.parseFloat(tmpStation.get("longitude").toString());
+  //    tmpXPixel = distConverter.LatitudeToX(tmpX);
+  //    tmpYPixel = distConverter.LongitudeToY(tmpY);
       
-      tmpLineBuffer[idCount-1] = new BusLine(tmpXPixel,tmpYPixel,tmpX,tmpY,10f,tmpBusLine,idCount);
-    }
+  //    tmpLineBuffer[idCount-1] = new BusLine(tmpXPixel,tmpYPixel,tmpX,tmpY,10f,tmpBusLine,idCount);
+  //  }
 
-    //Erstellen des Buslinien Objekts
-    busLine.put(tmpBusLine,tmpLineBuffer);
-  }
+  //  //Erstellen des Buslinien Objekts
+  //  busLine.put(tmpBusLine,tmpLineBuffer);
+  //}
   
   
   //Stationen einlesen
@@ -356,6 +377,152 @@ void setup()
       busStation.get(busIndex).SetInformation(tmpStation);
       busIndex++;
   }
+  
+  
+  //Straßen einlesen
+  streetData = readData.getCityStreets(streetFile);
+  
+  int streetId = 0;
+  
+  for (HashMap<String,String> tmpData : streetData)
+  {
+    String tmpBezeichnung = tmpData.get("bezeichnung");
+    String[] tmpSplitCoords = tmpData.get("coords").split(";");
+    CityStreet[] tmpStreetObj;
+    //CityStreet tmpStreetObj;
+    
+    for (String tmpStreet : tmpSplitCoords)
+    {
+      //TODO
+      //Aufsplitten nach ,
+      //In foreach abarbeiten -->
+      //Koordinaten aufarbeiten 
+      //konvertieren
+      //getrennte Koordinaten
+      
+      //FIXME: Debugging
+      //println("Straßen split ; --> " + tmpStreet);
+      String[] tmpSubSplit = tmpStreet.split(",");
+      tmpStreetObj = new CityStreet[tmpSubSplit.length];
+      int streetIndex = 0;
+      streetId++;
+      
+      //TODO: Hier beginShape
+      for (String tmpSubStreet : tmpSubSplit)
+      {
+        String[] tmpSubSplitCoords = tmpSubStreet.split(" ");
+        tmpX = Float.parseFloat(tmpSubSplitCoords[1]);
+        tmpY = Float.parseFloat(tmpSubSplitCoords[0]);
+        tmpXPixel = distConverter.LatitudeToX(tmpX);
+        tmpYPixel = distConverter.LongitudeToY(tmpY);
+        
+        //public CityStreet(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float Weight, String streetName)
+        tmpStreetObj[streetIndex] = new CityStreet(tmpXPixel,tmpYPixel,tmpX,tmpY,1.25f,tmpBezeichnung);
+        streetIndex++;
+        //println("Straßen split , --> " + tmpSubStreet); 
+        //println("Straßen split Leer --> " );
+        //printArray(tmpSubSplitCoords);
+      }
+      
+      cityStreet.put(String.valueOf(streetId), tmpStreetObj);
+    }
+  }
+  
+  
+  
+  //Parkdaten einlesen
+  parkData = readData.getCityParks(parkFile);
+  
+  int parkId = 0;
+  for (HashMap<String,String> tmpData : parkData)
+  {
+    String tmpBezeichnung = tmpData.get("bezeichnung");
+    String[] tmpSplitCoords = tmpData.get("coords").split(";");
+    CityPark[] tmpParkObj = new CityPark[tmpSplitCoords.length]; 
+    int coordIndex = 0;
+    parkId++;
+    
+    for (String tmpParkCoord : tmpSplitCoords)
+    {
+      String[] tmpParkSplit = tmpParkCoord.split(",");
+      //TODO:
+      //Geokoordinaten korrekt extrahieren
+      //Pixelkoord konvertieren
+      //Korrektes Objekt erzeugen
+      tmpX = Float.parseFloat(tmpParkSplit[1]);
+      tmpY = Float.parseFloat(tmpParkSplit[0]);
+      
+      tmpXPixel = distConverter.LatitudeToX(tmpX);
+      tmpYPixel = distConverter.LongitudeToY(tmpY);
+      
+      tmpParkObj[coordIndex] = new CityPark(tmpXPixel, tmpYPixel, tmpX, tmpY, 2f);
+      
+      coordIndex++;
+    }
+    
+    cityPark.put(String.valueOf(parkId),tmpParkObj);
+    
+    //public CityPark(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float Weight)
+    //cityPark.add(new CityPark(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float Weight));
+    
+    //CityPark[] tmpObj = new CityPark[tmpSplitCoords.length];
+    //tmpObj = cityPark.get(String.valueOf(parkId));
+    
+    //FIXME: Debugging
+    //printArray(tmpObj);
+  }
+  
+  //TODO
+  //Buslinien einlesen
+  busLineData = readData.getCityBusLines(busLineFile);
+  
+  
+  
+    //Aufteilen nach Buslinien
+  //sortStations = new SplitBusStations(busData);
+  int indexCount = 0;
+  //Aufbereiten der Buslinien  
+  for (HashMap<String,String> tmpBusLine : busLineData)
+  {
+    String tmpLinien = tmpBusLine.get("linien");
+    String tmpId = tmpBusLine.get("id");
+    String tmpBusLineCoords = tmpBusLine.get("coords");
+    String[] tmpBusLineSplit = tmpBusLineCoords.split(",");
+    BusLine[] tmpLineBuffer = new BusLine[tmpBusLineSplit.length];
+    int idCount = 0;
+      
+    //Konvertieren der Geo zu Pixel Koordinaten
+    for (String tmpStation : tmpBusLineSplit)
+    {     
+      String[] tmpSplit = tmpStation.split(" "); 
+      
+      tmpX = Float.parseFloat(tmpSplit[1]);
+      tmpY = Float.parseFloat(tmpSplit[0]);
+      tmpXPixel = distConverter.LatitudeToX(tmpX);
+      tmpYPixel = distConverter.LongitudeToY(tmpY);
+      
+      tmpLineBuffer[idCount] = new BusLine(tmpXPixel,tmpYPixel,tmpX,tmpY,10f,tmpLinien,Integer.parseInt(tmpId));
+      
+      idCount++;
+    }
+
+    //Erstellen des Buslinien Objekts
+    busLine.put(String.valueOf(indexCount),tmpLineBuffer);
+    
+    indexCount++;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   setupGUI();
   
@@ -381,11 +548,21 @@ void DisplayHeader()
 
 void setupGUI()
 {
-  
-  
+  cp5.addButton("showHelp")
+     
+     .setCaptionLabel("Anleitung")
+     .setColorActive(colorBlue)
+     .setColorLabel(colorWhite)
+     .setColorCaptionLabel(colorBlue)
+     .setSize(100,20)
+     .setColorForeground(colorWhite)
+     .setColorBackground(colorWhite)
+     .setPosition(20,toolHeight-40);
+}
 
-  
-  cp5.addButton("showHelp").setCaptionLabel("Hilfe").setSize(100,20).setColorBackground(colorWhite).setPosition(20,20);
+void showHelp()
+{
+  infoPanel.SetHelpActive(true);
 }
 
 
@@ -431,20 +608,12 @@ void mousePressed()
 
 void mouseDragged()
 {
-  //FIXME: Debugging
-  //println("mouseDragged x --> " + mouseX + " | y --> " + mouseY);
-  //println("mouseOrigin  x --> " + zoomXOrigin + " | y --> " + zoomYOrigin);
- 
-   
   //Offset berechnen und invertieren
   if (mouseX > infoWidth && mouseY > toolHeight)
   {
     xOffset = (zoomXOrigin - mouseX) * (-1) + xOffsetPrev;
     yOffset = (zoomYOrigin - mouseY) * (-1) + yOffsetPrev;
-  }
-  
-    //FIXME: Debugging
-    //println("Offset  x --> " + xOffset + " | y --> " + yOffset);  
+  }  
 }
 
 
@@ -470,16 +639,28 @@ void mouseClicked(MouseEvent clickEvent)
     //Highlight zurücksetzen
     /////////////////////////////////////////
     infoPanel.SetInfoDisplay(false);
-    
+    infoPanel.SetHelpActive(false);  
     //Buslinien
-    for (String tmpLine : busLinesAvailable)
+    //for (String tmpLine : busLinesAvailable)
+    //{
+    //  for (BusLine tmpBusLine : busLine.get(tmpLine))
+    //  {
+    //    tmpBusLine.SetSelected(false);
+    //  }
+    //}
+    
+
+    for (String tmpBusId : busLine.keySet())
     {
-      for (BusLine tmpBusLine : busLine.get(tmpLine))
+      BusLine[] tmpBus = busLine.get(tmpBusId); 
+      
+      for (BusLine tmpBusLine : tmpBus)
       {
         tmpBusLine.SetSelected(false);
       }
     }
-    
+
+        
     //Haltestellen
     for (BusStation tmpStation : busStation)
     {
@@ -535,12 +716,31 @@ void mouseClicked(MouseEvent clickEvent)
           {
             if (tmpLine.equals("") == false)
             {
-              for (BusLine tmpBusLine : busLine.get(tmpLine))
+              for (String tmpBus : busLine.keySet())
               {
-                tmpBusLine.SetSelected(true);
+                BusLine[] tmpBusLine = busLine.get(tmpBus);
+                //println(busLine.keySet());
+                for (BusLine curLine : tmpBusLine)
+                {
+                  if (curLine.GetLineNumber().contains(tmpLine))
+                  {
+                    curLine.SetSelected(true);
+                  }
+                }
               }
             }
           }
+          
+          //for (String tmpLine : tmpStation.GetBusLines())
+          //{
+          //  if (tmpLine.equals("") == false)
+          //  {
+          //    for (BusLine tmpBusLine : busLine.get(tmpLine))
+          //    {
+          //      tmpBusLine.SetSelected(true);
+          //    }
+          //  }
+          //}
           
         }
         else
@@ -709,66 +909,22 @@ void draw()
   popStyle();
   infoPanel.draw();
   
+  pushMatrix();
   //Skalierung --> Zoom
   scale(graphicScale);
-   
-   
-   
-   //Buslinien darstellen
-  for (String tmpBusLine : busLinesAvailable)
-  {
-    float pointOneX = 0f;
-    float pointOneY = 0f;
-    float pointTwoX = 0f;
-    float pointTwoY = 0f;
-    
-    
-    BusLine[] tmpDrawLine = busLine.get(tmpBusLine);
-    
-    for (int i=0; i < tmpDrawLine.length; i++)
-    {
-      tmpDrawLine[i].SetOffset(xOffset,yOffset);
-      
-     if ((i+1)<tmpDrawLine.length)
-     {
-       pointOneX = tmpDrawLine[i].GetXPosition();
-       pointOneY = tmpDrawLine[i].GetYPosition();
-       pointTwoX = tmpDrawLine[i+1].GetXPosition();
-       pointTwoY = tmpDrawLine[i+1].GetYPosition();
-       
-       if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i+1].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight || (tmpDrawLine[i+1].GetYPosition()*graphicScale) <= toolHeight)
-       {
-         tmpDrawLine[i].SetVisibility(false);
-         tmpDrawLine[i+1].SetVisibility(false);
-       }
-       else
-       {
-         tmpDrawLine[i].SetVisibility(true);
-         tmpDrawLine[i+1].SetVisibility(true);
-       }
-       
-       
-       if (tmpDrawLine[i].GetVisibility() == true && tmpDrawLine[i+1].GetVisibility() == true && tmpDrawLine[i].GetSelected() == true && tmpDrawLine[i+1].GetSelected() == true)
-       {
-         pushStyle();
-         stroke(tmpDrawLine[i].GetHighlightColor());
-         line(pointOneX,pointOneY,pointTwoX,pointTwoY);
-         popStyle();
-       }
-       
-     }
-    }
-  }
-   
-   
-   
-  //Stadtgrenze einzeichnen
+  
+  
+  
+  
+  
+   //Stadtgrenze einzeichnen
   for (int i=0; i < cityBorder.size(); i++)
   {
     cityBorder.get(i).SetOffset(xOffset,yOffset);
     
    if ((i+1) < cityBorder.size())
    {
+     cityBorder.get(i+1).SetOffset(xOffset,yOffset);
      float pointOneX = cityBorder.get(i).GetXPosition();
      float pointOneY = cityBorder.get(i).GetYPosition();
      float pointTwoX = cityBorder.get(i+1).GetXPosition();
@@ -802,6 +958,308 @@ void draw()
    
    //println("Anzahl Punkte nach if --> " + i);
   }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+     //Parkflächen darstellen
+      //Buslinien darstellen
+  for (String tmpPark : cityPark.keySet())
+  {
+    float pointOneX = 0f;
+    float pointOneY = 0f;
+    float pointTwoX = 0f;
+    float pointTwoY = 0f;
+    
+    
+    CityPark[] tmpDrawLine = cityPark.get(tmpPark);
+    
+    PShape s = createShape();
+    s.beginShape();
+    
+    for (int i=0; i < tmpDrawLine.length; i++)
+    {
+      tmpDrawLine[i].SetOffset(xOffset,yOffset);
+      
+       pointOneX = tmpDrawLine[i].GetXPosition();
+       pointOneY = tmpDrawLine[i].GetYPosition();
+      
+      
+      /*
+     if ((i+1)<tmpDrawLine.length)
+     {
+       pointOneX = tmpDrawLine[i].GetXPosition();
+       pointOneY = tmpDrawLine[i].GetYPosition();
+       pointTwoX = tmpDrawLine[i+1].GetXPosition();
+       pointTwoY = tmpDrawLine[i+1].GetYPosition();
+       */
+       //if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i+1].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight || (tmpDrawLine[i+1].GetYPosition()*graphicScale) <= toolHeight)
+       if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight)
+       {
+         tmpDrawLine[i].SetVisibility(false);
+         //tmpDrawLine[i+1].SetVisibility(false);
+       }
+       else
+       {
+         tmpDrawLine[i].SetVisibility(true);
+         //tmpDrawLine[i+1].SetVisibility(true);
+       }
+       
+       
+       if (tmpDrawLine[i].GetVisibility() == true)
+       {
+         //pushStyle();
+         //stroke(tmpDrawLine[i].GetColor());
+         //line(pointOneX,pointOneY,pointTwoX,pointTwoY);
+         //popStyle();
+         s.vertex(pointOneX,pointOneY);
+         //TODO: Shapes erstellen
+      
+       }
+       
+     //}*/
+    }
+    s.noStroke();
+    s.fill(colorGreen);
+    s.endShape();
+    shape(s);
+    
+    //FIXME: Debugging
+    //println("Position Shape X --> " + s.X + " | Shape Y --> " + s.Y);
+  }
+  
+  
+  
+  
+  //Straßen darstellen
+    for (String tmpStreet : cityStreet.keySet())
+  {
+   float pointOneX = 0f;
+   float pointOneY = 0f;
+   float pointTwoX = 0f;
+   float pointTwoY = 0f;
+    
+    
+   CityStreet[] tmpDrawLine = cityStreet.get(tmpStreet);
+    
+   for (int i=0; i < tmpDrawLine.length; i++)
+   {
+     tmpDrawLine[i].SetOffset(xOffset,yOffset);
+      
+    if ((i+1)<tmpDrawLine.length)
+    {
+      tmpDrawLine[i+1].SetOffset(xOffset,yOffset);
+      pointOneX = tmpDrawLine[i].GetXPosition();
+      pointOneY = tmpDrawLine[i].GetYPosition();
+      pointTwoX = tmpDrawLine[i+1].GetXPosition();
+      pointTwoY = tmpDrawLine[i+1].GetYPosition();
+       
+      if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i+1].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight || (tmpDrawLine[i+1].GetYPosition()*graphicScale) <= toolHeight)
+      {
+        tmpDrawLine[i].SetVisibility(false);
+        tmpDrawLine[i+1].SetVisibility(false);
+      }
+      else
+      {
+        tmpDrawLine[i].SetVisibility(true);
+        tmpDrawLine[i+1].SetVisibility(true);
+      }
+       
+       
+      if (tmpDrawLine[i].GetVisibility() == true && tmpDrawLine[i+1].GetVisibility() == true)
+      {
+        pushStyle();
+        strokeWeight(tmpDrawLine[i].GetLineWeight());
+        stroke(tmpDrawLine[i].GetColor());
+        line(pointOneX,pointOneY,pointTwoX,pointTwoY);
+        popStyle();
+      }
+       
+    }
+   }
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+   
+     //Buslinien darstellen
+  //for (String tmpStreet : cityStreet.keySet())
+  //{
+  // float pointOneX = 0f;
+  // float pointOneY = 0f;
+  // float pointTwoX = 0f;
+  // float pointTwoY = 0f;
+    
+    
+  // CityStreet[] tmpDrawLine = cityStreet.get(tmpStreet);
+    
+  // for (int i=0; i < tmpDrawLine.length; i++)
+  // {
+  //   tmpDrawLine[i].SetOffset(xOffset,yOffset);
+      
+  //  if ((i+1)<tmpDrawLine.length)
+  //  {
+  //    pointOneX = tmpDrawLine[i].GetXPosition();
+  //    pointOneY = tmpDrawLine[i].GetYPosition();
+  //    pointTwoX = tmpDrawLine[i+1].GetXPosition();
+  //    pointTwoY = tmpDrawLine[i+1].GetYPosition();
+       
+  //    if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i+1].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight || (tmpDrawLine[i+1].GetYPosition()*graphicScale) <= toolHeight)
+  //    {
+  //      tmpDrawLine[i].SetVisibility(false);
+  //      tmpDrawLine[i+1].SetVisibility(false);
+  //    }
+  //    else
+  //    {
+  //      tmpDrawLine[i].SetVisibility(true);
+  //      tmpDrawLine[i+1].SetVisibility(true);
+  //    }
+       
+       
+  //    if (tmpDrawLine[i].GetVisibility() == true && tmpDrawLine[i+1].GetVisibility() == true)
+  //    {
+  //      pushStyle();
+  //      strokeWeight(tmpDrawLine[i].GetLineWeight());
+  //      stroke(tmpDrawLine[i].GetColor());
+  //      line(pointOneX,pointOneY,pointTwoX,pointTwoY);
+  //      popStyle();
+  //    }
+       
+  //  }
+  // }
+  //}
+   
+   
+   
+   
+     //Buslinien darstellen
+  for (String tmpBusLine : busLine.keySet())
+  {
+    float pointOneX = 0f;
+    float pointOneY = 0f;
+    float pointTwoX = 0f;
+    float pointTwoY = 0f;
+    
+    
+    BusLine[] tmpDrawLine = busLine.get(tmpBusLine);
+    
+    for (int i=0; i < tmpDrawLine.length; i++)
+    {
+      tmpDrawLine[i].SetOffset(xOffset,yOffset);
+      
+     if ((i+1)<tmpDrawLine.length)
+     {
+       tmpDrawLine[i+1].SetOffset(xOffset,yOffset);
+       pointOneX = tmpDrawLine[i].GetXPosition();
+       pointOneY = tmpDrawLine[i].GetYPosition();
+       pointTwoX = tmpDrawLine[i+1].GetXPosition();
+       pointTwoY = tmpDrawLine[i+1].GetYPosition();
+       
+       if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i+1].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight || (tmpDrawLine[i+1].GetYPosition()*graphicScale) <= toolHeight)
+       {
+         tmpDrawLine[i].SetVisibility(false);
+         tmpDrawLine[i+1].SetVisibility(false);
+       }
+       else
+       {
+         tmpDrawLine[i].SetVisibility(true);
+         tmpDrawLine[i+1].SetVisibility(true);
+       }
+       
+       //TODO: Wieder einkommentieren
+       if (tmpDrawLine[i].GetVisibility() == true && tmpDrawLine[i+1].GetVisibility() == true && tmpDrawLine[i].GetSelected() == true && tmpDrawLine[i+1].GetSelected() == true)
+       {
+         pushStyle();
+         stroke(tmpDrawLine[i].GetColor()); //TODO: Auf normale Farbe ändern
+         strokeWeight(2f);
+         line(pointOneX,pointOneY,pointTwoX,pointTwoY);
+         popStyle();
+       }
+       
+     }
+    }
+  }
+   
+   
+   
+   
+   
+   
+   
+   
+
+   
+   
+   
+   //Buslinien darstellen
+ /*for (String tmpBusLine : busLinesAvailable)
+  {
+    float pointOneX = 0f;
+    float pointOneY = 0f;
+    float pointTwoX = 0f;
+    float pointTwoY = 0f;
+    
+    
+    BusLine[] tmpDrawLine = busLine.get(tmpBusLine);
+    
+    for (int i=0; i < tmpDrawLine.length; i++)
+    {
+      tmpDrawLine[i].SetOffset(xOffset,yOffset);
+      
+     if ((i+1)<tmpDrawLine.length)
+     {
+       tmpDrawLine[i+1].SetOffset(xOffset,yOffset);
+       pointOneX = tmpDrawLine[i].GetXPosition();
+       pointOneY = tmpDrawLine[i].GetYPosition();
+       pointTwoX = tmpDrawLine[i+1].GetXPosition();
+       pointTwoY = tmpDrawLine[i+1].GetYPosition();
+       
+       if ((tmpDrawLine[i].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i+1].GetXPosition()*graphicScale) <= infoWidth || (tmpDrawLine[i].GetYPosition()*graphicScale) <= toolHeight || (tmpDrawLine[i+1].GetYPosition()*graphicScale) <= toolHeight)
+       {
+         tmpDrawLine[i].SetVisibility(false);
+         tmpDrawLine[i+1].SetVisibility(false);
+       }
+       else
+       {
+         tmpDrawLine[i].SetVisibility(true);
+         tmpDrawLine[i+1].SetVisibility(true);
+       }
+       
+       
+       if (tmpDrawLine[i].GetVisibility() == true && tmpDrawLine[i+1].GetVisibility() == true && tmpDrawLine[i].GetSelected() == true && tmpDrawLine[i+1].GetSelected() == true)
+       {
+         pushStyle();
+         stroke(tmpDrawLine[i].GetHighlightColor());
+         line(pointOneX,pointOneY,pointTwoX,pointTwoY);
+         popStyle();
+       }
+       
+     }
+    }
+  }*/
+   
+   
+   
+ 
    
    
    
@@ -933,7 +1391,7 @@ void draw()
   }
     
   
-
+popMatrix();
  
   
 }

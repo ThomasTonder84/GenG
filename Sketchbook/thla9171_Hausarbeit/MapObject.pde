@@ -206,11 +206,79 @@ public class CityBorder extends MapObject
   
   
   
+  //TODO: Eventuell Shape vorher erstellen und an die Klasse übergeben
+ public class CityPark extends MapObject
+{
+  private float lineWeight;
+  
+  public CityPark(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float Weight)
+  {
+    //Konstruktur der Basisklasse aufrufen
+    super(xPositionPixel, yPositionPixel, latitude, longitude);
+       
+    this.lineWeight = Weight;
+        
+    //TODO: Farben auswählen1!!!!!!"!"
+    //Standardfarben setzen
+    super.SetColor(colorGreen);
+    
+    super.SetVisibility(true);
+  }
+ 
+  public float GetLineWeight()
+  {
+    return this.lineWeight;
+  }
+} 
   
   
+public class CityStreet extends MapObject
+{
+  private float lineWeight;
+  private String streetName;
+  
+  //public CityStreet(PShape streetObj, String streetName)
+  //{
+  //  //Konstruktur der Basisklasse aufrufen
+  //  //super(xPositionPixel, yPositionPixel, latitude, longitude);
+  //  super();
+       
+  //  this.streetObj = streetObj;
+  //  this.streetName = streetName;
+    
+  //  //Standardfarben setzen
+  //  super.SetColor(colorGray);
+    
+  //  super.SetVisibility(true);
+  //}
   
   
+  public CityStreet(float xPositionPixel, float yPositionPixel, float latitude, float longitude, float Weight, String streetName)
+  {
+   //Konstruktur der Basisklasse aufrufen
+   super(xPositionPixel, yPositionPixel, latitude, longitude);
+       
+   this.lineWeight = Weight;
+   this.streetName = streetName;
+   //TODO: Farben auswählen1!!!!!!"!"
+   //Standardfarben setzen
+   super.SetColor(colorGray);
+    
+   super.SetVisibility(true);
+  }
+ 
+  public String GetStreetName()
+  {
+    return this.streetName;
+  }
+ 
+  public float GetLineWeight()
+  {
+    return this.lineWeight;
+  }
+
   
+}  
   
   
   
